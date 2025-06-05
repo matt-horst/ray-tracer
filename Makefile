@@ -16,10 +16,10 @@ $(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(HEADERS)
 $(BIN_DIR)/main: $(OBJ_DIR)/main.o
 	$(CC) $< -o $@
 
-$(OBJ_DIR)/test_vec3.o: $(SRC_DIR)/test_vec3.cpp $(SRC_DIR)/vec3.hpp
+$(OBJ_DIR)/test_%.o: $(SRC_DIR)/test_%.cpp $(SRC_DIR)/%.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BIN_DIR)/test_vec3:  $(OBJ_DIR)/test_vec3.o
+$(BIN_DIR)/test_%:  $(OBJ_DIR)/test_%.o
 	$(CC) -o $@ $<
 
 tests: $(TEST_BINS)

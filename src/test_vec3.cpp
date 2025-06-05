@@ -1,16 +1,7 @@
 #include "vec3.hpp"
+#include "test_util.hpp"
 #include <cstdlib>
 #include <iostream>
-
-template<typename T>
-void assert_eq(T a, T b) {
-    if (a == b) {
-        return;
-    }
-
-    std::cerr << "Assertion Failed: " << a << " != " << b << '\n';
-    exit(EXIT_FAILURE);
-}
 
 void test_add() {
     {
