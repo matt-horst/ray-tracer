@@ -1,4 +1,5 @@
 #pragma once
+#include "util.hpp"
 #include <cmath>
 #include <cstddef>
 #include <iostream>
@@ -68,6 +69,14 @@ struct Vec3 {
     T& operator[](std::size_t i) {
         return elem[i];
     }
+
+    static Vec3<double> random() {
+        return Vec3<double>(random_double(), random_double(), random_double());
+    }
+
+    static Vec3<double> random(double min, double max) {
+        return Vec3<double>(random_double(min, max), random_double(min, max), random_double(min, max));
+    }
 };
 
 template<typename T>
@@ -120,3 +129,22 @@ inline Vec3<decltype(U() * V())> cross(const Vec3<U> &u, const Vec3<V> &v) {
 
 template<typename T>
 auto normalize(Vec3<T> v) { return v / v.length(); }
+
+inline auto random_unit_vector() {
+    while (true) {
+        auto p = Vec3<double>::random();
+        auto length_sqr = p.length_sqr();
+        if (1.0e-160 < length_sqr && length_sqr <= 1.0) {
+            return p / std::sqrt(length_sqr);
+        }
+    }
+}
+
+inline auto random_on_hemisphere(const Vec3<double> &normal) {
+    Vec3<double> on_unit_sphere = random_unit_vector();
+    if (dot(on_unit_sphere, normal) > 0.0) {
+        return on_unit_sphere;
+    } 
+
+    return -on_unit_sphere;
+}

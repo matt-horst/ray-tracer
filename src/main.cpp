@@ -7,7 +7,9 @@
 
 int main(void) {
     CameraParams params;
-    params.image_width = 400;
+    params.image_width = 800;
+    params.samples_per_pixel = 100;
+    params.max_depth = 100;
     const Camera cam(params);
 
     HittableList world;

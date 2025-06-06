@@ -4,9 +4,18 @@
 #include <stdint.h>
 #include <type_traits>
 #include <iostream>
+#include "interval.hpp"
 #include "vec3.hpp"
 
-constexpr double max_value = std::nexttoward(256.0, 0.0);
+static const Interval intensity(0, std::nexttoward(1.0, 0.0));
+
+inline double linear_to_gamma(double x) {
+    if (x > 0.0) {
+        return std::sqrt(x);
+    }
+
+    return 0.0;
+}
 
 struct Color {
     double elem[3];
@@ -33,13 +42,21 @@ struct Color {
     template<typename Floating, std::enable_if_t<std::is_floating_point<Floating>::value, bool> = true>
     Color(const Vec3<Floating> &v) : elem{ v.x(), v.y(), v.z() } {}
 
-    inline uint32_t r_int() const { return max_value * elem[0]; }
-    inline uint32_t g_int() const { return max_value * elem[1]; }
-    inline uint32_t b_int() const { return max_value * elem[2]; }
+    inline uint32_t r_int() const { return 256 * intensity.clamp(linear_to_gamma(elem[0])); }
+    inline uint32_t g_int() const { return 256 * intensity.clamp(linear_to_gamma(elem[1])); }
+    inline uint32_t b_int() const { return 256 * intensity.clamp(linear_to_gamma(elem[2])); }
 
     inline double r() const { return elem[0]; }
     inline double g() const { return elem[1]; }
     inline double b() const { return elem[2]; }
+
+    Color& operator+=(const Color& other) {
+        this->elem[0] += other.elem[0];
+        this->elem[1] += other.elem[1];
+        this->elem[2] += other.elem[2];
+
+        return *this;
+    }
 };
 
 template<>
