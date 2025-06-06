@@ -10,11 +10,8 @@ TEST_BINS=$(patsubst $(SRC_DIR)/%.cpp,$(BIN_DIR)/%,$(TEST_SRCS))
 
 all: $(BIN_DIR) $(OBJ_DIR) $(BIN_DIR)/main
 
-$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@ 
-
-$(BIN_DIR)/main: $(OBJ_DIR)/main.o
-	$(CC) $< -o $@
+$(BIN_DIR)/main: $(SRC_DIR)/main.cpp $(HEADERS)
+	$(CC) $(CFLAGS) $< -o $@ 
 
 $(OBJ_DIR)/test_%.o: $(SRC_DIR)/test_%.cpp $(SRC_DIR)/%.hpp
 	$(CC) $(CFLAGS) -c $< -o $@

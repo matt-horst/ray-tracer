@@ -4,16 +4,25 @@
 #include <iostream>
 
 template <typename T>
+struct Point3;
+
+struct Color;
+
+template <typename T>
 struct Vec3 {
     T elem[3];
 
     Vec3() : elem{0, 0, 0} { }
 
     Vec3(T x, T y, T z) : elem{x, y, z} { }
+    Vec3(const Point3<T> &p) : elem{p.x(), p.y(), p.z()} {}
+    Vec3(const Color &c);
 
     inline T x() const { return elem[0]; }
     inline T y() const { return elem[1]; }
     inline T z() const { return elem[2]; }
+
+    Vec3<T> operator-() const { return Vec3<T>(-elem[0], -elem[1], -elem[2]); }
 
 
     Vec3<T>& operator-=(const Vec3<T> &other) {
@@ -108,3 +117,6 @@ inline Vec3<decltype(U() * V())> cross(const Vec3<U> &u, const Vec3<V> &v) {
             u.z() * v.x() - u.x() * v.z(),
             u.x() * v.y() - u.y() * v.x());
 }
+
+template<typename T>
+auto normalize(Vec3<T> v) { return v / v.length(); }
