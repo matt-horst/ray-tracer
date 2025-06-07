@@ -18,3 +18,4 @@ private:
     Point3<T> orig;
     Vec3<T> dir;
 };
+

@@ -7,6 +7,7 @@
 #include "vec3.hpp"
 #include "ray.hpp"
 #include "color.hpp"
+#include "material.hpp"
 
 struct CameraParams {
     double aspect_ratio = (16.0 / 9.0);
@@ -89,9 +90,15 @@ private:
 
         HitRecord rec;
         if (world.hit(ray, Interval(0.001, infinity), rec)) {
-            Vec3<double> direction = rec.normal + random_unit_vector();
-            return 0.5 * (ray_color(Ray(rec.p, direction), world, depth + 1));
+            Ray<double> scattered;
+            Color attenuation;
+            if (rec.mat->scatter(ray, rec, attenuation, scattered)) {
+                return attenuation * ray_color(scattered, world, depth + 1);
+            }
+
+            return Color();
         }
+
         const Vec3<double> unit_direction = normalize(ray.direction());
         auto a = 0.5 * (unit_direction.y() + 1.0);
         return (1.0 - a) * Color(1.0, 1.0, 1.0) + a * Color(0.5, 0.7, 1.0);

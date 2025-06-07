@@ -1,10 +1,11 @@
 #pragma once
 #include "ray.hpp"
 #include "hittable.hpp"
+#include <memory>
 
 class Sphere : public Hittable {
 public:
-    Sphere(const Point3<double> &origin_, double radius_) : origin(origin_), radius(std::fmax(radius_, 0.0)) {}
+    Sphere(const Point3<double> &origin_, double radius_, std::shared_ptr<Material> mat) : origin(origin_), radius(std::fmax(radius_, 0.0)), mat(mat) {}
     bool hit(const Ray<double> &ray, Interval ray_t, HitRecord& rec) const override {
         const auto diff = origin - ray.origin();
         const auto a = ray.direction().length_sqr();
@@ -32,10 +33,13 @@ public:
         rec.p = ray.at(rec.t);
         Vec3<double> outward_normal = (rec.p - origin) / radius;
         rec.set_face_normal(ray, outward_normal);
+        rec.mat = mat;
 
         return true;
     }
 
+private:
     Point3<double> origin;
     double radius;
+    std::shared_ptr<Material> mat;
 };

@@ -60,9 +60,9 @@ struct Color {
 };
 
 template<>
-Vec3<double>::Vec3(const Color &c) : elem{c.r(), c.g(), c.b()} {}
+inline Vec3<double>::Vec3(const Color &c) : elem{c.r(), c.g(), c.b()} {}
 
-std::ostream& operator<<(std::ostream& out, const Color color) {
+inline std::ostream& operator<<(std::ostream& out, const Color color) {
     return out << color.r_int() << ' ' << color.g_int() << ' ' << color.b_int();
 }
 
@@ -74,5 +74,9 @@ Color operator*(Color c, T t) {
 template<typename T>
 Color operator*(T t, Color c) { return c * t; }
 
-Color operator+(Color a, Color b) { return Color(Vec3<double>(a) + Vec3<double>(b)); }
+inline Color operator*(Color a, Color b) {
+    return Color(a.elem[0] * b.elem[0], a.elem[1] * b.elem[1], a.elem[2] * b.elem[2]);
+}
+
+inline Color operator+(Color a, Color b) { return Color(Vec3<double>(a) + Vec3<double>(b)); }
 

@@ -77,6 +77,11 @@ struct Vec3 {
     static Vec3<double> random(double min, double max) {
         return Vec3<double>(random_double(min, max), random_double(min, max), random_double(min, max));
     }
+
+    bool near_zero() const {
+        const auto e = 1e-8;
+        return (std::fabs(elem[0]) < e) && (std::fabs(elem[1]) < e) && (std::fabs(elem[2]) < e);
+    }
 };
 
 template<typename T>
@@ -147,4 +152,9 @@ inline auto random_on_hemisphere(const Vec3<double> &normal) {
     } 
 
     return -on_unit_sphere;
+}
+
+template<typename V, typename N>
+inline Vec3<decltype(V() * N())> reflect(const Vec3<V> &v, const Vec3<N> n) {
+    return v - 2 * dot(v, n) * n;
 }
