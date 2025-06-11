@@ -158,3 +158,12 @@ template<typename V, typename N>
 inline Vec3<decltype(V() * N())> reflect(const Vec3<V> &v, const Vec3<N> n) {
     return v - 2 * dot(v, n) * n;
 }
+
+template<typename V, typename N>
+inline auto refract(const Vec3<V> &v, const Vec3<N> &n, double etai_over_etat) {
+    const auto cos_theta = std::fmin(dot(-v, n), 1.0);
+    const auto r_out_perp = etai_over_etat * (v + cos_theta * n);
+    const auto r_out_parallel = -std::sqrt(std::fabs(1.0 - r_out_perp.length_sqr())) * n;
+
+    return r_out_perp + r_out_parallel;
+}
