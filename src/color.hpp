@@ -57,6 +57,14 @@ struct Color {
 
         return *this;
     }
+
+    static Color random() {
+        return Color(random_double(), random_double(), random_double());
+    }
+
+    static Color random(double min, double max) {
+        return Color(random_double(min, max), random_double(min, max), random_double(min, max));
+    }
 };
 
 template<>
@@ -79,4 +87,3 @@ inline Color operator*(Color a, Color b) {
 }
 
 inline Color operator+(Color a, Color b) { return Color(Vec3<double>(a) + Vec3<double>(b)); }
-
