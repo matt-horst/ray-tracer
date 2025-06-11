@@ -8,12 +8,14 @@
 
 int main(void) {
     CameraParams params;
-    params.image_width = 800;
+    params.image_width = 400;
     params.samples_per_pixel = 100;
     params.max_depth = 50;
     params.lookfrom = Point3<double>(-2, 2, 1);
     params.lookat = Point3<double>(0, 0, -1);
     params.vfov = 20.0;
+    params.defocus_angle = 10.0;
+    params.focus_dist = 3.4;
     const Camera cam(params);
 
     const auto material_ground = std::make_shared<Lambertian>(Color(0.8, 0.8, 0.0));

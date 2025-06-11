@@ -18,6 +18,8 @@ struct CameraParams {
     int32_t max_depth = 10;
     double vfov = 90.0;
     Vec3<double> vup = Vec3<double>(0.0, 1.0, 0.0);
+    double defocus_angle = 0.0;
+    double focus_dist = 10.0;
 };
 
 
@@ -30,11 +32,12 @@ public:
         samples_per_pixel(params.samples_per_pixel),
         max_depth(params.max_depth),
         vfov(params.vfov),
+        defocus_angle(degrees_to_radians(params.defocus_angle)),
+        focus_dist(params.focus_dist),
         image_height(std::max(static_cast<int32_t>(image_width / aspect_ratio), 1)),
-        focal_length((params.lookat - params.lookfrom).length()),
         theta(degrees_to_radians(vfov)),
         h(std::tan(theta / 2.0)),
-        viewport_height(2 * h * focal_length),
+        viewport_height(2 * h * focus_dist),
         viewport_width(viewport_height * static_cast<double>(image_width) / image_height),
         w(normalize(params.lookfrom - params.lookat)),
         u(normalize(cross(params.vup, w))),
@@ -43,9 +46,12 @@ public:
         viewport_v(viewport_height * -v),
         pixel_delta_u(viewport_u / image_width),
         pixel_delta_v(viewport_v / image_height),
-        viewport_upper_left(Vec3<double>(center) - focal_length * w - viewport_u / 2 - viewport_v / 2),
+        viewport_upper_left(Vec3<double>(center) - (focus_dist * w) - (viewport_u / 2) - (viewport_v / 2)),
         pixel00_loc(viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v)),
-        pixel_color_scale(1.0/samples_per_pixel)
+        pixel_color_scale(1.0/samples_per_pixel),
+        defocus_radius(focus_dist * std::tan(defocus_angle / 2.0)),
+        defocus_disk_u(u * defocus_radius),
+        defocus_disk_v(v * defocus_radius)
     {
     }
 
@@ -73,8 +79,8 @@ private:
     int32_t samples_per_pixel;
     int32_t max_depth;
     double vfov;
+    double defocus_angle, focus_dist;
     int32_t image_height;
-    double focal_length;
     double theta;
     double h;
     double viewport_height;
@@ -87,13 +93,16 @@ private:
     Vec3<double> viewport_upper_left;
     Vec3<double> pixel00_loc;
     double pixel_color_scale;
+    double defocus_radius;
+    Vec3<double> defocus_disk_u, defocus_disk_v;
 
     Ray<double> cast_ray_at_pixel_loc(size_t row, size_t col) const {
         const auto offset = sample_square();
         const Point3<double> pixel_center = pixel00_loc + ((row + offset.x()) * pixel_delta_v) + ((col + offset.y()) * pixel_delta_u);
-        const Vec3<double> ray_direction = pixel_center - center;
+        const auto ray_origin = (defocus_angle <= 0) ? center : defocus_disk_sample();
+        const Vec3<double> ray_direction = pixel_center - ray_origin;
 
-        return Ray<double>(center, ray_direction);
+        return Ray<double>(ray_origin, ray_direction);
     }
 
     Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth) const {
@@ -117,5 +126,10 @@ private:
 
     Vec3<double> sample_square() const {
         return Vec3<double>(0.5 - random_double(), 0.5 - random_double(), 0.0);
+    }
+
+    Point3<double> defocus_disk_sample() const {
+        const auto p = random_on_unit_disk();
+        return center + (p.x() * defocus_disk_u) + (p.y() * defocus_disk_v);
     }
 };

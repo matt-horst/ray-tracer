@@ -154,6 +154,15 @@ inline auto random_on_hemisphere(const Vec3<double> &normal) {
     return -on_unit_sphere;
 }
 
+inline auto random_on_unit_disk() {
+    while (true) {
+        const auto p = Vec3<double>(random_double(-1.0, 1.0), random_double(-1.0, 1.0), 0.0);
+        if (p.length_sqr() < 1) { 
+            return p; 
+        }
+    }
+}
+
 template<typename V, typename N>
 inline Vec3<decltype(V() * N())> reflect(const Vec3<V> &v, const Vec3<N> n) {
     return v - 2 * dot(v, n) * n;
