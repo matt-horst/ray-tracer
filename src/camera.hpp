@@ -12,11 +12,12 @@
 struct CameraParams {
     double aspect_ratio = (16.0 / 9.0);
     int32_t image_width = 400;
-    double focal_length = 1.0;
-    double viewport_height = 2.0;
-    Point3<double> center = Vec3<double>();
+    Point3<double> lookfrom = Point3<double>();
+    Point3<double> lookat = Point3<double>(0.0, 0.0, -1.0);
     int32_t samples_per_pixel = 10;
     int32_t max_depth = 10;
+    double vfov = 90.0;
+    Vec3<double> vup = Vec3<double>(0.0, 1.0, 0.0);
 };
 
 
@@ -25,20 +26,26 @@ public:
     Camera(const CameraParams &params = CameraParams()) : 
         aspect_ratio(params.aspect_ratio),
         image_width(params.image_width),
+        center(params.lookfrom),
+        samples_per_pixel(params.samples_per_pixel),
+        max_depth(params.max_depth),
+        vfov(params.vfov),
         image_height(std::max(static_cast<int32_t>(image_width / aspect_ratio), 1)),
-        focal_length(params.focal_length),
-        viewport_height(params.viewport_height),
+        focal_length((params.lookat - params.lookfrom).length()),
+        theta(degrees_to_radians(vfov)),
+        h(std::tan(theta / 2.0)),
+        viewport_height(2 * h * focal_length),
         viewport_width(viewport_height * static_cast<double>(image_width) / image_height),
-        center(params.center),
-        viewport_u(viewport_width, 0, 0),
-        viewport_v(0, -viewport_height, 0),
+        w(normalize(params.lookfrom - params.lookat)),
+        u(normalize(cross(params.vup, w))),
+        v(cross(w, u)),
+        viewport_u(viewport_width * u),
+        viewport_v(viewport_height * -v),
         pixel_delta_u(viewport_u / image_width),
         pixel_delta_v(viewport_v / image_height),
-        viewport_upper_left(Vec3<double>(center) - Vec3<double>(0, 0, focal_length) - viewport_u / 2 - viewport_v / 2),
+        viewport_upper_left(Vec3<double>(center) - focal_length * w - viewport_u / 2 - viewport_v / 2),
         pixel00_loc(viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v)),
-        samples_per_pixel(params.samples_per_pixel),
-        pixel_color_scale(1.0/samples_per_pixel),
-        max_depth(params.max_depth)
+        pixel_color_scale(1.0/samples_per_pixel)
     {
     }
 
@@ -62,20 +69,24 @@ public:
 private:
     double aspect_ratio;
     int32_t image_width;
+    Point3<double> center;
+    int32_t samples_per_pixel;
+    int32_t max_depth;
+    double vfov;
     int32_t image_height;
     double focal_length;
+    double theta;
+    double h;
     double viewport_height;
     double viewport_width;
-    Point3<double> center;
+    Vec3<double> w, u, v;
     Vec3<double> viewport_u;
     Vec3<double> viewport_v;
     Vec3<double> pixel_delta_u;
     Vec3<double> pixel_delta_v;
     Vec3<double> viewport_upper_left;
     Vec3<double> pixel00_loc;
-    int32_t samples_per_pixel;
     double pixel_color_scale;
-    int32_t max_depth;
 
     Ray<double> cast_ray_at_pixel_loc(size_t row, size_t col) const {
         const auto offset = sample_square();
