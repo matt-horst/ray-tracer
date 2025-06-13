@@ -2,7 +2,7 @@ SRC_DIR=src
 OBJ_DIR=obj
 BIN_DIR=bin
 CC=g++
-CFLAGS=-Wall -Wpedantic -Werror -std=c++23
+CFLAGS=-Wall -Wpedantic -Werror -std=c++23 -g
 
 HEADERS=$(shell find $(SRC_DIR) -name '*.hpp')
 TEST_SRCS=$(shell find $(SRC_DIR) -name 'test_*.cpp')
