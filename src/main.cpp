@@ -3,6 +3,7 @@
 #include <format>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <queue>
 #include <unistd.h>
 #include <thread>
@@ -16,22 +17,22 @@
 
 class ThreadPool {
 public:
-    ThreadPool(size_t num_threads = std::thread::hardware_concurrency()) {
+    ThreadPool(std::function<std::optional<std::function<void()>>()> generator,  size_t num_threads = std::thread::hardware_concurrency()) : generator(generator) {
         // Spawn worker threads
         for (size_t i = 0; i < num_threads; i++) {
             workers.emplace_back([this] {
                 while (true) {
                     std::function<void()> task;
 
-                    { std::unique_lock<std::mutex> lock(queue_mutex);
-                        cv.wait(lock, [this] {return !tasks.empty() || stop;});
+                    { 
+                        std::unique_lock<std::mutex> lock(queue_mutex);
 
-                        if (stop && tasks.empty()) {
+                        std::optional<std::function<void()>> task_opt = this->generator();
+                        if (task_opt.has_value()) {
+                            task = task_opt.value();
+                        } else {
                             return;
                         }
-
-                        task = std::move(tasks.front());
-                        tasks.pop();
                     }
 
                     task();
@@ -46,25 +47,9 @@ public:
     }
 
     ~ThreadPool() {
-        {
-            std::unique_lock<std::mutex> lock(queue_mutex);
-            stop = true;
-        }
-
-        cv.notify_all();
-
         for (auto& worker : workers) {
             worker.join();
         }
-    }
-
-    void enqueue(std::function<void()> task) {
-        {
-            std::unique_lock<std::mutex> lock(queue_mutex);
-            tasks.emplace(std::move(task));
-        }
-
-        cv.notify_one();
     }
 
     size_t count() {
@@ -73,13 +58,6 @@ public:
     }
 
     void kill() {
-        {
-            std::unique_lock<std::mutex> lock(queue_mutex);
-            stop = true;
-        }
-
-        cv.notify_all();
-
         for (auto& worker : workers) {
             worker.join();
         }
@@ -91,9 +69,7 @@ public:
 private:
     std::vector<std::thread> workers;
     std::mutex queue_mutex;
-    std::condition_variable cv;
-    std::queue<std::function<void()>> tasks;
-    bool stop = false;
+    std::function<std::optional<std::function<void()>>()> generator;
     std::mutex counter_mutex;
     size_t count_ = 0;
 };
@@ -105,6 +81,39 @@ public:
 
     ImageChunk(int32_t x, int32_t y, int32_t w, int32_t h, std::vector<std::vector<Color>> &pixels) : x(x), y(y), width(w), height(h), pixels(pixels) {}
 };
+
+Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth) {
+    if (depth >= max_depth) return Color();
+
+    HitRecord rec;
+    if (world.hit(ray, Interval(0.001, infinity), rec)) {
+        Ray<double> scattered;
+        Color attenuation;
+        if (rec.mat->scatter(ray, rec, attenuation, scattered)) {
+            return attenuation * ray_color(scattered, world, depth + 1, max_depth);
+        }
+
+        return Color();
+    }
+
+    const Vec3<double> unit_direction = normalize(ray.direction());
+    auto a = 0.5 * (unit_direction.y() + 1.0);
+    return (1.0 - a) * Color(1.0, 1.0, 1.0) + a * Color(0.5, 0.7, 1.0);
+}
+
+void render_chunk(const Camera& cam, const HittableList& scene, ImageChunk img) {
+    for (int32_t i = img.x; i < img.x + img.height; i++) {
+        for (int32_t j = img.y; j < img.y + img.width; j++) {
+            Color pixel_color(0.0, 0.0, 0.0);
+            for (int32_t k = 0; k < cam.samples_per_pixel; k++) {
+                Ray<double> ray = cam.cast_ray_at_pixel_loc(i, j);
+                pixel_color += ray_color(ray, scene, 0, cam.max_depth);
+            }
+
+            img.pixels[i][j] = pixel_color * cam.pixel_color_scale;
+        }
+    }
+}
 
 class Image {
 public:
@@ -141,53 +150,34 @@ public:
         assert(height % chunk_height == 0 &&  "Chunk height must be a factor of total height.");
     }
 
+    std::function<std::optional<std::function<void()>>()> render_chunk_generator(const Camera& cam, const HittableList& scene) {
+        auto gen = [this, cam, scene]() -> std::optional<std::function<void()>> {
+            static int32_t current_chunk = 0;
+
+            if (current_chunk < num_chunks) {
+                ImageChunk chunk = get(current_chunk++);
+
+                std::function<void()> task = [cam, scene, chunk = std::move(chunk)]() -> void { render_chunk(cam, scene, chunk); };
+
+                return std::optional<std::function<void()>>{task};
+            }
+
+            return std::nullopt;
+        };
+
+        return gen;
+    }
+
 private:
     int32_t chunk_width, chunk_height;
     int32_t chunks_per_row;
     std::vector<std::vector<Color>> pixels;
 };
 
-Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth) {
-    if (depth >= max_depth) return Color();
-
-    HitRecord rec;
-    if (world.hit(ray, Interval(0.001, infinity), rec)) {
-        Ray<double> scattered;
-        Color attenuation;
-        if (rec.mat->scatter(ray, rec, attenuation, scattered)) {
-            return attenuation * ray_color(scattered, world, depth + 1, max_depth);
-        }
-
-        return Color();
-    }
-
-    const Vec3<double> unit_direction = normalize(ray.direction());
-    auto a = 0.5 * (unit_direction.y() + 1.0);
-    return (1.0 - a) * Color(1.0, 1.0, 1.0) + a * Color(0.5, 0.7, 1.0);
-}
-
-void render_chunk(const Camera& cam, const HittableList& scene, ImageChunk img) {
-    for (int32_t i = img.x; i < img.x + img.height; i++) {
-        for (int32_t j = img.y; j < img.y + img.width; j++) {
-            Color pixel_color(0.0, 0.0, 0.0);
-            for (int32_t k = 0; k < cam.samples_per_pixel; k++) {
-                Ray<double> ray = cam.cast_ray_at_pixel_loc(i, j);
-                pixel_color += ray_color(ray, scene, 0, cam.max_depth);
-            }
-
-            img.pixels[i][j] = pixel_color * cam.pixel_color_scale;
-        }
-    }
-}
 
 void render(const Camera& cam, const HittableList& scene, int num_threads) {
-    Image img(cam.image_width, cam.image_height, 5, 5);
-    ThreadPool pool(num_threads);
-
-    for (int32_t i = 0; i < img.num_chunks; i++) {
-        ImageChunk chunk = img.get(i);
-        pool.enqueue([&cam, &scene, chunk = std::move(chunk)] { render_chunk(cam, scene, chunk); });
-    }
+    Image img(cam.image_width, cam.image_height, cam.image_width / 16, cam.image_height / 9);
+    ThreadPool pool(img.render_chunk_generator(cam, scene), num_threads);
 
     // Wait
     int32_t count = 0;
@@ -205,8 +195,8 @@ void render(const Camera& cam, const HittableList& scene, int num_threads) {
 int main(void) {
     CameraParams params;
     params.image_width = 400;
-    params.samples_per_pixel = 100;
-    params.max_depth = 50;
+    params.samples_per_pixel = 10;
+    params.max_depth = 10;
     params.lookfrom = Point3<double>(13, 2, 3);
     params.lookat = Point3<double>(0, 1, 0);
     params.vfov = 20.0;
