@@ -1,10 +1,8 @@
 #include <chrono>
-#include <condition_variable>
 #include <format>
 #include <iostream>
 #include <memory>
 #include <optional>
-#include <queue>
 #include <unistd.h>
 #include <thread>
 #include <functional>
@@ -17,7 +15,7 @@
 
 class ThreadPool {
 public:
-    ThreadPool(std::function<std::optional<std::function<void()>>()> generator,  size_t num_threads = std::thread::hardware_concurrency()) : generator(generator) {
+    ThreadPool(std::function<std::optional<std::function<void()>>()> generator,  size_t num_threads = std::thread::hardware_concurrency()) : num_threads(num_threads), generator(generator) {
         // Spawn worker threads
         for (size_t i = 0; i < num_threads; i++) {
             workers.emplace_back([this] {
@@ -64,6 +62,8 @@ public:
 
         workers.clear();
     }
+
+    size_t num_threads;
 
 
 private:
@@ -181,6 +181,7 @@ void render(const Camera& cam, const HittableList& scene, int num_threads) {
 
     // Wait
     int32_t count = 0;
+    std::clog << std::format("Running on {} threads...\n", pool.num_threads);
     while ((count = pool.count()) < img.num_chunks) {
         const float percentage = (100.0 * count) / img.num_chunks;
         std::clog << std::format("\r{:.2f}% ", percentage) << std::flush;
@@ -194,9 +195,9 @@ void render(const Camera& cam, const HittableList& scene, int num_threads) {
 
 int main(void) {
     CameraParams params;
-    params.image_width = 400;
-    params.samples_per_pixel = 10;
-    params.max_depth = 10;
+    params.image_width = 1200;
+    params.samples_per_pixel = 500;
+    params.max_depth = 50;
     params.lookfrom = Point3<double>(13, 2, 3);
     params.lookat = Point3<double>(0, 1, 0);
     params.vfov = 20.0;
@@ -249,5 +250,5 @@ int main(void) {
     const auto material_3 = std::make_shared<Metal>(Color(0.7, 0.6, 0.5), 0.0);
     world.add(std::make_shared<Sphere>(Point3<double>(4, 1, 0), 1.0, material_3));
 
-    render(cam, world, 4);
+    render(cam, world, std::thread::hardware_concurrency());
 }
