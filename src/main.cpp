@@ -1,15 +1,17 @@
-#include <iostream>
 #include <memory>
 #include <unistd.h>
+#include <cassert>
+#include <thread>
 #include "camera.hpp"
 #include "sphere.hpp"
 #include "hittable_list.hpp"
 #include "material.hpp"
+#include "render.hpp"
 
 int main(void) {
     CameraParams params;
-    params.image_width = 400;
-    params.samples_per_pixel = 500;
+    params.image_width = 400;;
+    params.samples_per_pixel = 100;
     params.max_depth = 50;
     params.lookfrom = Point3<double>(13, 2, 3);
     params.lookat = Point3<double>(0, 1, 0);
@@ -63,5 +65,5 @@ int main(void) {
     const auto material_3 = std::make_shared<Metal>(Color(0.7, 0.6, 0.5), 0.0);
     world.add(std::make_shared<Sphere>(Point3<double>(4, 1, 0), 1.0, material_3));
 
-    cam.render(world);
+    render(cam, world, std::thread::hardware_concurrency());
 }
