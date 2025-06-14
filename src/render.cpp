@@ -1,4 +1,5 @@
 #include "render.hpp"
+#include "material.hpp"
 
 Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth) {
     if (depth >= max_depth) return Color();

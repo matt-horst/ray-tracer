@@ -2,12 +2,9 @@
 #include <cstdint>
 #include <stdint.h>
 #include <cmath>
-#include "hittable_list.hpp"
 #include "util.hpp"
 #include "vec3.hpp"
 #include "ray.hpp"
-#include "color.hpp"
-#include "material.hpp"
 
 struct CameraParams {
     double aspect_ratio = (16.0 / 9.0);
@@ -61,8 +58,9 @@ public:
         const Point3<double> pixel_center = pixel00_loc + ((row + offset.x()) * pixel_delta_v) + ((col + offset.y()) * pixel_delta_u);
         const auto ray_origin = (defocus_angle <= 0) ? center : defocus_disk_sample();
         const Vec3<double> ray_direction = pixel_center - ray_origin;
+        const auto ray_time = random_double();
 
-        return Ray<double>(ray_origin, ray_direction);
+        return Ray<double>(ray_origin, ray_direction, ray_time);
     }
 
 private:

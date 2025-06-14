@@ -23,7 +23,7 @@ public:
         if (scatter_direction.near_zero()) {
             scatter_direction = rec.normal;
         }
-        ray_out = Ray(rec.p, scatter_direction);
+        ray_out = Ray(rec.p, scatter_direction, ray_in.time());
         attenuation = albedo;
 
         return true;
@@ -39,7 +39,7 @@ public:
 
     bool scatter(const Ray<double>& ray_in, const HitRecord& rec, Color &attenuation, Ray<double>& ray_out) const override {
         const auto reflected = normalize(reflect(ray_in.direction(), rec.normal)) + (fuzz * random_unit_vector());
-        ray_out = Ray(rec.p, reflected);
+        ray_out = Ray(rec.p, reflected, ray_in.time());
         attenuation = albedo;
 
         return (dot(ray_out.direction(), rec.normal) > 0);
@@ -71,7 +71,7 @@ public:
             direction = reflect(unit_dir, rec.normal);
         }
 
-        ray_out = Ray(rec.p, direction);
+        ray_out = Ray(rec.p, direction, ray_in.time());
         return true;
     }
 

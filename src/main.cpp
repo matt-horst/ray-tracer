@@ -1,4 +1,5 @@
 #include <memory>
+#include <optional>
 #include <unistd.h>
 #include <cassert>
 #include <thread>
@@ -7,6 +8,7 @@
 #include "hittable_list.hpp"
 #include "material.hpp"
 #include "render.hpp"
+#include "util.hpp"
 
 int main(void) {
     CameraParams params;
@@ -36,11 +38,13 @@ int main(void) {
 
             if ((center - Point3<double>(4, 0.2, 0)).length() > 0.9) {
                 std::shared_ptr<Material> sphere_material;
+                std::optional<Point3<double>> center_2 = std::nullopt;
 
                 if (choose_mat < 0.8) {
                     // Diffuse
                     const auto albedo = Color::random() * Color::random();
                     sphere_material = std::make_shared<Lambertian>(albedo);
+                    center_2 = std::optional(center + Vec3<double>(0, random_double(0, 0.5), 0));
                 } else if (choose_mat < 0.95) {
                     // Metal
                     const auto albedo = Color::random(0.5, 1);
@@ -51,7 +55,11 @@ int main(void) {
                     sphere_material = std::make_shared<Dielectric>(1.5);
                 }
 
-                world.add(std::make_shared<Sphere>(center, 0.2, sphere_material));
+                if (center_2) {
+                    world.add(std::make_shared<Sphere>(center, center_2.value(), 0.2, sphere_material));
+                } else {
+                    world.add(std::make_shared<Sphere>(center, 0.2, sphere_material));
+                }
             }
         }
     }
