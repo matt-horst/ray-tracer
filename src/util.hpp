@@ -18,3 +18,7 @@ inline double random_double() {
 inline double random_double(double min, double max) {
     return min + (max - min) * random_double();
 }
+
+inline int32_t random_int(int min, int max) {
+    return random_double(min, max + 1);
+}

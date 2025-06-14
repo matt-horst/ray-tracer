@@ -2,6 +2,7 @@
 #include <memory>
 #include "ray.hpp"
 #include "interval.hpp"
+#include "bbox.hpp"
 
 class Material;
 
@@ -21,4 +22,5 @@ struct HitRecord {
 struct Hittable {
     virtual ~Hittable() = default;
     virtual bool hit(const Ray<double> &ray, Interval ray_t, HitRecord& rec) const = 0;
+    virtual BBox3 bounding_box() const = 0;
 };

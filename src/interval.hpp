@@ -10,6 +10,8 @@ public:
 
     Interval(double min, double max) : min(min), max(max) {}
 
+    Interval(const Interval &a, const Interval &b) : min(std::min(a.min, b.min)), max(std::max(a.max, b.max)) {}
+
     double span() const { return max - min; }
 
     bool contains(double x) const { return min <= x && x <= max; }
@@ -21,6 +23,11 @@ public:
         else if (x >= max) return max;
 
         return x; 
+    }
+
+    Interval expand(double delta) {
+        const double padding = delta / 2;
+        return Interval(min - padding, max + padding);
     }
 
     static const Interval empty, universe;

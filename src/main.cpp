@@ -9,6 +9,7 @@
 #include "material.hpp"
 #include "render.hpp"
 #include "util.hpp"
+#include "bvh.hpp"
 
 int main(void) {
     CameraParams params;
@@ -72,6 +73,8 @@ int main(void) {
 
     const auto material_3 = std::make_shared<Metal>(Color(0.7, 0.6, 0.5), 0.0);
     world.add(std::make_shared<Sphere>(Point3<double>(4, 1, 0), 1.0, material_3));
+
+    world = HittableList(std::make_shared<BVHNode>(world));
 
     render(cam, world, std::thread::hardware_concurrency());
 }
