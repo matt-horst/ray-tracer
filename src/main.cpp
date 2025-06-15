@@ -8,10 +8,12 @@
 #include "hittable_list.hpp"
 #include "material.hpp"
 #include "render.hpp"
+#include "texture.hpp"
 #include "util.hpp"
 #include "bvh.hpp"
+#include "vec3.hpp"
 
-int main(void) {
+void bouncing_spheres() {
     CameraParams params;
     params.image_width = 400;;
     params.samples_per_pixel = 100;
@@ -23,11 +25,14 @@ int main(void) {
     params.focus_dist = 10.0;
     const Camera cam(params);
 
-    const auto material_ground = std::make_shared<Lambertian>(Color(0.5, 0.5, 0.5));
+    const auto checker_tex = std::make_shared<CheckerTexture>(0.32, Color(0.2, 0.3, 0.1), Color(0.9, 0.9, 0.9));
+
+    const auto material_ground = std::make_shared<Lambertian>(checker_tex);
     const auto material_center = std::make_shared<Lambertian>(Color(0.1, 0.2, 0.5));
     const auto material_left = std::make_shared<Dielectric>(1.5);
     const auto material_bubble = std::make_shared<Dielectric>(1.0 / 1.5);
     const auto material_right = std::make_shared<Metal>(Color(0.8, 0.6, 0.2), 1.0);
+
 
     HittableList world;
     world.add(std::make_shared<Sphere>(Point3<double>(0.0, -1000.0, 0.0), 1000, material_ground));
@@ -77,4 +82,73 @@ int main(void) {
     world = HittableList(std::make_shared<BVHNode>(world));
 
     render(cam, world, std::thread::hardware_concurrency());
+}
+
+void checkered_spheres() {
+    HittableList scene;
+
+    const auto checker_tex = std::make_shared<CheckerTexture>(0.32, Color(0.2, 0.3, 0.1), Color(0.9, 0.9, 0.9));
+
+    scene.add(std::make_shared<Sphere>(Point3<double>(0, -10, 0), 10, std::make_shared<Lambertian>(checker_tex)));
+    scene.add(std::make_shared<Sphere>(Point3<double>(0, 10, 0), 10, std::make_shared<Lambertian>(checker_tex)));
+
+    CameraParams cam_params;
+    cam_params.aspect_ratio = 16.0 / 9.0;
+    cam_params.image_width = 400;
+    cam_params.samples_per_pixel = 100;
+    cam_params.max_depth = 50;
+
+    cam_params.vfov = 20;
+    cam_params.lookfrom = Point3<double>(13, 2, 3);
+    cam_params.lookat = Point3<double>(0, 0, 0);
+    cam_params.vup = Vec3<double>(0, 1, 0);
+
+    cam_params.defocus_angle = 0;
+    
+    const Camera cam(cam_params);
+
+    render(cam, scene, std::thread::hardware_concurrency());
+}
+
+void earth() {
+    const auto earth_texture = std::make_shared<ImageTexture>("earthmap.jpg");
+    const auto earth_surface = std::make_shared<Lambertian>(earth_texture);
+    const auto globe = std::make_shared<Sphere>(Point3<double>(0, 0, 0), 2, earth_surface);
+
+    
+    CameraParams cam_params;
+    cam_params.aspect_ratio = 16.0 / 9.0;
+    cam_params.image_width = 400;
+    cam_params.samples_per_pixel = 100;
+    cam_params.max_depth = 50;
+
+    cam_params.vfov = 20;
+    cam_params.lookfrom = Point3<double>(0, 0, 12);
+    cam_params.lookat = Point3<double>(0, 0, 0);
+    cam_params.vup = Vec3<double>(0, 1, 0);
+
+    cam_params.defocus_angle = 0;
+    
+    const Camera cam(cam_params);
+
+    render(cam, HittableList(globe), 1);
+}
+
+
+int main(int argc, char *argv[]) {
+    int opt = atoi(argv[1]);
+    switch (opt) {
+        case 1: 
+            std::clog << "Running bouncing spheres scene...\n";
+            bouncing_spheres();
+            break;
+        case 2:
+            std::clog << "Running checker spheres scene...\n";
+            checkered_spheres(); 
+            break;
+        case 3:
+            std::clog << "Running earth scene...\n";
+            earth();
+            break;
+    }
 }

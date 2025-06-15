@@ -1,8 +1,9 @@
 SRC_DIR=src
 OBJ_DIR=obj
 BIN_DIR=bin
+INC_DIR=vendor
 CC=g++
-CFLAGS=-Wall -Wpedantic -Werror -std=c++23 -g
+CFLAGS=-Wall -Wpedantic -Werror -std=c++23 -g -I $(INC_DIR)
 
 HEADERS=$(shell find $(SRC_DIR) -name '*.hpp')
 ALL_SRCS=$(shell find $(SRC_DIR) -name '*.cpp')

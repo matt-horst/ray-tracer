@@ -51,6 +51,7 @@ public:
         rec.p = ray.at(rec.t);
         Vec3<double> outward_normal = (rec.p - current_origin) / radius;
         rec.set_face_normal(ray, outward_normal);
+        get_uv(outward_normal, rec.u, rec.v);
         rec.mat = mat;
 
         return true;
@@ -63,4 +64,12 @@ private:
     double radius;
     std::shared_ptr<Material> mat;
     BBox3 bbox;
+
+    static void get_uv(const Point3<double> &p, double &u, double &v) {
+        const auto theta = std::acos(-p.y());
+        const auto phi = std::atan2(-p.z(), p.x()) + pi;
+
+        u = phi / (2 * pi);
+        v = theta / pi;
+    }
 };

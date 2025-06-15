@@ -10,6 +10,8 @@ struct HitRecord {
     Point3<double> p;
     Vec3<double> normal;
     double t;
+    double u;
+    double v;
     bool front_face;
     std::shared_ptr<Material> mat;
 

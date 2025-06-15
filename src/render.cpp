@@ -1,6 +1,9 @@
 #include "render.hpp"
 #include "material.hpp"
 
+Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth);
+void render_chunk(const Camera& cam, const HittableList& scene, ImageChunk img);
+
 Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth) {
     if (depth >= max_depth) return Color();
 
@@ -48,7 +51,16 @@ void render(const Camera& cam, const HittableList& scene, int num_threads) {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
+    std::clog << std::format("\r{:.2f}% \n", 100.0);
 
     // Write image to file
     img.write();
+}
+
+std::optional<std::function<void()>> RenderTaskGenerator::next() {
+    if (has_next()) {
+        ImageChunk chunk = img.get(current_chunk++);
+        return [this, chunk = std::move(chunk)] { render_chunk(cam, scene, chunk); };
+    }
+    return std::nullopt;
 }
