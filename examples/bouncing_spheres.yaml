@@ -1,0 +1,9061 @@
+textures:
+  - type: solid_color
+    color:
+      - 0.9
+      - 0.9
+      - 0.9
+    name: Texture-0
+  - type: solid_color
+    color:
+      - 0.2
+      - 0.3
+      - 0.1
+    name: Texture-1
+  - type: checker
+    scale: 0.32
+    even: Texture-0
+    odd: Texture-1
+    name: Texture-2
+materials:
+  - type: lambertian
+    texture: Texture-2
+    name: Material-0
+objects:
+  - type: sphere
+    origin:
+      origin:
+        - 0
+        - -1000
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 1000
+    material: Material-0
+  - type: sphere
+    origin:
+      origin:
+        - -10.128019005988191
+        - 0.2
+        - -10.248492269004878
+      direction:
+        - 0
+        - 0.48384746850525134
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5452841608238815
+          - 0.3059733023155639
+          - 0.041638829790779514
+  - type: sphere
+    origin:
+      origin:
+        - -10.901124424240214
+        - 0.2
+        - -9.117001277400755
+      direction:
+        - 0
+        - 0.25183133885258485
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.004201959305714776
+          - 0.19002855780621108
+          - 0.08975858894094124
+  - type: sphere
+    origin:
+      origin:
+        - -10.80926810084744
+        - 0.2
+        - -8.674835398785737
+      direction:
+        - 0
+        - 0.15095656343865987
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12877276058734785
+          - 0.1683026172371836
+          - 0.32348135555283974
+  - type: sphere
+    origin:
+      origin:
+        - -10.21481406193943
+        - 0.2
+        - -7.715104599662905
+      direction:
+        - 0
+        - 0.3318027602548765
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.40321673334361086
+          - 0.759219825036067
+          - 0.01866649979727777
+  - type: sphere
+    origin:
+      origin:
+        - -10.953905216793306
+        - 0.2
+        - -6.810811832932894
+      direction:
+        - 0
+        - 0.40376551271820055
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.42175066785553855
+          - 0.3245223118958822
+          - 0.017767621930437974
+  - type: sphere
+    origin:
+      origin:
+        - -10.360366512418356
+        - 0.2
+        - -5.997463410694214
+      direction:
+        - 0
+        - 0.008886947788276228
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6254608549884711
+          - 0.39983016040291863
+          - 0.3694756039104681
+  - type: sphere
+    origin:
+      origin:
+        - -10.153933374081888
+        - 0.2
+        - -4.261243294242401
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7904783388319532
+        - 0.7115825582168651
+        - 0.7063332574557369
+      fuzz: 0.07902879227735284
+  - type: sphere
+    origin:
+      origin:
+        - -10.271238906138633
+        - 0.2
+        - -3.792859541919463
+      direction:
+        - 0
+        - 0.42423389598221933
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2720567111315649
+          - 0.07222034658695833
+          - 0.013383719164585809
+  - type: sphere
+    origin:
+      origin:
+        - -10.111286335828257
+        - 0.2
+        - -2.298992060950389
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -10.46494679494604
+        - 0.2
+        - -1.2857621766282836
+      direction:
+        - 0
+        - 0.2636857293043078
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1414487829991235
+          - 0.39041320005595503
+          - 0.2874919397224585
+  - type: sphere
+    origin:
+      origin:
+        - -10.466458509332101
+        - 0.2
+        - -0.6825138327086915
+      direction:
+        - 0
+        - 0.1942849037397097
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.11226973675331742
+          - 0.37372752451849056
+          - 0.1407236297305872
+  - type: sphere
+    origin:
+      origin:
+        - -10.223589631663614
+        - 0.2
+        - 0.39250580848074895
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7359784008704571
+        - 0.5597735905514155
+        - 0.8101800066102917
+      fuzz: 0.1701098495701993
+  - type: sphere
+    origin:
+      origin:
+        - -10.110458542156653
+        - 0.2
+        - 1.6444906387059701
+      direction:
+        - 0
+        - 0.2732959809408456
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.23378002006333426
+          - 0.459199887409634
+          - 0.4022289886242588
+  - type: sphere
+    origin:
+      origin:
+        - -10.456191664096337
+        - 0.2
+        - 2.769005888064941
+      direction:
+        - 0
+        - 0.17311669654264533
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.023319290177406242
+          - 0.3558957123160717
+          - 0.4870786844347387
+  - type: sphere
+    origin:
+      origin:
+        - -10.405892455060952
+        - 0.2
+        - 3.0405535896853273
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.991180281874473
+        - 0.5664980156475966
+        - 0.8749704865542489
+      fuzz: 0.047677587166405626
+  - type: sphere
+    origin:
+      origin:
+        - -10.93019867353552
+        - 0.2
+        - 4.721900322316787
+      direction:
+        - 0
+        - 0.06900066306270303
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13575211021617808
+          - 0.003550530653922873
+          - 0.3349812694420784
+  - type: sphere
+    origin:
+      origin:
+        - -10.963575999667885
+        - 0.2
+        - 5.686179156337951
+      direction:
+        - 0
+        - 0.023972142714167394
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.24828463832248235
+          - 0.4156564086708715
+          - 0.2483327287303686
+  - type: sphere
+    origin:
+      origin:
+        - -10.201046480447067
+        - 0.2
+        - 6.48965049163446
+      direction:
+        - 0
+        - 0.24622099432208483
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.044423866283971984
+          - 0.006996442067765503
+          - 0.3016724012302181
+  - type: sphere
+    origin:
+      origin:
+        - -10.140550963173656
+        - 0.2
+        - 7.441271346742003
+      direction:
+        - 0
+        - 0.2024906917958757
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1403714100862364
+          - 0.04026326530753
+          - 0.3604612271124558
+  - type: sphere
+    origin:
+      origin:
+        - -10.767533691999455
+        - 0.2
+        - 8.72822351880653
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6892502144271186
+        - 0.746663425309554
+        - 0.5649232625416156
+      fuzz: 0.35923497489967954
+  - type: sphere
+    origin:
+      origin:
+        - -10.26931341724236
+        - 0.2
+        - 9.561092019376863
+      direction:
+        - 0
+        - 0.22924845024586954
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1304934262671001
+          - 0.258150319536429
+          - 0.25493434231161105
+  - type: sphere
+    origin:
+      origin:
+        - -10.560244056863647
+        - 0.2
+        - 10.819508487553827
+      direction:
+        - 0
+        - 0.2719027516018038
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.36096830476125025
+          - 0.03899529995201938
+          - 0.6576783651702268
+  - type: sphere
+    origin:
+      origin:
+        - -9.145967422011415
+        - 0.2
+        - -10.82011441683154
+      direction:
+        - 0
+        - 0.2700690028965173
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.007874339508809556
+          - 0.1871846654037109
+          - 0.3847717506363369
+  - type: sphere
+    origin:
+      origin:
+        - -9.824954154666644
+        - 0.2
+        - -9.189835121453779
+      direction:
+        - 0
+        - 0.044911578217416814
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06992534806321823
+          - 0.3528257441217333
+          - 0.21219873220653876
+  - type: sphere
+    origin:
+      origin:
+        - -9.474055990072355
+        - 0.2
+        - -8.430242701506431
+      direction:
+        - 0
+        - 0.224778036190534
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09099512474574104
+          - 0.057567882689937
+          - 0.51397828414993
+  - type: sphere
+    origin:
+      origin:
+        - -9.849199789124519
+        - 0.2
+        - -7.282372304112054
+      direction:
+        - 0
+        - 0.49676735898078367
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07422938969617897
+          - 0.2540919625457123
+          - 0.3492678911964104
+  - type: sphere
+    origin:
+      origin:
+        - -9.760671411239008
+        - 0.2
+        - -6.3133617247638965
+      direction:
+        - 0
+        - 0.30296410503367527
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07360792221713187
+          - 0.0975793702963211
+          - 0.06875601023339913
+  - type: sphere
+    origin:
+      origin:
+        - -9.638585669545355
+        - 0.2
+        - -5.8290850483884515
+      direction:
+        - 0
+        - 0.4419843003896226
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.23004356932981607
+          - 0.02579068845802381
+          - 0.2630464960561978
+  - type: sphere
+    origin:
+      origin:
+        - -9.475438253787214
+        - 0.2
+        - -4.983740356768957
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -9.883840452204034
+        - 0.2
+        - -3.704982011314555
+      direction:
+        - 0
+        - 0.14329328862706336
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0028935093496281067
+          - 0.0013535999420914385
+          - 0.1465568352154934
+  - type: sphere
+    origin:
+      origin:
+        - -9.680186177393926
+        - 0.2
+        - -2.6537203137266103
+      direction:
+        - 0
+        - 0.20075977960134878
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13049099797462846
+          - 0.045144088070268394
+          - 0.30525207726691495
+  - type: sphere
+    origin:
+      origin:
+        - -9.574727282683389
+        - 0.2
+        - -1.159174472291749
+      direction:
+        - 0
+        - 0.2980289667645323
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2584752723421123
+          - 0.1626403875425566
+          - 0.14968622714865468
+  - type: sphere
+    origin:
+      origin:
+        - -9.790839680777674
+        - 0.2
+        - -0.13330223102794625
+      direction:
+        - 0
+        - 0.4673013249495352
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.27743642032620736
+          - 0.1724651611918169
+          - 0.7114053686119827
+  - type: sphere
+    origin:
+      origin:
+        - -9.941027984526862
+        - 0.2
+        - 0.26072046504985935
+      direction:
+        - 0
+        - 0.32159050235629455
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0277476291560555
+          - 0.6596602072400567
+          - 0.09790763790520461
+  - type: sphere
+    origin:
+      origin:
+        - -9.780112323819392
+        - 0.2
+        - 1.3932396195150023
+      direction:
+        - 0
+        - 0.19849090310784107
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.014465692207197973
+          - 0.5597703534710632
+          - 0.36117785400639013
+  - type: sphere
+    origin:
+      origin:
+        - -9.18195708275908
+        - 0.2
+        - 2.7722893712947454
+      direction:
+        - 0
+        - 0.1466941218804642
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.42031962373128107
+          - 0.06497257867190141
+          - 0.509027905165808
+  - type: sphere
+    origin:
+      origin:
+        - -9.824207707602724
+        - 0.2
+        - 3.4435106285371804
+      direction:
+        - 0
+        - 0.08334913427683738
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5833493195552738
+          - 0.08014107556723583
+          - 0.7589056696975212
+  - type: sphere
+    origin:
+      origin:
+        - -9.461467979291202
+        - 0.2
+        - 4.507568405144976
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -9.501057756206778
+        - 0.2
+        - 5.510099655873135
+      direction:
+        - 0
+        - 0.15633846926248313
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13684246893153465
+          - 0.09927707643432297
+          - 0.07536325729565341
+  - type: sphere
+    origin:
+      origin:
+        - -9.334632198942357
+        - 0.2
+        - 6.606791651481569
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5449764543308255
+        - 0.5657807808091398
+        - 0.5312716201917036
+      fuzz: 0.004157222652478995
+  - type: sphere
+    origin:
+      origin:
+        - -9.52321330695072
+        - 0.2
+        - 7.570872988675727
+      direction:
+        - 0
+        - 0.3634465719140429
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.15067792019327805
+          - 0.05814778217134649
+          - 0.11633985845323917
+  - type: sphere
+    origin:
+      origin:
+        - -9.788710956990123
+        - 0.2
+        - 8.636443754008168
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8736655993367297
+        - 0.5091058814880227
+        - 0.7389978731780066
+      fuzz: 0.3273617907254731
+  - type: sphere
+    origin:
+      origin:
+        - -9.103172439653717
+        - 0.2
+        - 9.425492190745516
+      direction:
+        - 0
+        - 0.42404444398199076
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2896929762211943
+          - 0.8158861565146751
+          - 0.10842002932411376
+  - type: sphere
+    origin:
+      origin:
+        - -9.406710442170814
+        - 0.2
+        - 10.29406299414951
+      direction:
+        - 0
+        - 0.19736385769477177
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3304127256305863
+          - 0.023912816380171797
+          - 0.2885429539510215
+  - type: sphere
+    origin:
+      origin:
+        - -8.326345356548245
+        - 0.2
+        - -10.122721052160795
+      direction:
+        - 0
+        - 0.31555996212769116
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.20605073175258776
+          - 0.021377457694205664
+          - 0.3356012012276016
+  - type: sphere
+    origin:
+      origin:
+        - -8.34799147766596
+        - 0.2
+        - -9.535556955852812
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -8.326251796056004
+        - 0.2
+        - -8.700894795900261
+      direction:
+        - 0
+        - 0.03457002647529256
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.005352201157566802
+          - 0.47562746765105735
+          - 0.31343810332801036
+  - type: sphere
+    origin:
+      origin:
+        - -8.564962353791092
+        - 0.2
+        - -7.76415608118919
+      direction:
+        - 0
+        - 0.36245299176751805
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.03228352350629937
+          - 0.07142381986251133
+          - 0.12686000605485012
+  - type: sphere
+    origin:
+      origin:
+        - -8.950102716227956
+        - 0.2
+        - -6.572753438351557
+      direction:
+        - 0
+        - 0.3950508883973109
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.27480232181232916
+          - 0.45052412661064456
+          - 0.5739822808660213
+  - type: sphere
+    origin:
+      origin:
+        - -8.540901978312107
+        - 0.2
+        - -5.595943323778346
+      direction:
+        - 0
+        - 0.0015006026281450258
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4617235952575488
+          - 0.1941063844156615
+          - 0.1511130929795051
+  - type: sphere
+    origin:
+      origin:
+        - -8.725802849887351
+        - 0.2
+        - -4.126150264732273
+      direction:
+        - 0
+        - 0.2701260434874242
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1738944656378992
+          - 0.1008913911473826
+          - 0.10462282235679177
+  - type: sphere
+    origin:
+      origin:
+        - -8.511424112419466
+        - 0.2
+        - -3.744675475534366
+      direction:
+        - 0
+        - 0.29654347038449463
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7095142626031975
+          - 0.004943706255587971
+          - 0.6478822079834597
+  - type: sphere
+    origin:
+      origin:
+        - -8.177652385152172
+        - 0.2
+        - -2.167611651816734
+      direction:
+        - 0
+        - 0.012979438871281945
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7386823346613127
+          - 0.007492027938314364
+          - 0.9165387385451368
+  - type: sphere
+    origin:
+      origin:
+        - -8.704587190572031
+        - 0.2
+        - -1.41519730637354
+      direction:
+        - 0
+        - 0.034369289915801265
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6897827739465345
+          - 0.08230581622032851
+          - 0.05923078940157475
+  - type: sphere
+    origin:
+      origin:
+        - -8.989926672177916
+        - 0.2
+        - -0.6099132909964438
+      direction:
+        - 0
+        - 0.17780545752783994
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.26760186152122084
+          - 0.09230569817402143
+          - 0.06875986090801875
+  - type: sphere
+    origin:
+      origin:
+        - -8.804575238994824
+        - 0.2
+        - 0.7603706427168317
+      direction:
+        - 0
+        - 0.09815017084137612
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.34647838323571994
+          - 0.13763861911081035
+          - 0.7332662007639047
+  - type: sphere
+    origin:
+      origin:
+        - -8.309366953420264
+        - 0.2
+        - 1.8573352903812972
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6663419196921856
+        - 0.727831868700415
+        - 0.9309844046488636
+      fuzz: 0.4191299817064521
+  - type: sphere
+    origin:
+      origin:
+        - -8.809034643278654
+        - 0.2
+        - 2.108779015515287
+      direction:
+        - 0
+        - 0.4230808610674303
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7454912153117462
+          - 0.316165860558724
+          - 0.17540396449389623
+  - type: sphere
+    origin:
+      origin:
+        - -8.954436650248871
+        - 0.2
+        - 3.3304750333942623
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9347301942055878
+        - 0.9212946467433187
+        - 0.9877808000730746
+      fuzz: 0.03774921627149814
+  - type: sphere
+    origin:
+      origin:
+        - -8.337887742879582
+        - 0.2
+        - 4.552538625562574
+      direction:
+        - 0
+        - 0.15653285296196146
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1126264240168013
+          - 0.6092126370007734
+          - 0.16366115810708864
+  - type: sphere
+    origin:
+      origin:
+        - -8.272747354823466
+        - 0.2
+        - 5.210279326635251
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7518517314111869
+        - 0.9717961552882819
+        - 0.7782658833771371
+      fuzz: 0.33320841256555933
+  - type: sphere
+    origin:
+      origin:
+        - -8.429609783370541
+        - 0.2
+        - 6.875905897328112
+      direction:
+        - 0
+        - 0.32368444974640326
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.43707840242693363
+          - 0.03445265889220795
+          - 0.14041513986460008
+  - type: sphere
+    origin:
+      origin:
+        - -8.375794372456248
+        - 0.2
+        - 7.005376253236938
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9951599483367064
+        - 0.5526806462109111
+        - 0.792544822252518
+      fuzz: 0.11499601264359707
+  - type: sphere
+    origin:
+      origin:
+        - -8.134721328668581
+        - 0.2
+        - 8.620444566152091
+      direction:
+        - 0
+        - 0.4188077060836694
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.492540157109698
+          - 0.4352136405155077
+          - 0.09783291881981256
+  - type: sphere
+    origin:
+      origin:
+        - -8.103965681609726
+        - 0.2
+        - 9.575350364516321
+      direction:
+        - 0
+        - 0.36832261261180393
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.02219973266777391
+          - 0.23310609673721416
+          - 0.05316619614437682
+  - type: sphere
+    origin:
+      origin:
+        - -8.592979708520978
+        - 0.2
+        - 10.235644537192458
+      direction:
+        - 0
+        - 0.08516324748757292
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0573106067837765
+          - 0.06499710070386973
+          - 0.08640723407026081
+  - type: sphere
+    origin:
+      origin:
+        - -7.779654454154775
+        - 0.2
+        - -10.252421313820639
+      direction:
+        - 0
+        - 0.22168595588183382
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.23729486332685035
+          - 0.06362074689873756
+          - 0.0047684443751774734
+  - type: sphere
+    origin:
+      origin:
+        - -7.143742968998567
+        - 0.2
+        - -9.742794071060706
+      direction:
+        - 0
+        - 0.293042093583614
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.21937028215846002
+          - 0.07090577764458184
+          - 0.034496667562142286
+  - type: sphere
+    origin:
+      origin:
+        - -7.488087629392945
+        - 0.2
+        - -8.468124079587922
+      direction:
+        - 0
+        - 0.2781077182830133
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.014670001166100115
+          - 0.7055600834847177
+          - 0.048935558242211755
+  - type: sphere
+    origin:
+      origin:
+        - -7.641447814596983
+        - 0.2
+        - -7.1658916639112675
+      direction:
+        - 0
+        - 0.42414787896325384
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.02289475861537134
+          - 0.35630041095474574
+          - 0.005168764119678135
+  - type: sphere
+    origin:
+      origin:
+        - -7.9392978311455416
+        - 0.2
+        - -6.563487059377776
+      direction:
+        - 0
+        - 0.3428669172792081
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.41068234857044056
+          - 0.47455689514167615
+          - 0.2098102436372222
+  - type: sphere
+    origin:
+      origin:
+        - -7.104702722245436
+        - 0.2
+        - -5.791860360914916
+      direction:
+        - 0
+        - 0.4187533258798483
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2451131022111536
+          - 0.7362678706877377
+          - 0.15808359462056004
+  - type: sphere
+    origin:
+      origin:
+        - -7.845557376406327
+        - 0.2
+        - -4.233473832233218
+      direction:
+        - 0
+        - 0.4754371219410178
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.32172679649238345
+          - 0.2520723698431983
+          - 0.37870193251133777
+  - type: sphere
+    origin:
+      origin:
+        - -7.841319617780434
+        - 0.2
+        - -3.4019268931989006
+      direction:
+        - 0
+        - 0.013982248849166157
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04488205163251716
+          - 0.0666049897964211
+          - 0.056598349606511666
+  - type: sphere
+    origin:
+      origin:
+        - -7.1755839698515
+        - 0.2
+        - -2.9113105941002804
+      direction:
+        - 0
+        - 0.025746323171873753
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.15739163989756674
+          - 0.4918392283488985
+          - 0.343352459293856
+  - type: sphere
+    origin:
+      origin:
+        - -7.270630625969269
+        - 0.2
+        - -1.6207338584188429
+      direction:
+        - 0
+        - 0.33819839799009493
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.02718132466300749
+          - 0.02254403794808365
+          - 0.06386027756297878
+  - type: sphere
+    origin:
+      origin:
+        - -7.667378201417435
+        - 0.2
+        - -0.7035296189828255
+      direction:
+        - 0
+        - 0.2467709230887683
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06637937308143654
+          - 0.05063477979210965
+          - 0.047504284673312455
+  - type: sphere
+    origin:
+      origin:
+        - -7.9393613274304515
+        - 0.2
+        - 0.36409775416821766
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6823540468192609
+        - 0.9242892839788506
+        - 0.6875123248219632
+      fuzz: 0.07130558996207594
+  - type: sphere
+    origin:
+      origin:
+        - -7.102662740293035
+        - 0.2
+        - 1.7820663020155172
+      direction:
+        - 0
+        - 0.1666580799123495
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06003823806731576
+          - 0.33795213209725344
+          - 0.02296573830621259
+  - type: sphere
+    origin:
+      origin:
+        - -7.772668739363176
+        - 0.2
+        - 2.294714645859999
+      direction:
+        - 0
+        - 0.1584811831282129
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.33611603435157617
+          - 0.05233593799512022
+          - 0.036778275984733405
+  - type: sphere
+    origin:
+      origin:
+        - -7.827662174109298
+        - 0.2
+        - 3.333161564405413
+      direction:
+        - 0
+        - 0.31052725996046443
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.578414766975288
+          - 0.2780925747016704
+          - 0.010884383179616815
+  - type: sphere
+    origin:
+      origin:
+        - -7.982492911188979
+        - 0.2
+        - 4.792673127798003
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5282555760696236
+        - 0.7955384119800399
+        - 0.8602025938447786
+      fuzz: 0.3193891329064552
+  - type: sphere
+    origin:
+      origin:
+        - -7.146860093657187
+        - 0.2
+        - 5.418103981144195
+      direction:
+        - 0
+        - 0.3181461807728945
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12047601571705592
+          - 0.4657049447597468
+          - 0.39359702751627423
+  - type: sphere
+    origin:
+      origin:
+        - -7.406350646446392
+        - 0.2
+        - 6.59728803232853
+      direction:
+        - 0
+        - 0.3271389746253964
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3049876596877153
+          - 0.2133548973301906
+          - 0.21694897534184648
+  - type: sphere
+    origin:
+      origin:
+        - -7.4565464264007195
+        - 0.2
+        - 7.82720551824582
+      direction:
+        - 0
+        - 0.1212631890477594
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13758051409275796
+          - 0.3104802755142833
+          - 0.3391954793292073
+  - type: sphere
+    origin:
+      origin:
+        - -7.818202370336667
+        - 0.2
+        - 8.355488513402438
+      direction:
+        - 0
+        - 0.06397859799341904
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6471866862703687
+          - 0.23395843521195459
+          - 0.3855681167434491
+  - type: sphere
+    origin:
+      origin:
+        - -7.884609716148462
+        - 0.2
+        - 9.4528373406687
+      direction:
+        - 0
+        - 0.45468277666260465
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.15013730679577955
+          - 0.32615209518364374
+          - 0.6680289993192798
+  - type: sphere
+    origin:
+      origin:
+        - -7.144036844192487
+        - 0.2
+        - 10.190700464879264
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9853567045921026
+        - 0.8545351692871228
+        - 0.9389458089814504
+      fuzz: 0.21145470239396177
+  - type: sphere
+    origin:
+      origin:
+        - -6.3939160269271555
+        - 0.2
+        - -10.916012631198337
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6079756585747269
+        - 0.8487458009469787
+        - 0.5491853036645843
+      fuzz: 0.3889150084692451
+  - type: sphere
+    origin:
+      origin:
+        - -6.813258604173217
+        - 0.2
+        - -9.635228951780384
+      direction:
+        - 0
+        - 0.29044468754925074
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2981958658300529
+          - 0.47685590812805406
+          - 0.014123094253285628
+  - type: sphere
+    origin:
+      origin:
+        - -6.994587811873355
+        - 0.2
+        - -8.650734974388811
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6966910392787975
+        - 0.5991864110452666
+        - 0.5049599093734992
+      fuzz: 0.09826029633764087
+  - type: sphere
+    origin:
+      origin:
+        - -6.93051693895963
+        - 0.2
+        - -7.298234904402684
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8108529958747759
+        - 0.6377401053654528
+        - 0.6457099415259766
+      fuzz: 0.46058559599373644
+  - type: sphere
+    origin:
+      origin:
+        - -6.923829618439712
+        - 0.2
+        - -6.743683999104137
+      direction:
+        - 0
+        - 0.4999306482805613
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.32191564045626087
+          - 0.018125383500277925
+          - 0.17850935447960112
+  - type: sphere
+    origin:
+      origin:
+        - -6.8840750680789204
+        - 0.2
+        - -5.187332890965314
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9939154139763251
+        - 0.91517075340647
+        - 0.8079090362177238
+      fuzz: 0.32280929045207973
+  - type: sphere
+    origin:
+      origin:
+        - -6.400020239374397
+        - 0.2
+        - -4.318365274484603
+      direction:
+        - 0
+        - 0.0391888348493204
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7541453290316794
+          - 0.4335950619119702
+          - 0.26388283716970373
+  - type: sphere
+    origin:
+      origin:
+        - -6.929877932092637
+        - 0.2
+        - -3.665009792339802
+      direction:
+        - 0
+        - 0.058945744077045725
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16209865524655015
+          - 0.24657796270726665
+          - 0.2209786218466239
+  - type: sphere
+    origin:
+      origin:
+        - -6.579000537521992
+        - 0.2
+        - -2.985075573564641
+      direction:
+        - 0
+        - 0.017595108779582425
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04142829038454713
+          - 0.17538683192523716
+          - 0.0218509801851189
+  - type: sphere
+    origin:
+      origin:
+        - -6.232358083950912
+        - 0.2
+        - -1.1444475248710186
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9106535112436149
+        - 0.9311537105481507
+        - 0.9901501594476635
+      fuzz: 0.4593120812570477
+  - type: sphere
+    origin:
+      origin:
+        - -6.516154479121524
+        - 0.2
+        - -0.2559029956906458
+      direction:
+        - 0
+        - 0.3647592671894044
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.014887761508118021
+          - 0.14116812490279332
+          - 0.7821032548240133
+  - type: sphere
+    origin:
+      origin:
+        - -6.493093090937721
+        - 0.2
+        - 0.5278170474941387
+      direction:
+        - 0
+        - 0.1593124317347711
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.02948111693439816
+          - 0.4441352227545246
+          - 0.5721133872992274
+  - type: sphere
+    origin:
+      origin:
+        - -6.950120494389501
+        - 0.2
+        - 1.5771373688125008
+      direction:
+        - 0
+        - 0.4607217004222965
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3229362051272135
+          - 0.7708642533353344
+          - 0.317812196844139
+  - type: sphere
+    origin:
+      origin:
+        - -6.131981065610334
+        - 0.2
+        - 2.401711945186001
+      direction:
+        - 0
+        - 0.20609130552712435
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.17584496844756545
+          - 0.561749085669184
+          - 0.07175696462489832
+  - type: sphere
+    origin:
+      origin:
+        - -6.845162855628088
+        - 0.2
+        - 3.4554015374480533
+      direction:
+        - 0
+        - 0.06896294305316625
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.25567572659932447
+          - 0.17682594757887884
+          - 0.24992654917514004
+  - type: sphere
+    origin:
+      origin:
+        - -6.405543907790628
+        - 0.2
+        - 4.29636946179846
+      direction:
+        - 0
+        - 0.24779920134936506
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06966772504226562
+          - 0.35616723511240966
+          - 0.0063266398507713035
+  - type: sphere
+    origin:
+      origin:
+        - -6.631447464663469
+        - 0.2
+        - 5.190157714307519
+      direction:
+        - 0
+        - 0.12951436841570463
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.03665598216846681
+          - 0.1422272429649587
+          - 0.03862987338940658
+  - type: sphere
+    origin:
+      origin:
+        - -6.984392639175411
+        - 0.2
+        - 6.0626686087879
+      direction:
+        - 0
+        - 0.12117573683818267
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6786037276375222
+          - 0.8542997394416234
+          - 0.08144575084146728
+  - type: sphere
+    origin:
+      origin:
+        - -6.493585946299892
+        - 0.2
+        - 7.398820223550278
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.781891667955477
+        - 0.5183390433741951
+        - 0.6755685322252881
+      fuzz: 0.1735945388990457
+  - type: sphere
+    origin:
+      origin:
+        - -6.196652171719553
+        - 0.2
+        - 8.56717050428918
+      direction:
+        - 0
+        - 0.0020429998992053666
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01220834745123537
+          - 0.13507219371877277
+          - 0.5899151074324902
+  - type: sphere
+    origin:
+      origin:
+        - -6.819941920903612
+        - 0.2
+        - 9.899947419892019
+      direction:
+        - 0
+        - 0.3225048620547693
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.23525678544742462
+          - 0.84924438025018
+          - 0.519920178612254
+  - type: sphere
+    origin:
+      origin:
+        - -6.576329002033926
+        - 0.2
+        - 10.892841439030255
+      direction:
+        - 0
+        - 0.491054052456076
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5228241618227459
+          - 0.29870870931780297
+          - 0.2960283195701223
+  - type: sphere
+    origin:
+      origin:
+        - -5.697331208185841
+        - 0.2
+        - -10.982200509947917
+      direction:
+        - 0
+        - 0.15632661911433293
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.23745233555071288
+          - 0.013282302912300923
+          - 0.4650722250723133
+  - type: sphere
+    origin:
+      origin:
+        - -5.629508589321586
+        - 0.2
+        - -9.70677069091451
+      direction:
+        - 0
+        - 0.3914978084789877
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.22137527748186783
+          - 0.021668464524235112
+          - 0.24526226514485086
+  - type: sphere
+    origin:
+      origin:
+        - -5.90721180202543
+        - 0.2
+        - -8.807433634683262
+      direction:
+        - 0
+        - 0.20154614755935613
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0973464974865349
+          - 0.34672903267093025
+          - 0.04405339017273205
+  - type: sphere
+    origin:
+      origin:
+        - -5.421916088489327
+        - 0.2
+        - -7.618898139538478
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7213723965675041
+        - 0.8998235343957892
+        - 0.807827084684637
+      fuzz: 0.3501234764776828
+  - type: sphere
+    origin:
+      origin:
+        - -5.949865151216403
+        - 0.2
+        - -6.761175205321899
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9836526675947661
+        - 0.9003327859721773
+        - 0.853743432763002
+      fuzz: 0.49602590884303266
+  - type: sphere
+    origin:
+      origin:
+        - -5.943461592496368
+        - 0.2
+        - -5.169063470250908
+      direction:
+        - 0
+        - 0.2592476794275722
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3895416151047172
+          - 0.11162681989059649
+          - 0.003281786377739384
+  - type: sphere
+    origin:
+      origin:
+        - -5.637623795352648
+        - 0.2
+        - -4.643244079930936
+      direction:
+        - 0
+        - 0.3106492769066452
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.23275961220555666
+          - 0.027267115462861004
+          - 0.08350828041158545
+  - type: sphere
+    origin:
+      origin:
+        - -5.61226753412225
+        - 0.2
+        - -3.793812852173477
+      direction:
+        - 0
+        - 0.31874716150569377
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1139738207323421
+          - 0.6913514408964856
+          - 0.4182016541504483
+  - type: sphere
+    origin:
+      origin:
+        - -5.573500230239207
+        - 0.2
+        - -2.181560524269221
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -5.358767446291347
+        - 0.2
+        - -1.1919670385313479
+      direction:
+        - 0
+        - 0.19904005419157766
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.21713875341280503
+          - 0.057401225237169555
+          - 0.3807098328153764
+  - type: sphere
+    origin:
+      origin:
+        - -5.814674571079645
+        - 0.2
+        - -0.5976400250664697
+      direction:
+        - 0
+        - 0.4031352389451413
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06587864219891863
+          - 0.4833651839232982
+          - 0.12341220164612825
+  - type: sphere
+    origin:
+      origin:
+        - -5.257918896837778
+        - 0.2
+        - 0.8249634751886463
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6392787499154968
+        - 0.9517969141221982
+        - 0.8280880211662087
+      fuzz: 0.4121208528251063
+  - type: sphere
+    origin:
+      origin:
+        - -5.297207123654894
+        - 0.2
+        - 1.645147834694269
+      direction:
+        - 0
+        - 0.3187605783526431
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.14105505557534834
+          - 0.48698029992928915
+          - 0.3766825396298269
+  - type: sphere
+    origin:
+      origin:
+        - -5.3471606438604455
+        - 0.2
+        - 2.710404716916556
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5681834916479598
+        - 0.9765491023671518
+        - 0.5135538832213445
+      fuzz: 0.10445733751477258
+  - type: sphere
+    origin:
+      origin:
+        - -5.199960186413543
+        - 0.2
+        - 3.784253852160503
+      direction:
+        - 0
+        - 0.2834774380194079
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6010109242573756
+          - 0.31995327493013287
+          - 0.004168299451441863
+  - type: sphere
+    origin:
+      origin:
+        - -5.490685375888222
+        - 0.2
+        - 4.473112541309326
+      direction:
+        - 0
+        - 0.16567733461626172
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1924377972715856
+          - 0.07999660220678959
+          - 0.43460132285186215
+  - type: sphere
+    origin:
+      origin:
+        - -5.303128616125683
+        - 0.2
+        - 5.535699213889855
+      direction:
+        - 0
+        - 0.0794786027784487
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.24653107835925928
+          - 0.1695121300717035
+          - 0.16401396732980278
+  - type: sphere
+    origin:
+      origin:
+        - -5.874766678577089
+        - 0.2
+        - 6.1742637058777206
+      direction:
+        - 0
+        - 0.08627628904523704
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2190508274804229
+          - 0.041787578482075566
+          - 0.00042910341864743813
+  - type: sphere
+    origin:
+      origin:
+        - -5.532824228489496
+        - 0.2
+        - 7.723428772396578
+      direction:
+        - 0
+        - 0.16170898471731204
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.46020340294592654
+          - 0.6200818510250289
+          - 0.04030730915252518
+  - type: sphere
+    origin:
+      origin:
+        - -5.775405638547101
+        - 0.2
+        - 8.50322165910944
+      direction:
+        - 0
+        - 0.3661434761989772
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.43096443292793457
+          - 0.04278283903754934
+          - 0.09558298035937886
+  - type: sphere
+    origin:
+      origin:
+        - -5.236069983516461
+        - 0.2
+        - 9.265728818049977
+      direction:
+        - 0
+        - 0.4796565303070855
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.021433161147971266
+          - 0.37890574534238386
+          - 0.1264798847775764
+  - type: sphere
+    origin:
+      origin:
+        - -5.4546560276136065
+        - 0.2
+        - 10.042318744462836
+      direction:
+        - 0
+        - 0.4327686893543296
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5823157515191852
+          - 0.14442982273019866
+          - 0.19560199585956284
+  - type: sphere
+    origin:
+      origin:
+        - -4.662814030380404
+        - 0.2
+        - -10.981848666612683
+      direction:
+        - 0
+        - 0.1653937263358657
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5837938866673327
+          - 0.0627940957507333
+          - 0.22396320462383862
+  - type: sphere
+    origin:
+      origin:
+        - -4.446129035228925
+        - 0.2
+        - -9.703742657692755
+      direction:
+        - 0
+        - 0.31974094114204427
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.48928161782954815
+          - 0.5656500035242694
+          - 0.1687035714078689
+  - type: sphere
+    origin:
+      origin:
+        - -4.8967494318484635
+        - 0.2
+        - -8.908190930467658
+      direction:
+        - 0
+        - 0.48523416904241307
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4057389761055481
+          - 0.3721998873381335
+          - 0.05100444274400078
+  - type: sphere
+    origin:
+      origin:
+        - -4.338395163898713
+        - 0.2
+        - -7.189292452190161
+      direction:
+        - 0
+        - 0.06524611025038879
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.19519115127997064
+          - 0.05929125775729808
+          - 0.09051879731561784
+  - type: sphere
+    origin:
+      origin:
+        - -4.462930771279572
+        - 0.2
+        - -6.919422606983073
+      direction:
+        - 0
+        - 0.08200303737102765
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5754597722117425
+          - 0.057043351525606974
+          - 0.7868281659765376
+  - type: sphere
+    origin:
+      origin:
+        - -4.516375984390811
+        - 0.2
+        - -5.782567700230921
+      direction:
+        - 0
+        - 0.19793196095696425
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2436665696853828
+          - 0.09394965097859599
+          - 0.10445341230485203
+  - type: sphere
+    origin:
+      origin:
+        - -4.495904089478363
+        - 0.2
+        - -4.438135726934648
+      direction:
+        - 0
+        - 0.19350256356952372
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.016614080089438852
+          - 0.10352008265644073
+          - 0.5496929493266409
+  - type: sphere
+    origin:
+      origin:
+        - -4.608085257644979
+        - 0.2
+        - -3.8788748404781606
+      direction:
+        - 0
+        - 0.48908457718015436
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7854235128624184
+          - 0.009094778039815626
+          - 0.21012959661064065
+  - type: sphere
+    origin:
+      origin:
+        - -4.173714127417545
+        - 0.2
+        - -2.6508563604703874
+      direction:
+        - 0
+        - 0.32039389721545736
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01803962002463048
+          - 0.3901136802210368
+          - 0.30200320621146076
+  - type: sphere
+    origin:
+      origin:
+        - -4.351387026838684
+        - 0.2
+        - -1.9268777121383214
+      direction:
+        - 0
+        - 0.4551045017914976
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6057024091489902
+          - 0.28900916641845553
+          - 0.0006550076728212012
+  - type: sphere
+    origin:
+      origin:
+        - -4.859782484096012
+        - 0.2
+        - -0.8899603713445875
+      direction:
+        - 0
+        - 0.42819807786552117
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01964418209389493
+          - 0.05048906819423588
+          - 0.6999420488880277
+  - type: sphere
+    origin:
+      origin:
+        - -4.599024597855626
+        - 0.2
+        - 0.474343149549759
+      direction:
+        - 0
+        - 0.20482882931712393
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2957498913768202
+          - 0.06184512165207902
+          - 0.2688647250034663
+  - type: sphere
+    origin:
+      origin:
+        - -4.42286316197111
+        - 0.2
+        - 1.3267939467274874
+      direction:
+        - 0
+        - 0.1764822298103077
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3343449601827939
+          - 0.4061523420212439
+          - 0.8084251430194752
+  - type: sphere
+    origin:
+      origin:
+        - -4.91272152080325
+        - 0.2
+        - 2.2932426830305017
+      direction:
+        - 0
+        - 0.22977241913039376
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3671835091573297
+          - 0.000398425591677047
+          - 0.6492549458154279
+  - type: sphere
+    origin:
+      origin:
+        - -4.803971020189058
+        - 0.2
+        - 3.380690025190294
+      direction:
+        - 0
+        - 0.07658206785934413
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.19892662803837702
+          - 0.10357510748555016
+          - 0.042029640398294946
+  - type: sphere
+    origin:
+      origin:
+        - -4.142866322659929
+        - 0.2
+        - 4.674332132063438
+      direction:
+        - 0
+        - 0.07496124298154783
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06042502251368805
+          - 0.002383831368864876
+          - 0.0821059803435171
+  - type: sphere
+    origin:
+      origin:
+        - -4.178017463284359
+        - 0.2
+        - 5.221397125225837
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6740577041117406
+        - 0.9782810441680311
+        - 0.8952046271379617
+      fuzz: 0.3435295713734183
+  - type: sphere
+    origin:
+      origin:
+        - -4.122602201406233
+        - 0.2
+        - 6.374648146933644
+      direction:
+        - 0
+        - 0.40377451684482807
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6949790196921164
+          - 0.15610777356364353
+          - 0.004880602358022981
+  - type: sphere
+    origin:
+      origin:
+        - -4.859854600779246
+        - 0.2
+        - 7.375276875052976
+      direction:
+        - 0
+        - 0.3125140209239235
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.19061758975373588
+          - 0.01742753678921751
+          - 0.777446807049025
+  - type: sphere
+    origin:
+      origin:
+        - -4.35408292801387
+        - 0.2
+        - 8.30970001797701
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8003559265774739
+        - 0.590537699401152
+        - 0.7223267544093438
+      fuzz: 0.2102318466286396
+  - type: sphere
+    origin:
+      origin:
+        - -4.4233954631804275
+        - 0.2
+        - 9.265078058981384
+      direction:
+        - 0
+        - 0.15442016775852385
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.38038070927346335
+          - 0.07226385353581807
+          - 0.6084038079313152
+  - type: sphere
+    origin:
+      origin:
+        - -4.719927405228896
+        - 0.2
+        - 10.521688881308956
+      direction:
+        - 0
+        - 0.3695451926562902
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4323765053940939
+          - 0.3911401214491744
+          - 0.006688797764900016
+  - type: sphere
+    origin:
+      origin:
+        - -3.6584888937576174
+        - 0.2
+        - -10.207018672988998
+      direction:
+        - 0
+        - 0.46256242646813267
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.9079235591074136
+          - 0.07058510340850738
+          - 0.16247255363621904
+  - type: sphere
+    origin:
+      origin:
+        - -3.652298624907575
+        - 0.2
+        - -9.581607285037126
+      direction:
+        - 0
+        - 0.00851215051399784
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.8457233950291556
+          - 0.1488144310336622
+          - 0.010174808743561864
+  - type: sphere
+    origin:
+      origin:
+        - -3.4552588415916548
+        - 0.2
+        - -8.977855450941329
+      direction:
+        - 0
+        - 0.12756877724511978
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04739677434046492
+          - 0.24004597711241904
+          - 0.06186697557711853
+  - type: sphere
+    origin:
+      origin:
+        - -3.3508262557200803
+        - 0.2
+        - -7.695808381586468
+      direction:
+        - 0
+        - 0.4024525868125202
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6648677021918832
+          - 0.028156896635826996
+          - 0.42862741726664005
+  - type: sphere
+    origin:
+      origin:
+        - -3.3397080358847515
+        - 0.2
+        - -6.687004724092072
+      direction:
+        - 0
+        - 0.36486264311715905
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3563476276714163
+          - 0.13081990206592128
+          - 0.07933746518927136
+  - type: sphere
+    origin:
+      origin:
+        - -3.7513501992200613
+        - 0.2
+        - -5.353157499015722
+      direction:
+        - 0
+        - 0.4218423423099941
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.26687204606122994
+          - 0.3190302278510632
+          - 0.005576366532288107
+  - type: sphere
+    origin:
+      origin:
+        - -3.6698967619330265
+        - 0.2
+        - -4.496640464648116
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7840246845038359
+        - 0.6559850572725041
+        - 0.8938755854549638
+      fuzz: 0.04233176736549516
+  - type: sphere
+    origin:
+      origin:
+        - -3.5235074225057836
+        - 0.2
+        - -3.1574572743496025
+      direction:
+        - 0
+        - 0.37034174129656267
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3654549571804318
+          - 0.52653227585016
+          - 0.656280271515366
+  - type: sphere
+    origin:
+      origin:
+        - -3.8894166267859362
+        - 0.2
+        - -2.3515979189785288
+      direction:
+        - 0
+        - 0.18805096705924956
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.038698556106629964
+          - 0.33946543838045706
+          - 0.45479814429448207
+  - type: sphere
+    origin:
+      origin:
+        - -3.519697422571185
+        - 0.2
+        - -1.8971315803639042
+      direction:
+        - 0
+        - 0.18817088339508875
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13859937965206717
+          - 0.8669130625245275
+          - 0.5872866359089598
+  - type: sphere
+    origin:
+      origin:
+        - -3.3559967300765248
+        - 0.2
+        - -0.5200164800809226
+      direction:
+        - 0
+        - 0.010447796080442912
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.39515914412682135
+          - 0.00391024965236666
+          - 0.6107425587323387
+  - type: sphere
+    origin:
+      origin:
+        - -3.7527081676497973
+        - 0.2
+        - 0.5373594818186512
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7409303941009927
+        - 0.5029198594443883
+        - 0.6575857457595354
+      fuzz: 0.08423888965254984
+  - type: sphere
+    origin:
+      origin:
+        - -3.121627945165667
+        - 0.2
+        - 1.4619710913638644
+      direction:
+        - 0
+        - 0.1477758677104835
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2641525065223855
+          - 0.5896405253413265
+          - 0.06895673851641658
+  - type: sphere
+    origin:
+      origin:
+        - -3.863209188061823
+        - 0.2
+        - 2.621306188846779
+      direction:
+        - 0
+        - 0.34910559890984244
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.050247743653087346
+          - 0.57058939230741
+          - 0.06140069392711646
+  - type: sphere
+    origin:
+      origin:
+        - -3.8030166059817487
+        - 0.2
+        - 3.097426660146968
+      direction:
+        - 0
+        - 0.008669443097216956
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.059771330027213125
+          - 0.015812310211487282
+          - 0.16363464785236104
+  - type: sphere
+    origin:
+      origin:
+        - -3.4213997659187663
+        - 0.2
+        - 4.899273617342602
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -3.301799538609494
+        - 0.2
+        - 5.65240546650212
+      direction:
+        - 0
+        - 0.4730834358417239
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07694055133646795
+          - 0.07116955297250893
+          - 0.0757838827733165
+  - type: sphere
+    origin:
+      origin:
+        - -3.2731184468172976
+        - 0.2
+        - 6.484245212038861
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6891520262867751
+        - 0.6499298485666578
+        - 0.5586671767246919
+      fuzz: 0.36920769752999005
+  - type: sphere
+    origin:
+      origin:
+        - -3.6257843435712775
+        - 0.2
+        - 7.710741710326159
+      direction:
+        - 0
+        - 0.3337957508928124
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0025674918418691454
+          - 0.3945355831088174
+          - 0.7818342180495105
+  - type: sphere
+    origin:
+      origin:
+        - -3.2820629298101522
+        - 0.2
+        - 8.405589535361868
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8039443198815786
+        - 0.8959354942089928
+        - 0.6852678853257361
+      fuzz: 0.00778371875929358
+  - type: sphere
+    origin:
+      origin:
+        - -3.813736418594059
+        - 0.2
+        - 9.565762217192319
+      direction:
+        - 0
+        - 0.2368182403416041
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.43745170516993664
+          - 0.004711606394889604
+          - 0.223581331633724
+  - type: sphere
+    origin:
+      origin:
+        - -3.1324089173449887
+        - 0.2
+        - 10.768904004041902
+      direction:
+        - 0
+        - 0.25698730805807746
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.21312504787803307
+          - 0.18533564143287434
+          - 0.22464638979001603
+  - type: sphere
+    origin:
+      origin:
+        - -2.8486464783894827
+        - 0.2
+        - -10.970584876546727
+      direction:
+        - 0
+        - 0.19268036076001743
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.47709173938880406
+          - 0.07224335601153292
+          - 0.11571304873724708
+  - type: sphere
+    origin:
+      origin:
+        - -2.8253828413747404
+        - 0.2
+        - -9.259502436288194
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5201779634747677
+        - 0.7695005492115587
+        - 0.638990159471255
+      fuzz: 0.3893555846960934
+  - type: sphere
+    origin:
+      origin:
+        - -2.5987567894444608
+        - 0.2
+        - -8.403986549273446
+      direction:
+        - 0
+        - 0.09972660135787648
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2594953350300428
+          - 0.11082422830507116
+          - 0.01569843290773096
+  - type: sphere
+    origin:
+      origin:
+        - -2.269599207151161
+        - 0.2
+        - -7.450604996024256
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9628972746537006
+        - 0.5268611745178472
+        - 0.6872196050361103
+      fuzz: 0.44154904506346937
+  - type: sphere
+    origin:
+      origin:
+        - -2.397789554663545
+        - 0.2
+        - -6.133564058686616
+      direction:
+        - 0
+        - 0.23511625489802085
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.08088655460393951
+          - 0.07562293465342512
+          - 0.03901127094373815
+  - type: sphere
+    origin:
+      origin:
+        - -2.259187821751799
+        - 0.2
+        - -5.237519034123917
+      direction:
+        - 0
+        - 0.17721816260808065
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1676000768905017
+          - 0.03499887792395367
+          - 0.10309325771974531
+  - type: sphere
+    origin:
+      origin:
+        - -2.5139445666459213
+        - 0.2
+        - -4.9296602119279544
+      direction:
+        - 0
+        - 0.241141981129937
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1526799770301023
+          - 0.1149544527264221
+          - 0.26032678019744526
+  - type: sphere
+    origin:
+      origin:
+        - -2.953211989632028
+        - 0.2
+        - -3.1113519377493106
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7212757798654791
+        - 0.8001722408328981
+        - 0.594393135427424
+      fuzz: 0.2984099495905357
+  - type: sphere
+    origin:
+      origin:
+        - -2.611846449522726
+        - 0.2
+        - -2.8033576755423737
+      direction:
+        - 0
+        - 0.15509015201554527
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07326873326823308
+          - 0.3946471238738166
+          - 0.04856188062306287
+  - type: sphere
+    origin:
+      origin:
+        - -2.6076535433716073
+        - 0.2
+        - -1.4510445284921922
+      direction:
+        - 0
+        - 0.27206932352299046
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12021204965470139
+          - 0.11373538999133447
+          - 0.43219851335678955
+  - type: sphere
+    origin:
+      origin:
+        - -2.609831490245518
+        - 0.2
+        - -0.4513496620933346
+      direction:
+        - 0
+        - 0.12537683242367076
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16168271400553086
+          - 0.4343004200416921
+          - 0.4577752425492513
+  - type: sphere
+    origin:
+      origin:
+        - -2.1385183277592636
+        - 0.2
+        - 0.27066235514010917
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6905087292443364
+        - 0.9491510135805024
+        - 0.81752701768139
+      fuzz: 0.4011707230598126
+  - type: sphere
+    origin:
+      origin:
+        - -2.229126431142051
+        - 0.2
+        - 1.1638996450889132
+      direction:
+        - 0
+        - 0.1955736053326242
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.025685162640973213
+          - 0.02809239672011189
+          - 0.25353994164934307
+  - type: sphere
+    origin:
+      origin:
+        - -2.94282377447913
+        - 0.2
+        - 2.5738118529152336
+      direction:
+        - 0
+        - 0.38534246804648825
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5164420610563447
+          - 0.2524675927932427
+          - 0.26361517087118885
+  - type: sphere
+    origin:
+      origin:
+        - -2.4158078153145177
+        - 0.2
+        - 3.392722795830878
+      direction:
+        - 0
+        - 0.3354625058917959
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.18950920732435125
+          - 0.41711295258938325
+          - 0.3051107600475916
+  - type: sphere
+    origin:
+      origin:
+        - -2.7066864004518054
+        - 0.2
+        - 4.606900881287055
+      direction:
+        - 0
+        - 0.22496944909943634
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7320887154424125
+          - 0.4772445064112827
+          - 0.27878393962223175
+  - type: sphere
+    origin:
+      origin:
+        - -2.2784599918164163
+        - 0.2
+        - 5.838681403633087
+      direction:
+        - 0
+        - 0.06461804574727786
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6069215377071291
+          - 0.0016514998418533965
+          - 0.011850978107393615
+  - type: sphere
+    origin:
+      origin:
+        - -2.922698816234477
+        - 0.2
+        - 6.563967765900579
+      direction:
+        - 0
+        - 0.2953069639822478
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09359581666364113
+          - 0.7272584393109344
+          - 0.06907914480595852
+  - type: sphere
+    origin:
+      origin:
+        - -2.1045991125107824
+        - 0.2
+        - 7.809757304046862
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9894882267656622
+        - 0.7462386970734617
+        - 0.5109263497086753
+      fuzz: 0.15718507189349845
+  - type: sphere
+    origin:
+      origin:
+        - -2.650411736507269
+        - 0.2
+        - 8.526768444029623
+      direction:
+        - 0
+        - 0.38116401198948463
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1236683633348944
+          - 0.3136707964322224
+          - 0.29886427452178255
+  - type: sphere
+    origin:
+      origin:
+        - -2.905272340960592
+        - 0.2
+        - 9.024211958466637
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8690413733364626
+        - 0.5107386998019636
+        - 0.8882098319703535
+      fuzz: 0.11097979305515242
+  - type: sphere
+    origin:
+      origin:
+        - -2.3075708894085762
+        - 0.2
+        - 10.250771891944737
+      direction:
+        - 0
+        - 0.2804499471105324
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.31386301305087977
+          - 0.48709873598577286
+          - 0.5896700837520868
+  - type: sphere
+    origin:
+      origin:
+        - -1.3089563334590575
+        - 0.2
+        - -10.17450748314651
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6495500262192178
+        - 0.8638463362828445
+        - 0.6194643819507194
+      fuzz: 0.42223585305354394
+  - type: sphere
+    origin:
+      origin:
+        - -1.5306462611493876
+        - 0.2
+        - -9.872828631276644
+      direction:
+        - 0
+        - 0.35414726061211405
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.021185549186768772
+          - 0.02076106527025522
+          - 0.18158631544086443
+  - type: sphere
+    origin:
+      origin:
+        - -1.4520430414538152
+        - 0.2
+        - -8.75150870365155
+      direction:
+        - 0
+        - 0.13033332947496873
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.10103850682542814
+          - 0.2797140870414506
+          - 0.23570020578466494
+  - type: sphere
+    origin:
+      origin:
+        - -1.804103197873197
+        - 0.2
+        - -7.263071087171466
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6699092327125532
+        - 0.5118600182137027
+        - 0.8873361699704049
+      fuzz: 0.1328658615743391
+  - type: sphere
+    origin:
+      origin:
+        - -1.6812673020267213
+        - 0.2
+        - -6.4662090720949355
+      direction:
+        - 0
+        - 0.37673052529886325
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.061063121025028644
+          - 0.24972017865525142
+          - 0.0803240201373315
+  - type: sphere
+    origin:
+      origin:
+        - -1.2068784407696944
+        - 0.2
+        - -5.116287543247158
+      direction:
+        - 0
+        - 0.3759852240841071
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16586579323549808
+          - 0.23216984267784363
+          - 0.012135088165717907
+  - type: sphere
+    origin:
+      origin:
+        - -1.7424484946244194
+        - 0.2
+        - -4.328944033893844
+      direction:
+        - 0
+        - 0.143213955998104
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.468580450291554
+          - 0.38340845613862373
+          - 0.020245820178521508
+  - type: sphere
+    origin:
+      origin:
+        - -1.841325414970055
+        - 0.2
+        - -3.17096415051497
+      direction:
+        - 0
+        - 0.040636036384958246
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.41549989248650765
+          - 0.22931697540885437
+          - 0.6972838155049927
+  - type: sphere
+    origin:
+      origin:
+        - -1.6685733306779293
+        - 0.2
+        - -2.1973192248668987
+      direction:
+        - 0
+        - 0.23349848488081582
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.19034055507269215
+          - 0.3008222352430013
+          - 0.0722198002829605
+  - type: sphere
+    origin:
+      origin:
+        - -1.4093255445008213
+        - 0.2
+        - -1.105550778345446
+      direction:
+        - 0
+        - 0.06789824289825402
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.18906158876395976
+          - 0.04095432363082676
+          - 0.13151126179278536
+  - type: sphere
+    origin:
+      origin:
+        - -1.2446783544404094
+        - 0.2
+        - -0.4364821578907936
+      direction:
+        - 0
+        - 0.09568942598837787
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6502264117939595
+          - 0.04955255333784745
+          - 0.8395543611941956
+  - type: sphere
+    origin:
+      origin:
+        - -1.3528316570284584
+        - 0.2
+        - 0.5584874631255403
+      direction:
+        - 0
+        - 0.24616740537156329
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13587957281238675
+          - 0.05583463571317847
+          - 0.34257401083149525
+  - type: sphere
+    origin:
+      origin:
+        - -1.2520436685116887
+        - 0.2
+        - 1.5135942801982236
+      direction:
+        - 0
+        - 0.21344583512756116
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12410360297535439
+          - 0.08927179860942207
+          - 0.1838739920905976
+  - type: sphere
+    origin:
+      origin:
+        - -1.2391828280999069
+        - 0.2
+        - 2.3959491317418364
+      direction:
+        - 0
+        - 0.12351833389273797
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4430754014938333
+          - 0.16699387697964949
+          - 0.11872591247098614
+  - type: sphere
+    origin:
+      origin:
+        - -1.4140318309954711
+        - 0.2
+        - 3.4783230139971204
+      direction:
+        - 0
+        - 0.4967667277924814
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1141079098271248
+          - 0.06071905290170328
+          - 0.07518545372336281
+  - type: sphere
+    origin:
+      origin:
+        - -1.386167978850943
+        - 0.2
+        - 4.6299959171531615
+      direction:
+        - 0
+        - 0.30078034322858244
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.17828139414063698
+          - 0.15473668234009533
+          - 0.0004076229950598985
+  - type: sphere
+    origin:
+      origin:
+        - -1.106749624476765
+        - 0.2
+        - 5.587043216962312
+      direction:
+        - 0
+        - 0.40760303607844145
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.10498643100578701
+          - 0.035731348119790986
+          - 0.4180333932067489
+  - type: sphere
+    origin:
+      origin:
+        - -1.950200148711317
+        - 0.2
+        - 6.031779994001434
+      direction:
+        - 0
+        - 0.2601193467023648
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3042914047808039
+          - 0.6070469397521105
+          - 0.2120824370387878
+  - type: sphere
+    origin:
+      origin:
+        - -1.689559952511126
+        - 0.2
+        - 7.769585330492394
+      direction:
+        - 0
+        - 0.10754420178093455
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12696450106869134
+          - 0.10856590751888573
+          - 0.16868321768365926
+  - type: sphere
+    origin:
+      origin:
+        - -1.931116389366728
+        - 0.2
+        - 8.311917627360218
+      direction:
+        - 0
+        - 0.39425909787018715
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.14874301484089605
+          - 0.29706153101343635
+          - 0.13591176830460966
+  - type: sphere
+    origin:
+      origin:
+        - -1.9273376526754156
+        - 0.2
+        - 9.050285472655894
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -1.5270142464098044
+        - 0.2
+        - 10.515042354442864
+      direction:
+        - 0
+        - 0.2214902036159665
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1815365721557363
+          - 0.0178765002001104
+          - 0.6958905097363708
+  - type: sphere
+    origin:
+      origin:
+        - -0.9986366457594904
+        - 0.2
+        - -10.19077981539017
+      direction:
+        - 0
+        - 0.406609554481202
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.05713261301670353
+          - 0.9110056416902019
+          - 0.7139693360079994
+  - type: sphere
+    origin:
+      origin:
+        - -0.24537792722217955
+        - 0.2
+        - -9.217587334187819
+      direction:
+        - 0
+        - 0.04516354327798178
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.20774447151767061
+          - 0.15123086178899217
+          - 0.5252037042369533
+  - type: sphere
+    origin:
+      origin:
+        - -0.5088602688279431
+        - 0.2
+        - -8.294821548815328
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5620489837104654
+        - 0.5573382894457719
+        - 0.5807161395704958
+      fuzz: 0.274361599917724
+  - type: sphere
+    origin:
+      origin:
+        - -0.504026415587979
+        - 0.2
+        - -7.364142549955265
+      direction:
+        - 0
+        - 0.4975625899252935
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.048972697276518734
+          - 0.5223715674581279
+          - 0.15744075580174569
+  - type: sphere
+    origin:
+      origin:
+        - -0.9397610551832201
+        - 0.2
+        - -6.971231037074805
+      direction:
+        - 0
+        - 0.418018962196458
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07723192615375132
+          - 0.046145666157343807
+          - 0.46199707820743696
+  - type: sphere
+    origin:
+      origin:
+        - -0.30687029045337366
+        - 0.2
+        - -5.209280103044902
+      direction:
+        - 0
+        - 0.35568633438596714
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.21526341634660706
+          - 0.24455453855914763
+          - 0.2174877309853679
+  - type: sphere
+    origin:
+      origin:
+        - -0.13801483780407864
+        - 0.2
+        - -4.45859151278583
+      direction:
+        - 0
+        - 0.21437168678823354
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3137832212885858
+          - 0.29626785740152284
+          - 0.13936295349148284
+  - type: sphere
+    origin:
+      origin:
+        - -0.20923065019469766
+        - 0.2
+        - -3.9837155020200115
+      direction:
+        - 0
+        - 0.08113736007783029
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2063735447556765
+          - 0.5821147581779935
+          - 0.4736325477411878
+  - type: sphere
+    origin:
+      origin:
+        - -0.29176449832372175
+        - 0.2
+        - -2.3682371306208823
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8147002517389266
+        - 0.7476905188130349
+        - 0.9768882926723577
+      fuzz: 0.49051414945394434
+  - type: sphere
+    origin:
+      origin:
+        - -0.49564893252047637
+        - 0.2
+        - -1.4856577065572645
+      direction:
+        - 0
+        - 0.41863984126992854
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0572954931882188
+          - 0.709871345038116
+          - 0.015551107829242237
+  - type: sphere
+    origin:
+      origin:
+        - -0.5983279746289372
+        - 0.2
+        - -0.7490594907185089
+      direction:
+        - 0
+        - 0.43628510991149766
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.8625304275790308
+          - 0.0056141177212180576
+          - 0.5287050257724837
+  - type: sphere
+    origin:
+      origin:
+        - -0.6678773494249426
+        - 0.2
+        - 0.4257065295247682
+      direction:
+        - 0
+        - 0.3075776579300739
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.48116085861250235
+          - 0.043631789715832564
+          - 0.5238766127265838
+  - type: sphere
+    origin:
+      origin:
+        - -0.7507136156774161
+        - 0.2
+        - 1.285642316038695
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -0.14482378301514376
+        - 0.2
+        - 2.6943790488788935
+      direction:
+        - 0
+        - 0.30864598181473973
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.34720998498214134
+          - 0.04358089069508341
+          - 0.3771403336612743
+  - type: sphere
+    origin:
+      origin:
+        - -0.7385494172541244
+        - 0.2
+        - 3.45079743734042
+      direction:
+        - 0
+        - 0.29078545043091225
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1530547995435112
+          - 0.5012370608614208
+          - 0.3088290829283958
+  - type: sphere
+    origin:
+      origin:
+        - -0.14999696692642261
+        - 0.2
+        - 4.760560110254324
+      direction:
+        - 0
+        - 0.1161597597574287
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.029218876252024944
+          - 0.03242949651759887
+          - 0.0571255899943058
+  - type: sphere
+    origin:
+      origin:
+        - -0.6657374664943108
+        - 0.2
+        - 5.831494642247904
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9598668846644347
+        - 0.6648195866744921
+        - 0.8073976817398302
+      fuzz: 0.11311758020658917
+  - type: sphere
+    origin:
+      origin:
+        - -0.31440513135795856
+        - 0.2
+        - 6.292474909373876
+      direction:
+        - 0
+        - 0.3411351944895404
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07262405989507208
+          - 0.01744601272339083
+          - 0.1788843044662513
+  - type: sphere
+    origin:
+      origin:
+        - -0.27785837598325025
+        - 0.2
+        - 7.0482554307647405
+      direction:
+        - 0
+        - 0.15475588532760637
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3200148334996508
+          - 0.01342059477045429
+          - 0.08356080983981369
+  - type: sphere
+    origin:
+      origin:
+        - -0.425852646383417
+        - 0.2
+        - 8.809065295116076
+      direction:
+        - 0
+        - 0.1777779902675578
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6803259545224317
+          - 0.00960976862336123
+          - 0.058932463033299444
+  - type: sphere
+    origin:
+      origin:
+        - -0.9757975758737025
+        - 0.2
+        - 9.767024241192992
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9164648983069955
+        - 0.6072500674319233
+        - 0.9447884697316717
+      fuzz: 0.3110183331684165
+  - type: sphere
+    origin:
+      origin:
+        - -0.48006783229889183
+        - 0.2
+        - 10.540217272754203
+      direction:
+        - 0
+        - 0.3694826601165159
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.022918912781859997
+          - 0.5381717157782985
+          - 0.5795139891950751
+  - type: sphere
+    origin:
+      origin:
+        - 0.875328000429476
+        - 0.2
+        - -10.45756060816038
+      direction:
+        - 0
+        - 0.14553109115754864
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.008686910494869027
+          - 0.07187660343250252
+          - 0.08408547371807319
+  - type: sphere
+    origin:
+      origin:
+        - 0.19488149756567869
+        - 0.2
+        - -9.67164364842092
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7053222846580481
+        - 0.6566222860624382
+        - 0.8182690712533545
+      fuzz: 0.3679846201155897
+  - type: sphere
+    origin:
+      origin:
+        - 0.015183652949981542
+        - 0.2
+        - -8.932385846370675
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6842425726733921
+        - 0.9675293375081878
+        - 0.8371840859735336
+      fuzz: 0.4559704425014804
+  - type: sphere
+    origin:
+      origin:
+        - 0.4909267505185728
+        - 0.2
+        - -7.58575169384055
+      direction:
+        - 0
+        - 0.04937743495487759
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.8130319778030621
+          - 0.7302791103333558
+          - 0.014769506250513223
+  - type: sphere
+    origin:
+      origin:
+        - 0.8989332369703553
+        - 0.2
+        - -6.638733035599254
+      direction:
+        - 0
+        - 0.1537735483070925
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13805387887990164
+          - 0.06892425534885284
+          - 0.1001909637153381
+  - type: sphere
+    origin:
+      origin:
+        - 0.6258704902414596
+        - 0.2
+        - -5.30107098427867
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5782264600407833
+        - 0.8803501249755068
+        - 0.9281156891586118
+      fuzz: 0.45249304999553663
+  - type: sphere
+    origin:
+      origin:
+        - 0.2666263232152795
+        - 0.2
+        - -4.402037244950609
+      direction:
+        - 0
+        - 0.15021632435479582
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.02116638739539978
+          - 0.14835102575943834
+          - 0.5709612219264766
+  - type: sphere
+    origin:
+      origin:
+        - 0.36788365922064464
+        - 0.2
+        - -3.9419762527196744
+      direction:
+        - 0
+        - 0.0849978111177091
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1499945098898557
+          - 0.459787683515982
+          - 0.08809644825840586
+  - type: sphere
+    origin:
+      origin:
+        - 0.7542784333277189
+        - 0.2
+        - -2.2276434748406815
+      direction:
+        - 0
+        - 0.1908895318342531
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.14380524431030933
+          - 0.10380791223369065
+          - 0.092855147758387
+  - type: sphere
+    origin:
+      origin:
+        - 0.3197335519516252
+        - 0.2
+        - -1.8083279893371278
+      direction:
+        - 0
+        - 0.41905242343522525
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4710738259291813
+          - 0.012463915626741517
+          - 0.11237224668152518
+  - type: sphere
+    origin:
+      origin:
+        - 0.7890101982123278
+        - 0.2
+        - -0.41813107901963864
+      direction:
+        - 0
+        - 0.46268235824925047
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.08173939318898894
+          - 0.05515076112515644
+          - 0.1511391016930907
+  - type: sphere
+    origin:
+      origin:
+        - 0.13715242309593342
+        - 0.2
+        - 0.8208729173525274
+      direction:
+        - 0
+        - 0.04775470536083909
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.24632591043240068
+          - 0.15791351822994779
+          - 0.09340916483823657
+  - type: sphere
+    origin:
+      origin:
+        - 0.8206807536306014
+        - 0.2
+        - 1.3514905292488522
+      direction:
+        - 0
+        - 0.45090495939390834
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6283968698736164
+          - 0.17853152182046042
+          - 0.5548163419902331
+  - type: sphere
+    origin:
+      origin:
+        - 0.11915961152291973
+        - 0.2
+        - 2.2882148113278316
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6494884807797174
+        - 0.9367272791316184
+        - 0.9541492574608219
+      fuzz: 0.4334576239344499
+  - type: sphere
+    origin:
+      origin:
+        - 0.4084608169234852
+        - 0.2
+        - 3.177708543021169
+      direction:
+        - 0
+        - 0.041346822997706895
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.15672153287129084
+          - 0.5066409445462438
+          - 0.1383747532969079
+  - type: sphere
+    origin:
+      origin:
+        - 0.14871486533810732
+        - 0.2
+        - 4.122109142962019
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5289551910495439
+        - 0.7913880797110286
+        - 0.8241338852764089
+      fuzz: 0.49379582499618785
+  - type: sphere
+    origin:
+      origin:
+        - 0.588234974007445
+        - 0.2
+        - 5.010689131296455
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5644007966961748
+        - 0.5217172480228796
+        - 0.960796990828987
+      fuzz: 0.08443624395893908
+  - type: sphere
+    origin:
+      origin:
+        - 0.7868482880666843
+        - 0.2
+        - 6.738390137435632
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7973210432711919
+        - 0.5242816899832663
+        - 0.778215646670064
+      fuzz: 0.1505386583512324
+  - type: sphere
+    origin:
+      origin:
+        - 0.6739207526695272
+        - 0.2
+        - 7.713351901753462
+      direction:
+        - 0
+        - 0.177210073872288
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07580330087011494
+          - 0.05969367388898052
+          - 0.054456027848622385
+  - type: sphere
+    origin:
+      origin:
+        - 0.23217708094617856
+        - 0.2
+        - 8.715702212688004
+      direction:
+        - 0
+        - 0.16444781028857908
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7927583874746685
+          - 0.6792378489351611
+          - 0.510290440439952
+  - type: sphere
+    origin:
+      origin:
+        - 0.42763892427079175
+        - 0.2
+        - 9.30296558493094
+      direction:
+        - 0
+        - 0.26428265513854415
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.18167100322306431
+          - 0.13359322286626174
+          - 0.2827912860094073
+  - type: sphere
+    origin:
+      origin:
+        - 0.46606546563158185
+        - 0.2
+        - 10.771751258963121
+      direction:
+        - 0
+        - 0.06584786948181248
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4338153076199135
+          - 0.061184064043308097
+          - 0.7131102122972474
+  - type: sphere
+    origin:
+      origin:
+        - 1.6407441847555688
+        - 0.2
+        - -10.46233835823006
+      direction:
+        - 0
+        - 0.12449297303782841
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.17363172426349047
+          - 0.2631104460634648
+          - 0.03371615582137431
+  - type: sphere
+    origin:
+      origin:
+        - 1.7593542265757722
+        - 0.2
+        - -9.920416422240072
+      direction:
+        - 0
+        - 0.4810519491674529
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.05614302380455095
+          - 0.011518892672316565
+          - 0.07950584320108499
+  - type: sphere
+    origin:
+      origin:
+        - 1.3660046094494467
+        - 0.2
+        - -8.803935044267295
+      direction:
+        - 0
+        - 0.03338519224679376
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.32741858137900304
+          - 0.43623854383771016
+          - 0.04819270392450525
+  - type: sphere
+    origin:
+      origin:
+        - 1.3550224655335519
+        - 0.2
+        - -7.377503986269561
+      direction:
+        - 0
+        - 0.4801072119741762
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06883660020492456
+          - 0.4187719243124655
+          - 0.3370307239341993
+  - type: sphere
+    origin:
+      origin:
+        - 1.7239989078554703
+        - 0.2
+        - -6.817062473905201
+      direction:
+        - 0
+        - 0.10097954572609819
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1681277897079345
+          - 0.718736785374037
+          - 0.032381168001962
+  - type: sphere
+    origin:
+      origin:
+        - 1.1944864949821303
+        - 0.2
+        - -5.508761728555354
+      direction:
+        - 0
+        - 0.48088280514479115
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3083346143117992
+          - 0.041324386033119116
+          - 0.20357080404279532
+  - type: sphere
+    origin:
+      origin:
+        - 1.5760057627854946
+        - 0.2
+        - -4.175335443973607
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8776587718610664
+        - 0.659408329835158
+        - 0.7179763797087148
+      fuzz: 0.3123002706057957
+  - type: sphere
+    origin:
+      origin:
+        - 1.0841299011858456
+        - 0.2
+        - -3.6506532502689737
+      direction:
+        - 0
+        - 0.3874232014667706
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.49051067148802246
+          - 0.766401528227566
+          - 0.20969979496893082
+  - type: sphere
+    origin:
+      origin:
+        - 1.875181261307378
+        - 0.2
+        - -2.795351395777669
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9510337141503213
+        - 0.796773710555688
+        - 0.5040722062026813
+      fuzz: 0.1252458685612632
+  - type: sphere
+    origin:
+      origin:
+        - 1.0613798113905404
+        - 0.2
+        - -1.3809558029229967
+      direction:
+        - 0
+        - 0.017204485944205233
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07573673525549086
+          - 0.5023178429339779
+          - 0.000707439366979887
+  - type: sphere
+    origin:
+      origin:
+        - 1.4124674945842257
+        - 0.2
+        - -0.21598993503678443
+      direction:
+        - 0
+        - 0.12962318780608795
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01806334680398683
+          - 0.02279355563956832
+          - 0.0909815417529656
+  - type: sphere
+    origin:
+      origin:
+        - 1.8938748403309584
+        - 0.2
+        - 0.5113937708195984
+      direction:
+        - 0
+        - 0.06069578948800164
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09265181001301813
+          - 0.00352607221910686
+          - 0.5017693506242613
+  - type: sphere
+    origin:
+      origin:
+        - 1.5333441935772356
+        - 0.2
+        - 1.205373777273158
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5978650735510507
+        - 0.582802714312049
+        - 0.7503862908801413
+      fuzz: 0.4776440427983657
+  - type: sphere
+    origin:
+      origin:
+        - 1.5813061233983823
+        - 0.2
+        - 2.479163492869745
+      direction:
+        - 0
+        - 0.002849433250279726
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4055535654645506
+          - 0.09020634967735956
+          - 0.2580608368639095
+  - type: sphere
+    origin:
+      origin:
+        - 1.5835616107676036
+        - 0.2
+        - 3.8612585801419708
+      direction:
+        - 0
+        - 0.16744953950575087
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.33047335297420005
+          - 0.518753590524564
+          - 0.027858385087881833
+  - type: sphere
+    origin:
+      origin:
+        - 1.4797110145180112
+        - 0.2
+        - 4.502529858632917
+      direction:
+        - 0
+        - 0.05720083824588901
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5939543214411036
+          - 0.023260091326361962
+          - 0.3214896182025475
+  - type: sphere
+    origin:
+      origin:
+        - 1.3774823827635063
+        - 0.2
+        - 5.086113307861986
+      direction:
+        - 0
+        - 0.2771812214108484
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5942788434490516
+          - 0.6739247973022703
+          - 0.036246313468913605
+  - type: sphere
+    origin:
+      origin:
+        - 1.0460216658863533
+        - 0.2
+        - 6.897014400863287
+      direction:
+        - 0
+        - 0.13034338395267925
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16776799373326526
+          - 0.12408108754007438
+          - 0.07375673957091032
+  - type: sphere
+    origin:
+      origin:
+        - 1.1332436309367513
+        - 0.2
+        - 7.8381767428656035
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 1.8394276162447638
+        - 0.2
+        - 8.695381065753537
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 1.1929397280640874
+        - 0.2
+        - 9.604032530216994
+      direction:
+        - 0
+        - 0.2471028494322905
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5913171473593538
+          - 0.07476598640176373
+          - 0.1573654522991648
+  - type: sphere
+    origin:
+      origin:
+        - 1.5876129245032147
+        - 0.2
+        - 10.052642358614946
+      direction:
+        - 0
+        - 0.486304256973843
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.7521419642187026
+          - 0.5294351488144955
+          - 0.1324344850213637
+  - type: sphere
+    origin:
+      origin:
+        - 2.250722756667751
+        - 0.2
+        - -10.541175405413195
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8202347516887901
+        - 0.7250576479617745
+        - 0.5382546517744697
+      fuzz: 0.48616168857831826
+  - type: sphere
+    origin:
+      origin:
+        - 2.579671064230097
+        - 0.2
+        - -9.80009611394479
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9583017121068276
+        - 0.9715172571794716
+        - 0.8654003371819097
+      fuzz: 0.009299788239604045
+  - type: sphere
+    origin:
+      origin:
+        - 2.7868009516733605
+        - 0.2
+        - -8.647847831295875
+      direction:
+        - 0
+        - 0.4120168454182315
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.129303601619768
+          - 0.48579826549011956
+          - 0.06164120319207562
+  - type: sphere
+    origin:
+      origin:
+        - 2.819320753557478
+        - 0.2
+        - -7.136066091197707
+      direction:
+        - 0
+        - 0.06398246423017778
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6191839811603954
+          - 0.3081618229083292
+          - 0.16770302656175576
+  - type: sphere
+    origin:
+      origin:
+        - 2.478019009245383
+        - 0.2
+        - -6.691604778121037
+      direction:
+        - 0
+        - 0.24412390752414298
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5245877810371146
+          - 0.0172757164685238
+          - 0.06346724286340351
+  - type: sphere
+    origin:
+      origin:
+        - 2.088528675671494
+        - 0.2
+        - -5.584698557257263
+      direction:
+        - 0
+        - 0.4691538054690964
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09255878219267971
+          - 0.5159064478112475
+          - 0.017759008639830518
+  - type: sphere
+    origin:
+      origin:
+        - 2.175332697053358
+        - 0.2
+        - -4.221127491504408
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9450414240682236
+        - 0.9124183217505428
+        - 0.7028180231161353
+      fuzz: 0.4100962366107723
+  - type: sphere
+    origin:
+      origin:
+        - 2.8870586963660108
+        - 0.2
+        - -3.8494106253280713
+      direction:
+        - 0
+        - 0.47216571835803683
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.44384866887558977
+          - 0.23025725439137024
+          - 0.10171606473882572
+  - type: sphere
+    origin:
+      origin:
+        - 2.0309561724607774
+        - 0.2
+        - -2.461223460094099
+      direction:
+        - 0
+        - 0.3380788363917286
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6831314540713861
+          - 0.009143127680502109
+          - 0.006211500403635362
+  - type: sphere
+    origin:
+      origin:
+        - 2.4717131566886597
+        - 0.2
+        - -1.4118527186315273
+      direction:
+        - 0
+        - 0.08038264145303636
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.33750572918086474
+          - 0.25378797858388336
+          - 0.4120370330769647
+  - type: sphere
+    origin:
+      origin:
+        - 2.74401071167529
+        - 0.2
+        - -0.6115918549678996
+      direction:
+        - 0
+        - 0.2853629424611816
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3998106039207093
+          - 0.19769689104589647
+          - 0.36601831976102234
+  - type: sphere
+    origin:
+      origin:
+        - 2.0374334384394532
+        - 0.2
+        - 0.5626212694591605
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5135201253077676
+        - 0.5616984306576616
+        - 0.9459419288782211
+      fuzz: 0.016533817080639366
+  - type: sphere
+    origin:
+      origin:
+        - 2.569110270048949
+        - 0.2
+        - 1.575555297378033
+      direction:
+        - 0
+        - 0.2535011672541626
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5027736013325049
+          - 0.08159139168424612
+          - 0.09632482653601382
+  - type: sphere
+    origin:
+      origin:
+        - 2.3426721912479764
+        - 0.2
+        - 2.7818708573490705
+      direction:
+        - 0
+        - 0.4622256620245557
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4117167573502129
+          - 0.15435720219314691
+          - 0.10218493488078982
+  - type: sphere
+    origin:
+      origin:
+        - 2.3748130438328894
+        - 0.2
+        - 3.464774639918826
+      direction:
+        - 0
+        - 0.08082634852269877
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2853805993552358
+          - 0.04305081181376693
+          - 0.07770650882751023
+  - type: sphere
+    origin:
+      origin:
+        - 2.4180827596955274
+        - 0.2
+        - 4.412579799603561
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6390959349317236
+        - 0.8702337442830135
+        - 0.5171659527162463
+      fuzz: 0.1697770585003922
+  - type: sphere
+    origin:
+      origin:
+        - 2.522331201268668
+        - 0.2
+        - 5.755285335681733
+      direction:
+        - 0
+        - 0.30394537795117776
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.05206730989960645
+          - 0.04453514431387179
+          - 0.5815497739742553
+  - type: sphere
+    origin:
+      origin:
+        - 2.8626180385651967
+        - 0.2
+        - 6.088233015835941
+      direction:
+        - 0
+        - 0.3746843244295845
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0885296645659514
+          - 0.20546977765811794
+          - 0.03187080616817924
+  - type: sphere
+    origin:
+      origin:
+        - 2.8911248853442797
+        - 0.2
+        - 7.015269699494902
+      direction:
+        - 0
+        - 0.21313514241297998
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.19573715392140606
+          - 0.02092597288557332
+          - 0.07880717524820008
+  - type: sphere
+    origin:
+      origin:
+        - 2.8837364754048362
+        - 0.2
+        - 8.289955941159054
+      direction:
+        - 0
+        - 0.45655850574552365
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.11511696138234435
+          - 0.014397071844905641
+          - 0.008865124621195035
+  - type: sphere
+    origin:
+      origin:
+        - 2.5570238480378507
+        - 0.2
+        - 9.08968773670458
+      direction:
+        - 0
+        - 0.22618894517782706
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.14613094347140462
+          - 0.39932658145707267
+          - 0.17277695239400803
+  - type: sphere
+    origin:
+      origin:
+        - 2.5121392647244
+        - 0.2
+        - 10.426442589904926
+      direction:
+        - 0
+        - 0.10480654907576509
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07429403544315277
+          - 0.00127459201394596
+          - 0.10513249320767536
+  - type: sphere
+    origin:
+      origin:
+        - 3.888445973844849
+        - 0.2
+        - -10.318944240386637
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9223464864714581
+        - 0.7694851680785617
+        - 0.8741277210061132
+      fuzz: 0.035021301822503244
+  - type: sphere
+    origin:
+      origin:
+        - 3.0128761737165646
+        - 0.2
+        - -9.755871425547328
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.600198893946741
+        - 0.5931391039878613
+        - 0.5342280550890184
+      fuzz: 0.4382456763219966
+  - type: sphere
+    origin:
+      origin:
+        - 3.824151991784147
+        - 0.2
+        - -8.591565085952922
+      direction:
+        - 0
+        - 0.45838950791900374
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.22541241415534038
+          - 0.7085038853485797
+          - 0.1831118085360999
+  - type: sphere
+    origin:
+      origin:
+        - 3.7088918458590405
+        - 0.2
+        - -7.5427607597322925
+      direction:
+        - 0
+        - 0.48966699390305274
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6937651413459982
+          - 0.4602216476489918
+          - 0.12807165514099506
+  - type: sphere
+    origin:
+      origin:
+        - 3.1970829334380406
+        - 0.2
+        - -6.300047107855753
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9191484410520473
+        - 0.8644512128029165
+        - 0.7248013180354232
+      fuzz: 0.07112079067515611
+  - type: sphere
+    origin:
+      origin:
+        - 3.2026902699653497
+        - 0.2
+        - -5.159293257846392
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 3.0019248415404176
+        - 0.2
+        - -4.671388542737758
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.886736111937138
+        - 0.7286790414224058
+        - 0.962823959649801
+      fuzz: 0.3629994771536849
+  - type: sphere
+    origin:
+      origin:
+        - 3.537882781056441
+        - 0.2
+        - -3.5775718837350703
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5499757571203729
+        - 0.7642487169920616
+        - 0.6100881673129523
+      fuzz: 0.30899791492654993
+  - type: sphere
+    origin:
+      origin:
+        - 3.6899923751336137
+        - 0.2
+        - -2.199477264745554
+      direction:
+        - 0
+        - 0.4621197509973803
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.08064922860343365
+          - 0.001648820227489799
+          - 0.15448920850695405
+  - type: sphere
+    origin:
+      origin:
+        - 3.469016747785579
+        - 0.2
+        - -1.6397675983155833
+      direction:
+        - 0
+        - 0.38768984919482735
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.011354536082482986
+          - 0.38408188990366954
+          - 0.17920358965874825
+  - type: sphere
+    origin:
+      origin:
+        - 3.238937552208016
+        - 0.2
+        - 1.1446469787711677
+      direction:
+        - 0
+        - 0.35826475451621026
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.010869147762372702
+          - 0.012836325419958937
+          - 0.5927937366750136
+  - type: sphere
+    origin:
+      origin:
+        - 3.2524058718387985
+        - 0.2
+        - 2.4103772256174762
+      direction:
+        - 0
+        - 0.37662902708617657
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6611007634177055
+          - 0.1563950160282781
+          - 0.06293017927134532
+  - type: sphere
+    origin:
+      origin:
+        - 3.1819008442386254
+        - 0.2
+        - 3.7431956519911878
+      direction:
+        - 0
+        - 0.4624188904475725
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01648215316483041
+          - 0.1333308948688739
+          - 0.575219458245504
+  - type: sphere
+    origin:
+      origin:
+        - 3.5102306956825817
+        - 0.2
+        - 4.25489248346031
+      direction:
+        - 0
+        - 0.04411700776440111
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4992853744864574
+          - 0.19082268687983733
+          - 0.4084347520318966
+  - type: sphere
+    origin:
+      origin:
+        - 3.1980466721995082
+        - 0.2
+        - 5.582841680005343
+      direction:
+        - 0
+        - 0.036533777797374184
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5246154590993962
+          - 0.6992719569639372
+          - 0.14852377703481562
+  - type: sphere
+    origin:
+      origin:
+        - 3.894942824754564
+        - 0.2
+        - 6.191418583626173
+      direction:
+        - 0
+        - 0.3587209531196262
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.059593214253812546
+          - 0.41446637877390324
+          - 0.005531895821401464
+  - type: sphere
+    origin:
+      origin:
+        - 3.3116705213052775
+        - 0.2
+        - 7.076947027638107
+      direction:
+        - 0
+        - 0.45109487251571484
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13517144457767027
+          - 0.7957842366223872
+          - 0.06405369227817845
+  - type: sphere
+    origin:
+      origin:
+        - 3.6572595825834107
+        - 0.2
+        - 8.809737922268196
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9537046334379199
+        - 0.9964610991742934
+        - 0.9155843615079435
+      fuzz: 0.43401129019749946
+  - type: sphere
+    origin:
+      origin:
+        - 3.3193603832714182
+        - 0.2
+        - 9.571194871787881
+      direction:
+        - 0
+        - 0.3875672332968579
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6143667193560516
+          - 0.32279399528971126
+          - 0.258381569560096
+  - type: sphere
+    origin:
+      origin:
+        - 3.1333182994751554
+        - 0.2
+        - 10.043965860555597
+      direction:
+        - 0
+        - 0.10092696224677455
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07447168978577554
+          - 0.05841653379945674
+          - 0.22277456854373362
+  - type: sphere
+    origin:
+      origin:
+        - 4.654780265696226
+        - 0.2
+        - -10.629474495065331
+      direction:
+        - 0
+        - 0.285187863864383
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5966063664955558
+          - 0.4051468917110815
+          - 0.008728756744777955
+  - type: sphere
+    origin:
+      origin:
+        - 4.648260426168152
+        - 0.2
+        - -9.851163559674964
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.557331964706791
+        - 0.7728873381919489
+        - 0.986170872524371
+      fuzz: 0.2650945470019866
+  - type: sphere
+    origin:
+      origin:
+        - 4.77702772596673
+        - 0.2
+        - -8.158552097759635
+      direction:
+        - 0
+        - 0.08620786014411647
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.22200892659278149
+          - 0.09166063233378804
+          - 0.1531991515471334
+  - type: sphere
+    origin:
+      origin:
+        - 4.773193451776641
+        - 0.2
+        - -7.997488640587846
+      direction:
+        - 0
+        - 0.12613833242911482
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5131841067006716
+          - 0.02180453934580985
+          - 0.7073381791897085
+  - type: sphere
+    origin:
+      origin:
+        - 4.08421164356583
+        - 0.2
+        - -6.572737378886077
+      direction:
+        - 0
+        - 0.18666552573584477
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6779141396869677
+          - 0.04646258405458321
+          - 0.11508811351293169
+  - type: sphere
+    origin:
+      origin:
+        - 4.363606171766792
+        - 0.2
+        - -5.372317547589245
+      direction:
+        - 0
+        - 0.22265082493029859
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4764839029189756
+          - 0.056906626442932234
+          - 0.2576850975121695
+  - type: sphere
+    origin:
+      origin:
+        - 4.109627930464658
+        - 0.2
+        - -4.893287376944619
+      direction:
+        - 0
+        - 0.4720342702424382
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.9392676778302518
+          - 0.6020059065113573
+          - 0.570716075593459
+  - type: sphere
+    origin:
+      origin:
+        - 4.16018902710424
+        - 0.2
+        - -3.707094886469927
+      direction:
+        - 0
+        - 0.4192276409791362
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.011366709282979021
+          - 0.5805998060542935
+          - 0.11569081540097215
+  - type: sphere
+    origin:
+      origin:
+        - 4.50239464184881
+        - 0.2
+        - -2.3840644080683253
+      direction:
+        - 0
+        - 0.40124474268584903
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.36196026051540947
+          - 0.14511283226402902
+          - 0.8481444790335525
+  - type: sphere
+    origin:
+      origin:
+        - 4.151485490896816
+        - 0.2
+        - -1.146047141957387
+      direction:
+        - 0
+        - 0.007260052194863059
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.8782174011788403
+          - 0.07914851389235404
+          - 0.1413133372500335
+  - type: sphere
+    origin:
+      origin:
+        - 4.822734598627931
+        - 0.2
+        - -0.9249993083108322
+      direction:
+        - 0
+        - 0.0814982770245754
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4897234602638002
+          - 0.006096558186815016
+          - 0.12352498788439481
+  - type: sphere
+    origin:
+      origin:
+        - 4.652996874820413
+        - 0.2
+        - 1.094700697236316
+      direction:
+        - 0
+        - 0.19665841715812793
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07532794051406815
+          - 0.3687907301306945
+          - 0.34005008213627913
+  - type: sphere
+    origin:
+      origin:
+        - 4.233421434660315
+        - 0.2
+        - 2.6925750076780792
+      direction:
+        - 0
+        - 0.25703089261761686
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.21052828096527906
+          - 0.4526978889293303
+          - 0.20515944298801095
+  - type: sphere
+    origin:
+      origin:
+        - 4.858456618269488
+        - 0.2
+        - 3.62605103478912
+      direction:
+        - 0
+        - 0.08563366486390456
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07729770444734632
+          - 0.4149186695505692
+          - 0.3221249066965352
+  - type: sphere
+    origin:
+      origin:
+        - 4.812789139910591
+        - 0.2
+        - 4.701799092255419
+      direction:
+        - 0
+        - 0.2764625063369906
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.20274102011214135
+          - 0.33010404612702166
+          - 0.3306774331457683
+  - type: sphere
+    origin:
+      origin:
+        - 4.816712101903071
+        - 0.2
+        - 5.460170233165418
+      direction:
+        - 0
+        - 0.4329940302410871
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.43746398777338125
+          - 0.14035840866061813
+          - 0.008210146940775365
+  - type: sphere
+    origin:
+      origin:
+        - 4.437240383809097
+        - 0.2
+        - 6.307276440477889
+      direction:
+        - 0
+        - 0.4061306557832906
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.36753171649680527
+          - 0.6437931449067067
+          - 0.19336150201981073
+  - type: sphere
+    origin:
+      origin:
+        - 4.13487398869618
+        - 0.2
+        - 7.6481537000258575
+      direction:
+        - 0
+        - 0.2836368678174253
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16140510256464882
+          - 0.01586971539568739
+          - 0.13083791296639435
+  - type: sphere
+    origin:
+      origin:
+        - 4.477187296261009
+        - 0.2
+        - 8.480190520301038
+      direction:
+        - 0
+        - 0.02366690311952019
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.24785290485162553
+          - 0.24532047029843718
+          - 0.08024337756010723
+  - type: sphere
+    origin:
+      origin:
+        - 4.784450733068256
+        - 0.2
+        - 9.132984945518961
+      direction:
+        - 0
+        - 0.40557894670763867
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.25370862990188214
+          - 0.12700725729123602
+          - 0.02186004617457104
+  - type: sphere
+    origin:
+      origin:
+        - 4.8541095430981125
+        - 0.2
+        - 10.483776747015517
+      direction:
+        - 0
+        - 0.49439040179674615
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13292139820434
+          - 0.7610230036209563
+          - 0.6617824927175695
+  - type: sphere
+    origin:
+      origin:
+        - 5.284930377983848
+        - 0.2
+        - -10.452653746349469
+      direction:
+        - 0
+        - 0.05715167055487452
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.37865479000799546
+          - 0.4788700170431123
+          - 0.17765340879820485
+  - type: sphere
+    origin:
+      origin:
+        - 5.528914360348266
+        - 0.2
+        - -9.406582942942787
+      direction:
+        - 0
+        - 0.04316079931623901
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13773465178699892
+          - 0.31128873412400326
+          - 0.09711464293509613
+  - type: sphere
+    origin:
+      origin:
+        - 5.555794446492371
+        - 0.2
+        - -8.501530875402777
+      direction:
+        - 0
+        - 0.3994631892899307
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.08315583632496035
+          - 0.18977737565781833
+          - 0.5353796514422257
+  - type: sphere
+    origin:
+      origin:
+        - 5.555050759199963
+        - 0.2
+        - -7.264101280342601
+      direction:
+        - 0
+        - 0.3181325103087758
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.015726419169391225
+          - 0.028157347657523403
+          - 0.7064599262300739
+  - type: sphere
+    origin:
+      origin:
+        - 5.69007395974732
+        - 0.2
+        - -6.706020429695679
+      direction:
+        - 0
+        - 0.2779860858389162
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3703401283497756
+          - 0.27093792153634083
+          - 0.10503975052545604
+  - type: sphere
+    origin:
+      origin:
+        - 5.716273666735387
+        - 0.2
+        - -5.560373661752182
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.7106220413334178
+        - 0.7427667531079525
+        - 0.8068475116124731
+      fuzz: 0.14757495396617476
+  - type: sphere
+    origin:
+      origin:
+        - 5.894738421364566
+        - 0.2
+        - -4.604205565842189
+      direction:
+        - 0
+        - 0.4092034209867423
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.36032580793901775
+          - 0.4746220723649301
+          - 0.12162899855309826
+  - type: sphere
+    origin:
+      origin:
+        - 5.4163215013445205
+        - 0.2
+        - -3.427960128858063
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.9480205018519154
+        - 0.7284869416167123
+        - 0.5481849065660692
+      fuzz: 0.10667705367862021
+  - type: sphere
+    origin:
+      origin:
+        - 5.506789795390709
+        - 0.2
+        - -2.5258878597013887
+      direction:
+        - 0
+        - 0.07664382422530869
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0001245366078507237
+          - 0.07294720499923149
+          - 0.4405072094664609
+  - type: sphere
+    origin:
+      origin:
+        - 5.540097523475089
+        - 0.2
+        - -1.864697887570237
+      direction:
+        - 0
+        - 0.4625719444384741
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04208243624228504
+          - 0.27813061900926417
+          - 0.10819333259780184
+  - type: sphere
+    origin:
+      origin:
+        - 5.121168846459548
+        - 0.2
+        - -0.1642587416645499
+      direction:
+        - 0
+        - 0.3009648552052621
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2689125556988139
+          - 0.15639619777076633
+          - 0.4759729113773825
+  - type: sphere
+    origin:
+      origin:
+        - 5.5973987838280195
+        - 0.2
+        - 0.5897712368794921
+      direction:
+        - 0
+        - 0.14466071518876283
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.11183805257889093
+          - 0.14596489839006754
+          - 0.07549575418014691
+  - type: sphere
+    origin:
+      origin:
+        - 5.889362097812058
+        - 0.2
+        - 1.694317992726757
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 5.448051967596634
+        - 0.2
+        - 2.6387702359674123
+      direction:
+        - 0
+        - 0.3865480394497642
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.02460370856078688
+          - 0.09902050261527251
+          - 0.7524462318539151
+  - type: sphere
+    origin:
+      origin:
+        - 5.531589460472722
+        - 0.2
+        - 3.678098754656916
+      direction:
+        - 0
+        - 0.2640355337588731
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.043444439184791864
+          - 0.06785540413361879
+          - 0.4077322787679552
+  - type: sphere
+    origin:
+      origin:
+        - 5.07829769636159
+        - 0.2
+        - 4.7747146181395665
+      direction:
+        - 0
+        - 0.27253971566892515
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01295955361945762
+          - 0.0487396671284969
+          - 0.0358140135992387
+  - type: sphere
+    origin:
+      origin:
+        - 5.201146509454705
+        - 0.2
+        - 5.720702095345597
+      direction:
+        - 0
+        - 0.11250153501007348
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04865500045897616
+          - 0.07417999765787464
+          - 0.12643990949565284
+  - type: sphere
+    origin:
+      origin:
+        - 5.898570194745768
+        - 0.2
+        - 6.284391032295768
+      direction:
+        - 0
+        - 0.18178044221473066
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16493475607703653
+          - 0.08767168548452642
+          - 0.20566311436820284
+  - type: sphere
+    origin:
+      origin:
+        - 5.614219954633436
+        - 0.2
+        - 7.6372157660592555
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6564607124146676
+        - 0.7798719786259452
+        - 0.6045151689914972
+      fuzz: 0.36289972901317813
+  - type: sphere
+    origin:
+      origin:
+        - 5.5969855850004375
+        - 0.2
+        - 8.859438267880613
+      direction:
+        - 0
+        - 0.07366473688839015
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.29026959812279013
+          - 0.22773955193051393
+          - 0.007635599910595041
+  - type: sphere
+    origin:
+      origin:
+        - 5.8394676236715295
+        - 0.2
+        - 9.194542270221925
+      direction:
+        - 0
+        - 0.08946223084982768
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0022830671782955608
+          - 0.5959562498034441
+          - 0.60228469948057
+  - type: sphere
+    origin:
+      origin:
+        - 5.59609480239712
+        - 0.2
+        - 10.030585315275978
+      direction:
+        - 0
+        - 0.31944533598025
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.05164079340893005
+          - 0.32722754669771814
+          - 0.08882281269048592
+  - type: sphere
+    origin:
+      origin:
+        - 6.435808604238143
+        - 0.2
+        - -10.148716132479983
+      direction:
+        - 0
+        - 0.04518666495700693
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3477384426330123
+          - 0.032342070886468115
+          - 0.024039022972709278
+  - type: sphere
+    origin:
+      origin:
+        - 6.161155844726404
+        - 0.2
+        - -9.930768099790066
+      direction:
+        - 0
+        - 0.35469246037994434
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04758274933719069
+          - 0.2735427751057062
+          - 0.6333878465110735
+  - type: sphere
+    origin:
+      origin:
+        - 6.6124419666358625
+        - 0.2
+        - -8.181799431730528
+      direction:
+        - 0
+        - 0.4481362445145263
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2694179411409407
+          - 0.19892567601308264
+          - 0.041176640228196254
+  - type: sphere
+    origin:
+      origin:
+        - 6.832453420974855
+        - 0.2
+        - -7.354138984183933
+      direction:
+        - 0
+        - 0.0861114542415401
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.271844792140126
+          - 0.18122497548448654
+          - 0.017535871582931274
+  - type: sphere
+    origin:
+      origin:
+        - 6.454349693855233
+        - 0.2
+        - -6.469480445063878
+      direction:
+        - 0
+        - 0.3646869346547506
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.18819434290480344
+          - 0.23451837243640955
+          - 0.2957172129985255
+  - type: sphere
+    origin:
+      origin:
+        - 6.412459457589294
+        - 0.2
+        - -5.869580323861299
+      direction:
+        - 0
+        - 0.3628118399012423
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5128479516573581
+          - 0.011011455984518748
+          - 0.004212422239763158
+  - type: sphere
+    origin:
+      origin:
+        - 6.123405201604212
+        - 0.2
+        - -4.613292367256634
+      direction:
+        - 0
+        - 0.2164321440023111
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09400380477549465
+          - 0.10462355384210666
+          - 0.11044165426185992
+  - type: sphere
+    origin:
+      origin:
+        - 6.254625859183488
+        - 0.2
+        - -3.5375065265648136
+      direction:
+        - 0
+        - 0.22977926130724852
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.04793294871044625
+          - 0.2150645818404284
+          - 0.05950768349823964
+  - type: sphere
+    origin:
+      origin:
+        - 6.212650512119895
+        - 0.2
+        - -2.2525865201949333
+      direction:
+        - 0
+        - 0.04903372748049184
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.45362946118489395
+          - 0.5724969799800337
+          - 0.15662399169875207
+  - type: sphere
+    origin:
+      origin:
+        - 6.116877653657927
+        - 0.2
+        - -1.7109839824765416
+      direction:
+        - 0
+        - 0.14331848471272196
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.363251246475356
+          - 0.32322078216643163
+          - 0.3192232026685167
+  - type: sphere
+    origin:
+      origin:
+        - 6.8670411423142115
+        - 0.2
+        - -0.7362196834163864
+      direction:
+        - 0
+        - 0.4034521642939178
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09681327649888433
+          - 0.9175057917362
+          - 0.0018345413966213441
+  - type: sphere
+    origin:
+      origin:
+        - 6.220868203382496
+        - 0.2
+        - 0.3204192829384676
+      direction:
+        - 0
+        - 0.2359179201463955
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4705637379755218
+          - 0.6678891162521217
+          - 0.10584024178179136
+  - type: sphere
+    origin:
+      origin:
+        - 6.000603448918597
+        - 0.2
+        - 1.6117991371498377
+      direction:
+        - 0
+        - 0.08413517771990414
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.007147607650616253
+          - 0.17448713285331308
+          - 0.4963439685009411
+  - type: sphere
+    origin:
+      origin:
+        - 6.565990259578351
+        - 0.2
+        - 2.00697686527366
+      direction:
+        - 0
+        - 0.2526766150606767
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.17146242109870227
+          - 0.07484001787900812
+          - 0.03012967380985891
+  - type: sphere
+    origin:
+      origin:
+        - 6.026817661126938
+        - 0.2
+        - 3.0425777739848283
+      direction:
+        - 0
+        - 0.045162269796964416
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07543927058878287
+          - 0.19159016624922792
+          - 0.5106362929445897
+  - type: sphere
+    origin:
+      origin:
+        - 6.2727568125171835
+        - 0.2
+        - 4.633424863001747
+      direction:
+        - 0
+        - 0.2961997137118095
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.036666077230052524
+          - 5.4141164618438835e-06
+          - 0.3430247724402412
+  - type: sphere
+    origin:
+      origin:
+        - 6.3813892810731145
+        - 0.2
+        - 5.4789437050678345
+      direction:
+        - 0
+        - 0.21958701860121915
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12400449648483648
+          - 0.14975629240007646
+          - 0.4066537914780825
+  - type: sphere
+    origin:
+      origin:
+        - 6.522952257457905
+        - 0.2
+        - 6.286441483576914
+      direction:
+        - 0
+        - 0.3379897334624448
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12282315581980198
+          - 0.017330653169477822
+          - 0.6819741070074536
+  - type: sphere
+    origin:
+      origin:
+        - 6.833480123693793
+        - 0.2
+        - 7.1180036986244595
+      direction:
+        - 0
+        - 0.20084976221566658
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.034525736075198266
+          - 0.05923090947535699
+          - 0.4015448051643309
+  - type: sphere
+    origin:
+      origin:
+        - 6.769377886626171
+        - 0.2
+        - 8.582034953266856
+      direction:
+        - 0
+        - 0.20897494712366183
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3222096655695183
+          - 0.008234398195637002
+          - 0.31887164191864514
+  - type: sphere
+    origin:
+      origin:
+        - 6.335528643663195
+        - 0.2
+        - 9.849649131374633
+      direction:
+        - 0
+        - 0.16707010019903162
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4123069731647652
+          - 0.6023635122630052
+          - 0.009028440642279895
+  - type: sphere
+    origin:
+      origin:
+        - 6.347364622762867
+        - 0.2
+        - 10.550307521745335
+      direction:
+        - 0
+        - 0.358211162655974
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.21607886314614114
+          - 0.007316066295560338
+          - 0.25019900770229136
+  - type: sphere
+    origin:
+      origin:
+        - 7.286164706067136
+        - 0.2
+        - -10.366292491192167
+      direction:
+        - 0
+        - 0.24589350096702267
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.48617201408347055
+          - 0.07946494214836493
+          - 0.008337637729901794
+  - type: sphere
+    origin:
+      origin:
+        - 7.143764799383519
+        - 0.2
+        - -9.666009246500979
+      direction:
+        - 0
+        - 0.08958703620043945
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0995211670874717
+          - 0.12285452842079016
+          - 0.15981931206784017
+  - type: sphere
+    origin:
+      origin:
+        - 7.740962853028723
+        - 0.2
+        - -8.684678673330543
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8117350949186414
+        - 0.5039696304959502
+        - 0.8736432132478449
+      fuzz: 0.24138467884524017
+  - type: sphere
+    origin:
+      origin:
+        - 7.515864595392539
+        - 0.2
+        - -7.800180078737388
+      direction:
+        - 0
+        - 0.3640784420264421
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09190635847862907
+          - 0.01890315266074695
+          - 0.17834040436464071
+  - type: sphere
+    origin:
+      origin:
+        - 7.566726511913212
+        - 0.2
+        - -6.47386355946869
+      direction:
+        - 0
+        - 0.02920426735307402
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.07231853590052874
+          - 0.2809840305064228
+          - 0.05430561589215107
+  - type: sphere
+    origin:
+      origin:
+        - 7.7803581303491995
+        - 0.2
+        - -5.161128676292672
+      direction:
+        - 0
+        - 0.4889446474759737
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.16868335609724583
+          - 0.04872744714412714
+          - 0.6733575624126058
+  - type: sphere
+    origin:
+      origin:
+        - 7.621554205347977
+        - 0.2
+        - -4.661141533392282
+      direction:
+        - 0
+        - 0.4754635711268402
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3398902925885098
+          - 0.34539564780095583
+          - 0.20905640258234387
+  - type: sphere
+    origin:
+      origin:
+        - 7.791900936191329
+        - 0.2
+        - -3.3474801890865207
+      direction:
+        - 0
+        - 0.4271151518373654
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2051633333245517
+          - 0.4356590227751101
+          - 0.18657775822689235
+  - type: sphere
+    origin:
+      origin:
+        - 7.312942173919567
+        - 0.2
+        - -2.483658922286506
+      direction:
+        - 0
+        - 0.1309230460219334
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1864616265605064
+          - 0.19639236854705538
+          - 0.40085730799812547
+  - type: sphere
+    origin:
+      origin:
+        - 7.64610761176045
+        - 0.2
+        - -1.420308546304494
+      direction:
+        - 0
+        - 0.32776039677804386
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.14447298653236634
+          - 0.011454197544469151
+          - 0.04859450329506834
+  - type: sphere
+    origin:
+      origin:
+        - 7.3666230298172835
+        - 0.2
+        - -0.7672542508063315
+      direction:
+        - 0
+        - 0.4884010813096448
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06523979008492654
+          - 0.005104528235239146
+          - 0.062297326904547125
+  - type: sphere
+    origin:
+      origin:
+        - 7.808980935879344
+        - 0.2
+        - 0.35568156180721505
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.561540438009687
+        - 0.9024559077054822
+        - 0.9606337946862797
+      fuzz: 0.4176362672927205
+  - type: sphere
+    origin:
+      origin:
+        - 7.229341679463271
+        - 0.2
+        - 1.6713689415297877
+      direction:
+        - 0
+        - 0.27519591689563533
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.016984397110730784
+          - 0.05256769678135931
+          - 0.07302246812899632
+  - type: sphere
+    origin:
+      origin:
+        - 7.587726643051779
+        - 0.2
+        - 2.2811113531780904
+      direction:
+        - 0
+        - 0.23961570936956272
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0005217469120576663
+          - 0.27723536092613493
+          - 0.03862709492950405
+  - type: sphere
+    origin:
+      origin:
+        - 7.276046068848351
+        - 0.2
+        - 3.6711344068815035
+      direction:
+        - 0
+        - 0.22049978929927722
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.014909378557156256
+          - 0.08661966382002094
+          - 0.4185482880122624
+  - type: sphere
+    origin:
+      origin:
+        - 7.070861558369456
+        - 0.2
+        - 4.291824818721705
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8778598762973469
+        - 0.529420454820017
+        - 0.8532606168777201
+      fuzz: 0.1041606045278184
+  - type: sphere
+    origin:
+      origin:
+        - 7.66051914616214
+        - 0.2
+        - 5.1772114165456475
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 7.855288961686534
+        - 0.2
+        - 6.852822878815114
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8634147009066488
+        - 0.9148774019986762
+        - 0.7545951872917915
+      fuzz: 0.3964955671067149
+  - type: sphere
+    origin:
+      origin:
+        - 7.213399646684651
+        - 0.2
+        - 7.620216692191685
+      direction:
+        - 0
+        - 0.34898710126783955
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.016900964623188464
+          - 0.9655675893364843
+          - 0.33106916711940937
+  - type: sphere
+    origin:
+      origin:
+        - 7.877104897643533
+        - 0.2
+        - 8.800554096569668
+      direction:
+        - 0
+        - 0.4418332195926015
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6370385574229638
+          - 0.4784222770436652
+          - 0.18378702867174615
+  - type: sphere
+    origin:
+      origin:
+        - 7.893456541984281
+        - 0.2
+        - 9.158000416941675
+      direction:
+        - 0
+        - 0.492259225842788
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5294025254688094
+          - 0.01880479569915668
+          - 0.009387681779598383
+  - type: sphere
+    origin:
+      origin:
+        - 7.0228299375899415
+        - 0.2
+        - 10.08133631272964
+      direction:
+        - 0
+        - 0.007631334045449828
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.10097453500180287
+          - 0.4788339433504501
+          - 0.0743035925770626
+  - type: sphere
+    origin:
+      origin:
+        - 8.462840399609336
+        - 0.2
+        - -10.405896264604294
+      direction:
+        - 0
+        - 0.2888860085086046
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0459990517857473
+          - 0.8333434132159119
+          - 0.12634354831445557
+  - type: sphere
+    origin:
+      origin:
+        - 8.069704670099632
+        - 0.2
+        - -9.516702158615082
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 8.691468971889124
+        - 0.2
+        - -8.475838174958653
+      direction:
+        - 0
+        - 0.05216778878532757
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.019401132823827088
+          - 0.524806140932914
+          - 0.08644375840370686
+  - type: sphere
+    origin:
+      origin:
+        - 8.237558924291418
+        - 0.2
+        - -7.861668085754453
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 8.543454986343232
+        - 0.2
+        - -6.461805326041354
+      direction:
+        - 0
+        - 0.06740981875394458
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.015577345210977391
+          - 0.08175574756346296
+          - 0.10768957390855671
+  - type: sphere
+    origin:
+      origin:
+        - 8.152567673316952
+        - 0.2
+        - -5.453364623859114
+      direction:
+        - 0
+        - 0.42292039755973027
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.22916154583153747
+          - 0.30521244992950824
+          - 0.6112696864045811
+  - type: sphere
+    origin:
+      origin:
+        - 8.388032016134156
+        - 0.2
+        - -4.459169572084645
+      direction:
+        - 0
+        - 0.15957232448237962
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5108933017566716
+          - 0.36314764472077904
+          - 0.8315412168322502
+  - type: sphere
+    origin:
+      origin:
+        - 8.230017045949403
+        - 0.2
+        - -3.9803338906289203
+      direction:
+        - 0
+        - 0.3864305532966778
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6324896045068934
+          - 0.561407729352473
+          - 0.18402472660348088
+  - type: sphere
+    origin:
+      origin:
+        - 8.873740123736797
+        - 0.2
+        - -2.3242736946942264
+      direction:
+        - 0
+        - 0.1354449233561606
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0853624883119153
+          - 0.29598470056889853
+          - 0.17508110115229847
+  - type: sphere
+    origin:
+      origin:
+        - 8.343398758526124
+        - 0.2
+        - -1.7566094118985585
+      direction:
+        - 0
+        - 0.47432444082576325
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5540722332171905
+          - 0.041090463178329976
+          - 0.3204645919715913
+  - type: sphere
+    origin:
+      origin:
+        - 8.164878345116309
+        - 0.2
+        - -0.46063089218316244
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 8.76871217652772
+        - 0.2
+        - 0.06921322191814414
+      direction:
+        - 0
+        - 0.44864701839696336
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.24779489417683026
+          - 0.18445117759809837
+          - 0.3849691327779166
+  - type: sphere
+    origin:
+      origin:
+        - 8.566895840547915
+        - 0.2
+        - 1.405170904084449
+      direction:
+        - 0
+        - 0.41558768768916393
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3231601656584779
+          - 0.06327496541420297
+          - 0.1059876018721619
+  - type: sphere
+    origin:
+      origin:
+        - 8.129187620237856
+        - 0.2
+        - 2.4073149583524533
+      direction:
+        - 0
+        - 0.1119862577827958
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2025247306838437
+          - 0.38898624534740994
+          - 0.142867664827103
+  - type: sphere
+    origin:
+      origin:
+        - 8.559350082509914
+        - 0.2
+        - 3.4355241676325368
+      direction:
+        - 0
+        - 0.313207973512799
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0017830448969074857
+          - 0.5829213323660377
+          - 0.19708310326697592
+  - type: sphere
+    origin:
+      origin:
+        - 8.573302669109623
+        - 0.2
+        - 4.035065027883159
+      direction:
+        - 0
+        - 0.16714968544426417
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6437580344050275
+          - 0.031297039278934485
+          - 0.05646950845426191
+  - type: sphere
+    origin:
+      origin:
+        - 8.640815389853012
+        - 0.2
+        - 5.086422290148932
+      direction:
+        - 0
+        - 0.1455268085707246
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3390817706141029
+          - 0.0480488363387269
+          - 0.02597757837670636
+  - type: sphere
+    origin:
+      origin:
+        - 8.25875586113135
+        - 0.2
+        - 6.103367038265377
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 8.538806942197827
+        - 0.2
+        - 7.737648891515704
+      direction:
+        - 0
+        - 0.48113779325568
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.10269249601289282
+          - 0.4127069762168682
+          - 0.06975912871441244
+  - type: sphere
+    origin:
+      origin:
+        - 8.25811751554654
+        - 0.2
+        - 8.595877142954334
+      direction:
+        - 0
+        - 0.48034708920856867
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5311039241306018
+          - 0.18916402062548054
+          - 0.29742630360341993
+  - type: sphere
+    origin:
+      origin:
+        - 8.88201806645612
+        - 0.2
+        - 9.242199549772335
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.6108623528611098
+        - 0.7892505114679863
+        - 0.9939103421494841
+      fuzz: 0.2273692394543257
+  - type: sphere
+    origin:
+      origin:
+        - 8.888995220830653
+        - 0.2
+        - 10.863873593535171
+      direction:
+        - 0
+        - 0.11891228909241702
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.05085969824176827
+          - 0.20300748455502204
+          - 0.22135458602491406
+  - type: sphere
+    origin:
+      origin:
+        - 9.172384842640929
+        - 0.2
+        - -10.417774863051902
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.8945552766670732
+        - 0.7976237622315743
+        - 0.547590694348158
+      fuzz: 0.38418251573665213
+  - type: sphere
+    origin:
+      origin:
+        - 9.37282190182282
+        - 0.2
+        - -9.336953767582632
+      direction:
+        - 0
+        - 0.03445398651561385
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06121740574988104
+          - 0.1390339802878177
+          - 0.5973513097012518
+  - type: sphere
+    origin:
+      origin:
+        - 9.829612329096538
+        - 0.2
+        - -8.21210389192667
+      direction:
+        - 0
+        - 0.207641850819477
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6054885936547256
+          - 0.010768553582351332
+          - 0.3585184880898977
+  - type: sphere
+    origin:
+      origin:
+        - 9.018553796865445
+        - 0.2
+        - -7.353593935829953
+      direction:
+        - 0
+        - 0.05702447617774431
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.13742503983470208
+          - 0.15134290397941086
+          - 0.09592175093497024
+  - type: sphere
+    origin:
+      origin:
+        - 9.000999950773252
+        - 0.2
+        - -6.903370481353501
+      direction:
+        - 0
+        - 0.10627821806191834
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.44266409761106024
+          - 0.5403087615770136
+          - 0.09280893258728054
+  - type: sphere
+    origin:
+      origin:
+        - 9.764543604971955
+        - 0.2
+        - -5.438083139021441
+      direction:
+        - 0
+        - 0.10038803801993079
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.24534763009379
+          - 0.4376893774288375
+          - 0.5257223076866216
+  - type: sphere
+    origin:
+      origin:
+        - 9.769985015656438
+        - 0.2
+        - -4.51073867801696
+      direction:
+        - 0
+        - 0.13645267645161363
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0489455665123663
+          - 0.48434367578772636
+          - 0.16735439417732834
+  - type: sphere
+    origin:
+      origin:
+        - 9.326524502376474
+        - 0.2
+        - -3.1558103707767655
+      direction:
+        - 0
+        - 0.23668340555786088
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.004958484319567823
+          - 0.027410303941663404
+          - 0.10810007641121988
+  - type: sphere
+    origin:
+      origin:
+        - 9.635687136213145
+        - 0.2
+        - -2.681520494968937
+      direction:
+        - 0
+        - 0.11681329759471426
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.33121811322063505
+          - 0.013107298060791845
+          - 0.3697279212127886
+  - type: sphere
+    origin:
+      origin:
+        - 9.350471027132784
+        - 0.2
+        - -1.5026323374786084
+      direction:
+        - 0
+        - 0.47853746898926625
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.58314892059157
+          - 0.024555316172614878
+          - 0.05131658291323705
+  - type: sphere
+    origin:
+      origin:
+        - 9.710550769996132
+        - 0.2
+        - -0.4165111949840906
+      direction:
+        - 0
+        - 0.2731629062519919
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.219756691199016
+          - 0.19868180299555707
+          - 0.118149768973133
+  - type: sphere
+    origin:
+      origin:
+        - 9.732685109461059
+        - 0.2
+        - 0.6558025200033575
+      direction:
+        - 0
+        - 0.1451499470347029
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.1134893499167304
+          - 0.08552226752920887
+          - 0.08135807977348425
+  - type: sphere
+    origin:
+      origin:
+        - 9.281235729837848
+        - 0.2
+        - 1.3938769275057044
+      direction:
+        - 0
+        - 0.1715240618609986
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4062552156200572
+          - 0.3689487142096674
+          - 0.008999323968702101
+  - type: sphere
+    origin:
+      origin:
+        - 9.562179402354696
+        - 0.2
+        - 2.0390248494014704
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - 9.875721843912547
+        - 0.2
+        - 3.5330753018732075
+      direction:
+        - 0
+        - 0.05594698601088266
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.08815801838262532
+          - 0.09153828221668801
+          - 0.15631562033813717
+  - type: sphere
+    origin:
+      origin:
+        - 9.858048001849422
+        - 0.2
+        - 4.16692866369597
+      direction:
+        - 0
+        - 0.26194814756726403
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.006041512534606648
+          - 0.04916609288863036
+          - 0.3970003499329875
+  - type: sphere
+    origin:
+      origin:
+        - 9.448692167873766
+        - 0.2
+        - 5.047407479348514
+      direction:
+        - 0
+        - 0.4905228439175378
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0471999662931516
+          - 0.34429102198406164
+          - 0.013974702952068093
+  - type: sphere
+    origin:
+      origin:
+        - 9.572418207927063
+        - 0.2
+        - 6.773598106108216
+      direction:
+        - 0
+        - 0.24662222929779104
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.041272166198630285
+          - 0.634569301443721
+          - 0.06686776262449928
+  - type: sphere
+    origin:
+      origin:
+        - 9.373361012454094
+        - 0.2
+        - 7.485694962939216
+      direction:
+        - 0
+        - 0.08568968048493059
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.5518569592318702
+          - 0.07509548081698919
+          - 0.2923921861592588
+  - type: sphere
+    origin:
+      origin:
+        - 9.772532724989802
+        - 0.2
+        - 8.84787345388445
+      direction:
+        - 0
+        - 0.2531287609775753
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.050578052908465704
+          - 0.09291877800598411
+          - 0.6082292171428311
+  - type: sphere
+    origin:
+      origin:
+        - 9.04109844483956
+        - 0.2
+        - 9.645466712726215
+      direction:
+        - 0
+        - 0.06637716198283711
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.01959133373364074
+          - 0.03854091214021961
+          - 0.05792619054873003
+  - type: sphere
+    origin:
+      origin:
+        - 9.470393377026033
+        - 0.2
+        - 10.113387685871107
+      direction:
+        - 0
+        - 0.03313742137096634
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.2456808212772304
+          - 0.7561425759996935
+          - 0.11990767295442699
+  - type: sphere
+    origin:
+      origin:
+        - 10.24322140139545
+        - 0.2
+        - -10.133638262367421
+      direction:
+        - 0
+        - 0.025369345379101516
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.3318290181261952
+          - 0.14569110947725658
+          - 0.025489724795643546
+  - type: sphere
+    origin:
+      origin:
+        - 10.379706472400942
+        - 0.2
+        - -9.143569688027947
+      direction:
+        - 0
+        - 0.08142151739652864
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.6604398365948538
+          - 0.014552536780279285
+          - 0.3061137329078871
+  - type: sphere
+    origin:
+      origin:
+        - 10.270560556360609
+        - 0.2
+        - -8.286645019515491
+      direction:
+        - 0
+        - 0.29844593958999005
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.009510625498253855
+          - 0.026095954413697768
+          - 0.6150002192710504
+  - type: sphere
+    origin:
+      origin:
+        - 10.178398701073771
+        - 0.2
+        - -7.928805078681915
+      direction:
+        - 0
+        - 0.11990027991105184
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.026975307708484123
+          - 0.6729297869059082
+          - 0.49664156728736863
+  - type: sphere
+    origin:
+      origin:
+        - 10.422868826743828
+        - 0.2
+        - -6.545508777598134
+      direction:
+        - 0
+        - 0.4977418591315171
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.17346538526004499
+          - 0.007388962074120775
+          - 0.10132899403044415
+  - type: sphere
+    origin:
+      origin:
+        - 10.235716790439959
+        - 0.2
+        - -5.978627597768647
+      direction:
+        - 0
+        - 0.06740055051871546
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0033357159096913543
+          - 0.18736833603063188
+          - 0.47994576798473204
+  - type: sphere
+    origin:
+      origin:
+        - 10.210003099100955
+        - 0.2
+        - -4.386598380295708
+      direction:
+        - 0
+        - 0.04330172532342219
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4360942937006805
+          - 0.4553264384968694
+          - 0.16503315027028356
+  - type: sphere
+    origin:
+      origin:
+        - 10.006087691428444
+        - 0.2
+        - -3.881675671486126
+      direction:
+        - 0
+        - 0.14709024187259073
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09450603419212544
+          - 0.06978412390804868
+          - 0.32681188468439276
+  - type: sphere
+    origin:
+      origin:
+        - 10.519144926806865
+        - 0.2
+        - -2.8464389375319277
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.5468604729828883
+        - 0.5132572103212178
+        - 0.8641425902397544
+      fuzz: 0.05901692400855707
+  - type: sphere
+    origin:
+      origin:
+        - 10.447469867606149
+        - 0.2
+        - -1.625624093508933
+      direction:
+        - 0
+        - 0.09410803499388326
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.34483110524894695
+          - 0.1302667970795283
+          - 0.3034441374611238
+  - type: sphere
+    origin:
+      origin:
+        - 10.396547248652347
+        - 0.2
+        - -0.11115425537185208
+      direction:
+        - 0
+        - 0.2645800360104143
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.39285896632090034
+          - 0.061774647743176724
+          - 0.12056696486786891
+  - type: sphere
+    origin:
+      origin:
+        - 10.6627310561455
+        - 0.2
+        - 0.45728545562145606
+      direction:
+        - 0
+        - 0.30387396133855543
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.09701540592223296
+          - 0.24255549049845823
+          - 0.3910187032515816
+  - type: sphere
+    origin:
+      origin:
+        - 10.219016571536818
+        - 0.2
+        - 1.3947142291394778
+      direction:
+        - 0
+        - 0.30602831208180087
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.039572070166697844
+          - 0.12046163436717479
+          - 0.1312735235270209
+  - type: sphere
+    origin:
+      origin:
+        - 10.517608705303445
+        - 0.2
+        - 2.815438550853807
+      direction:
+        - 0
+        - 0.39400363645909214
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.71356741839175
+          - 0.2605380109448968
+          - 0.5881252814073523
+  - type: sphere
+    origin:
+      origin:
+        - 10.684241960618415
+        - 0.2
+        - 3.2055418003656895
+      direction:
+        - 0
+        - 0.1208866655959559
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.013308026898218576
+          - 0.026591914924289403
+          - 0.27857895882981387
+  - type: sphere
+    origin:
+      origin:
+        - 10.500124799123785
+        - 0.2
+        - 4.653741141456899
+      direction:
+        - 0
+        - 0.3100207180562646
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.05563335642528097
+          - 0.003485476642569113
+          - 0.16719977860927154
+  - type: sphere
+    origin:
+      origin:
+        - 10.161404329238144
+        - 0.2
+        - 5.60294490530213
+      direction:
+        - 0
+        - 0.4815217492165624
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.021104926626230456
+          - 0.644220386493047
+          - 0.1802869919359634
+  - type: sphere
+    origin:
+      origin:
+        - 10.616323387151258
+        - 0.2
+        - 6.457044181480866
+      direction:
+        - 0
+        - 0.13404329566869932
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.12265658006441654
+          - 0.641110914614185
+          - 0.4638460024595066
+  - type: sphere
+    origin:
+      origin:
+        - 10.799961876710363
+        - 0.2
+        - 7.309642464478739
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 0.2
+    material:
+      type: metal
+      color:
+        - 0.836568134418052
+        - 0.5287505424238581
+        - 0.8923483876884584
+      fuzz: 0.028514887929866235
+  - type: sphere
+    origin:
+      origin:
+        - 10.170563692888846
+        - 0.2
+        - 8.660699506113248
+      direction:
+        - 0
+        - 0.32152567046679476
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.052463226177189105
+          - 0.015663629338096743
+          - 0.8084928679093403
+  - type: sphere
+    origin:
+      origin:
+        - 10.168053003563196
+        - 0.2
+        - 9.52484071844961
+      direction:
+        - 0
+        - 0.16697686551521002
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.0038857921059106165
+          - 0.8750242434367436
+          - 0.4863019025069848
+  - type: sphere
+    origin:
+      origin:
+        - 10.588588389620304
+        - 0.2
+        - 10.557287502354297
+      direction:
+        - 0
+        - 0.37976035346472975
+        - 0
+    radius: 0.2
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.06692602737590518
+          - 0.15496796833231002
+          - 0.5352459883723045
+  - type: sphere
+    origin:
+      origin:
+        - 0
+        - 1
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 1
+    material:
+      type: dielectric
+      refraction_index: 1.5
+  - type: sphere
+    origin:
+      origin:
+        - -4
+        - 1
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 1
+    material:
+      type: lambertian
+      texture:
+        type: solid_color
+        color:
+          - 0.4
+          - 0.2
+          - 0.1
+  - type: sphere
+    origin:
+      origin:
+        - 4
+        - 1
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 1
+    material:
+      type: metal
+      color:
+        - 0.7
+        - 0.6
+        - 0.5
+      fuzz: 0

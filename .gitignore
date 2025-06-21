@@ -1,6 +1,7 @@
 obj/**
 bin/**
 out/**
-vendor/**
+lib/**
+include/**
 .cache/**
 compile_commands.json

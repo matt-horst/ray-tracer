@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <iostream>
 #include "color.hpp"
 
 class ImageChunk {
@@ -20,17 +21,19 @@ public:
         return ImageChunk(id / chunks_per_row * chunk_height, (id % chunks_per_row) * chunk_width, chunk_width, chunk_height, pixels);
     }
 
-    void write() const {
-        std::cout << "P3\n";
-        std::cout << width << ' ' << height << '\n';
-        std::cout << "255\n";
+    std::ostream& write(std::ostream& out) const {
+        out << "P3\n";
+        out << width << ' ' << height << '\n';
+        out << "255\n";
 
         for (int32_t i = 0; i < height; i++) {
             for (int32_t j = 0; j < width; j++) {
                 const Color &color = pixels[i][j];
-                std::cout << color << '\n';
+                out << color << '\n';
             }
         }
+
+        return out;
     }
 
     Image(int32_t width, int32_t height, int32_t chunk_width, int32_t chunk_height) :
@@ -52,3 +55,7 @@ private:
     std::vector<std::vector<Color>> pixels;
 };
 
+
+inline std::ostream& operator<<(std::ostream& out, const Image &img) {
+    return img.write(out);
+}

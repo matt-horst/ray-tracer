@@ -3,6 +3,7 @@
 #include "vec3.hpp"
 #include "point3.hpp"
 #include "rtw_stb_image.hpp"
+#include "yaml-cpp/yaml.h"
 #include <memory>
 
 class Texture {
@@ -21,12 +22,13 @@ public:
 
 private:
     Color color_;
+    friend struct YAML::convert<std::shared_ptr<SolidColorTexture>>;
 };
 
 class CheckerTexture : public Texture {
 public:
     CheckerTexture(double scale, std::shared_ptr<Texture> even, std::shared_ptr<Texture> odd) : 
-        inv_scale_(1.0 / scale), even_(even), odd_(odd) {}
+        scale_(scale), inv_scale_(1.0 / scale), even_(even), odd_(odd) {}
     CheckerTexture(double scale, Color even, Color odd) : 
         CheckerTexture(scale, std::make_shared<SolidColorTexture>(even), std::make_shared<SolidColorTexture>(odd)) {}
 
@@ -41,14 +43,16 @@ public:
     }
 
 private:
+    double scale_;
     double inv_scale_;
     std::shared_ptr<Texture> even_;
     std::shared_ptr<Texture> odd_;
+    friend struct YAML::convert<std::shared_ptr<CheckerTexture>>;
 };
 
 class ImageTexture : public Texture {
 public:
-    ImageTexture(const char *file_name) : image_(file_name) {}
+    ImageTexture(const char *file_name) : file_name_(file_name), image_(file_name) {}
 
     Color value(double u, double v, const Point3<double>& p) const override {
         if (image_.height() <= 0) return Color(0, 1, 1);
@@ -65,5 +69,7 @@ public:
     }
 
 private:
+    std::string file_name_;
     RTWImage image_;
+    friend struct YAML::convert<std::shared_ptr<ImageTexture>>;
 };
