@@ -13,6 +13,7 @@
 #include "yaml-cpp/node/node.h"
 #include "yaml-cpp/node/parse.h"
 #include "yaml-cpp/yaml.h"
+#include <cstdint>
 #include <memory>
 #include <ostream>
 #include <stdexcept>
@@ -650,6 +651,8 @@ struct convert<RenderSettings> {
         node["threads"] = rhs.num_threads;
         node["max_depth"] = rhs.max_depth_;
         node["samples_per_pixel"] = rhs.samples_per_pixel_;
+        node["chunk_width"] = rhs.chunk_width_;
+        node["chunk_height"] = rhs.chunk_height_;
 
         return node;
     }
@@ -667,6 +670,14 @@ struct convert<RenderSettings> {
 
         if (node["samples_per_pixel"].IsDefined()) {
             rhs.set_samples_per_pixel(node["samples_per_pixel"].as<int32_t>());
+        }
+
+        if (node["chunk_width"].IsDefined()) {
+            rhs.chunk_width_ = node["chunk_width"].as<int32_t>();
+        }
+
+        if (node["chunk_height"].IsDefined()) {
+            rhs.chunk_height_ = node["chunk_height"].as<int32_t>();
         }
 
         return true;
