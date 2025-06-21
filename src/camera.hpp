@@ -61,14 +61,14 @@ public:
         const auto theta = degrees_to_radians(vfov_);
         const auto h = std::tan(theta / 2.0);
         const auto viewport_height = 2 * h * focus_dist_;
-        const auto viewport_width = viewport_height * static_cast<double>(img.width) / img.height;
+        const auto viewport_width = viewport_height * static_cast<double>(img.width_) / img.height_;
         const auto w = normalize(lookfrom_ - lookat_);
         const auto u = normalize(cross(vup_, w));
         const auto v = cross(w, u);
         const auto viewport_u = viewport_width * u;
         const auto viewport_v = viewport_height * -v;
-        const auto pixel_delta_u = viewport_u / img.width;
-        const auto pixel_delta_v = viewport_v / img.height;
+        const auto pixel_delta_u = viewport_u / img.width_;
+        const auto pixel_delta_v = viewport_v / img.height_;
         const auto viewport_upper_left = lookfrom_ - (focus_dist_ * w) - (viewport_u / 2) - (viewport_v / 2);
         const auto pixel00_loc(viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v));
         const auto defocus_radius = focus_dist_ * std::tan(defocus_angle / 2.0);

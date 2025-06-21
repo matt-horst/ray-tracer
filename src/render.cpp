@@ -42,11 +42,10 @@ void render(Image &img, const Camera& cam, const HittableList& scene, const Rend
     RenderTaskGenerator gen(img, cam, scene, rs);
     ThreadPool pool(gen, rs.num_threads);
 
-    // Wait
-    int32_t count = 0;
+    // Wait 
     std::clog << std::format("Running on {} threads...\n", pool.num_threads);
-    while ((count = pool.count()) < img.num_chunks) {
-        const float percentage = (100.0 * count) / img.num_chunks;
+    while (pool.has_next()) {
+        const float percentage = 100.0 * pool.progress();
         std::clog << std::format("\r{:.2f}% ", percentage) << std::flush;
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -56,7 +55,8 @@ void render(Image &img, const Camera& cam, const HittableList& scene, const Rend
 
 std::optional<std::function<void()>> RenderTaskGenerator::next() {
     if (has_next()) {
-        ImageChunk chunk = img_.get(current_chunk_++);
+        ImageChunk chunk = ImageChunk(current_chunk_ / chunks_per_row_ * rs_.chunk_height_, (current_chunk_ % chunks_per_row_) * rs_.chunk_width_, rs_.chunk_width_, rs_.chunk_height_, img_.pixels_);
+        current_chunk_++;
         return [this, chunk = std::move(chunk)] { render_chunk(cam_, scene_, rs_, chunk); };
     }
     return std::nullopt;
