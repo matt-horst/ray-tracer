@@ -1,0 +1,21 @@
+textures:
+  - type: image
+    file_name: earthmap.jpg
+    name: Texture-0
+materials:
+  - type: lambertian
+    texture: Texture-0
+    name: Material-0
+objects:
+  - type: sphere
+    origin:
+      origin:
+        - 0
+        - 0
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 2
+    material: Material-0

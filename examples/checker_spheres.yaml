@@ -1,0 +1,45 @@
+textures:
+  - type: checker
+    scale: 0.32
+    even:
+      type: solid_color
+      color:
+        - 0.2
+        - 0.3
+        - 0.1
+    odd:
+      type: solid_color
+      color:
+        - 0.9
+        - 0.9
+        - 0.9
+    name: Texture-0
+materials:
+  - type: lambertian
+    texture: Texture-0
+    name: Material-0
+objects:
+  - type: sphere
+    origin:
+      origin:
+        - 0
+        - -10
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 10
+    material: Material-0
+  - type: sphere
+    origin:
+      origin:
+        - 0
+        - 10
+        - 0
+      direction:
+        - 0
+        - 0
+        - 0
+    radius: 10
+    material: Material-0

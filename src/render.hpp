@@ -5,32 +5,52 @@
 #include "ray.hpp"
 #include "hittable_list.hpp"
 #include "camera.hpp"
+#include <cstdint>
 #include <optional>
+#include <cassert>
 
-Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth);
-void render_chunk(const Camera& cam, const HittableList& scene, ImageChunk img);
-void render(const Camera& cam, const HittableList& scene, int num_threads);
+class RenderSettings {
+public:
+    RenderSettings(int32_t samples_per_pixel, int32_t max_depth) : samples_per_pixel_(samples_per_pixel), pixel_color_scale_(1.0 / samples_per_pixel_), max_depth_(max_depth) {}
+    RenderSettings() {}
+
+    void set_samples_per_pixel(uint32_t samples_per_pixel) {
+        samples_per_pixel_ = samples_per_pixel;
+        pixel_color_scale_ = 1.0 / samples_per_pixel_;
+    }
+
+    int32_t samples_per_pixel_ = 100;
+    double pixel_color_scale_ = 1.0 / 100.0;
+    int32_t max_depth_ = 50;
+    uint32_t num_threads = std::thread::hardware_concurrency();
+    int32_t chunk_width_ = 0, chunk_height_ = 0;
+
+private:
+    friend struct YAML::convert<RenderSettings>;
+};
+
+void render(Image &img, const Camera& cam, const HittableList& scene, const RenderSettings &rs);
 
 class RenderTaskGenerator : public TaskGenerator {
 public:
-    RenderTaskGenerator(Image& img, const Camera& cam, const HittableList& scene) :
-     img(img), cam(cam), scene(scene) { }
+    RenderTaskGenerator(Image& img, const Camera& cam, const HittableList& scene, const RenderSettings &rs) :
+     img_(img), cam_(cam), scene_(scene), rs_(rs), num_chunks_(img.width_ * img.height_ / (rs.chunk_width_ * rs.chunk_height_)), chunks_per_row_(img.width_ / rs.chunk_width_) {
+         assert(img.width_ % rs_.chunk_width_ == 0 && "Chunk width must be a factor of the image width.");
+         assert(img.height_ % rs_.chunk_height_ == 0 && "Chunk height must be a factor of the image height.");
+     }
 
-    std::optional<std::function<void()>> next() override {
-        if (current_chunk < img.num_chunks) {
-            ImageChunk chunk = img.get(current_chunk++);
-            return [this, chunk = std::move(chunk)] { render_chunk(cam, scene, chunk); };
-        }
-        return std::nullopt;
-    }
+    std::optional<std::function<void()>> next() override;
 
-    bool has_next() override {
-        return false;
-    }
+    bool has_next() const override { return current_chunk_ < num_chunks_; }
+
+    double progress() const override { return static_cast<double>(current_chunk_) / num_chunks_; }
 
 private:
-    Image& img;
-    const Camera& cam;
-    const HittableList& scene;
-    int32_t current_chunk = 0;
+    Image& img_;
+    const Camera& cam_;
+    const HittableList& scene_;
+    const RenderSettings& rs_;
+    int32_t current_chunk_ = 0;
+    int32_t num_chunks_;
+    int32_t chunks_per_row_;
 };

@@ -2,6 +2,7 @@
 #include <memory>
 #include "ray.hpp"
 #include "interval.hpp"
+#include "bbox.hpp"
 
 class Material;
 
@@ -9,6 +10,8 @@ struct HitRecord {
     Point3<double> p;
     Vec3<double> normal;
     double t;
+    double u;
+    double v;
     bool front_face;
     std::shared_ptr<Material> mat;
 
@@ -21,4 +24,5 @@ struct HitRecord {
 struct Hittable {
     virtual ~Hittable() = default;
     virtual bool hit(const Ray<double> &ray, Interval ray_t, HitRecord& rec) const = 0;
+    virtual BBox3 bounding_box() const = 0;
 };

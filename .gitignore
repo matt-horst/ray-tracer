@@ -1,5 +1,7 @@
 obj/**
 bin/**
 out/**
+lib/**
+include/**
 .cache/**
 compile_commands.json

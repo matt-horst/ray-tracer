@@ -1,5 +1,6 @@
 #pragma once
 
+#include "bbox.hpp"
 #include "hittable.hpp"
 
 #include <memory>
@@ -14,7 +15,10 @@ public:
 
     void clear() { objs.clear(); }
 
-    void add(std::shared_ptr<Hittable> obj) { objs.push_back(obj); }
+    void add(std::shared_ptr<Hittable> obj) {
+        objs.push_back(obj); 
+        bbox = BBox3(bbox, obj->bounding_box());
+    }
 
     bool hit(const Ray<double>& ray, Interval ray_t, HitRecord& rec) const override {
         HitRecord temp_rec;
@@ -31,4 +35,9 @@ public:
 
         return hit_anything;
     }
+
+    BBox3 bounding_box() const override { return bbox; }
+
+private:
+    BBox3 bbox;
 };
