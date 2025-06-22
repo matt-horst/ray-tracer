@@ -2,26 +2,29 @@
 #include "image.hpp"
 #include "material.hpp"
 
-Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth);
+Color ray_color(const Ray<double> &ray, const Hittable &world, const Color &background, int32_t depth, int32_t max_depth);
 void render_chunk(const Camera& cam, const HittableList& scene, ImageChunk img);
 
-Color ray_color(const Ray<double> &ray, const Hittable &world, int32_t depth, int32_t max_depth) {
+Color ray_color(const Ray<double> &ray, const Hittable &world, const Color &background, int32_t depth, int32_t max_depth) {
     if (depth >= max_depth) return Color();
 
     HitRecord rec;
-    if (world.hit(ray, Interval(0.001, infinity), rec)) {
-        Ray<double> scattered;
-        Color attenuation;
-        if (rec.mat->scatter(ray, rec, attenuation, scattered)) {
-            return attenuation * ray_color(scattered, world, depth + 1, max_depth);
-        }
-
-        return Color();
+    if (!world.hit(ray, Interval(0.001, infinity), rec)) {
+        return background;
     }
 
-    const Vec3<double> unit_direction = normalize(ray.direction());
-    auto a = 0.5 * (unit_direction.y() + 1.0);
-    return (1.0 - a) * Color(1.0, 1.0, 1.0) + a * Color(0.5, 0.7, 1.0);
+    Ray<double> scattered;
+    Color attenuation;
+
+    const Color color_emitted = rec.mat->emitted(rec.u, rec.v, rec.p);
+
+    if (!rec.mat->scatter(ray, rec, attenuation, scattered)) {
+        return color_emitted;
+    }
+
+    const Color color_scattered = attenuation * ray_color(scattered, world, background, depth + 1, max_depth);
+
+    return color_emitted + color_scattered;
 }
 
 void render_chunk(const Camera& cam, const HittableList& scene, const RenderSettings &rs, ImageChunk img) {
@@ -30,7 +33,7 @@ void render_chunk(const Camera& cam, const HittableList& scene, const RenderSett
             Color pixel_color(0.0, 0.0, 0.0);
             for (int32_t k = 0; k < rs.samples_per_pixel_; k++) {
                 Ray<double> ray = cam.cast_ray_at_pixel_loc(i, j);
-                pixel_color += ray_color(ray, scene, 0, rs.max_depth_);
+                pixel_color += ray_color(ray, scene, cam.background_, 0, rs.max_depth_);
             }
 
             img.pixels[i][j] = pixel_color * rs.pixel_color_scale_;

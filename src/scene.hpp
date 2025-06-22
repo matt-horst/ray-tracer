@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include <unordered_map>
+#include "camera.hpp"
 #include "hittable.hpp"
 #include "hittable_list.hpp"
 #include "material.hpp"
@@ -19,5 +19,9 @@ public:
     std::vector<std::shared_ptr<Texture>> textures_;
     std::vector<std::shared_ptr<Material>> materials_;
     HittableList objs_;
+
+    Camera camera(const Image &img) const { return cb_.build(img); }
+
+    CameraBuilder cb_;
 };
 

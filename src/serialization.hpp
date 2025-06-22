@@ -345,6 +345,55 @@ struct convert<std::shared_ptr<Dielectric>> {
     }
 };
 
+template<>
+struct convert<std::shared_ptr<DiffuseLight>> {
+    static Node encode(const std::shared_ptr<DiffuseLight> &rhs) {
+        Node node;
+
+        node["type"] = "diffuse_light";
+        node["texture"] = rhs->tex_;
+
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures, const std::shared_ptr<DiffuseLight> &rhs) {
+        Node node;
+
+        node["type"] = "diffuse_light";
+        try  {
+            node["texture"] = textures.at(rhs->tex_);
+        } catch (const std::out_of_range &e) {
+            node["texture"] = rhs->tex_;
+        }
+
+        return node;
+    }
+
+    static bool decode(const Node &node, std::shared_ptr<DiffuseLight> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "diffuse_light") return false;
+
+        const auto tex = node["texture"].as<std::shared_ptr<Texture>>();
+        rhs = std::make_shared<DiffuseLight>(tex);
+
+        return true;
+    }
+
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<DiffuseLight> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "diffuse_light") return false;
+
+        std::shared_ptr<Texture> tex;
+        if (node["texture"].IsScalar()) {
+            tex = textures.at(node["texture"].as<std::string>());
+        } else {
+            tex = node["texture"].as<std::shared_ptr<Texture>>();
+        }
+
+        rhs = std::make_shared<DiffuseLight>(tex);
+
+        return true;
+    }
+};
+
 
 template<>
 struct convert<std::shared_ptr<Material>> {
@@ -357,6 +406,8 @@ struct convert<std::shared_ptr<Material>> {
             return convert<std::shared_ptr<Metal>>::encode(p);
         } else if (std::shared_ptr<Dielectric> p = std::dynamic_pointer_cast<Dielectric>(rhs)){
             return convert<std::shared_ptr<Dielectric>>::encode(p);
+        } else if (std::shared_ptr<DiffuseLight> p = std::dynamic_pointer_cast<DiffuseLight>(rhs)){
+            return convert<std::shared_ptr<DiffuseLight>>::encode(p);
         }
 
         return node;
@@ -371,6 +422,8 @@ struct convert<std::shared_ptr<Material>> {
             return convert<std::shared_ptr<Metal>>::encode(p);
         } else if (std::shared_ptr<Dielectric> p = std::dynamic_pointer_cast<Dielectric>(rhs)){
             return convert<std::shared_ptr<Dielectric>>::encode(p);
+        } else if (std::shared_ptr<DiffuseLight> p = std::dynamic_pointer_cast<DiffuseLight>(rhs)){
+            return convert<std::shared_ptr<DiffuseLight>>::encode(textures, p);
         }
 
         return node;
@@ -389,18 +442,31 @@ struct convert<std::shared_ptr<Material>> {
         } else if (type == "dielectric") {
             rhs = node.as<std::shared_ptr<Dielectric>>();
             return true;
+        } else if (type == "diffuse_light") {
+            std::shared_ptr<DiffuseLight> p;
+            if (convert<std::shared_ptr<DiffuseLight>>::decode(node, textures, p)) {
+                rhs = p;
+                return true;
+            }
         }
 
         return false;
     }
 
     static bool decode(const Node &node, std::shared_ptr<Material> &rhs) {
-        if (std::shared_ptr<Lambertian> p = std::dynamic_pointer_cast<Lambertian>(rhs)) {
-            return convert<std::shared_ptr<Lambertian>>::decode(node, p);
-        } else if (std::shared_ptr<Metal> p = std::dynamic_pointer_cast<Metal>(rhs)) {
-            return convert<std::shared_ptr<Metal>>::decode(node, p);
-        } else if (std::shared_ptr<Dielectric> p = std::dynamic_pointer_cast<Dielectric>(rhs)) {
-            return convert<std::shared_ptr<Dielectric>>::decode(node, p);
+        const std::string type = node["type"].as<std::string>();
+        if (type == "lambertian") {
+            rhs = node.as<std::shared_ptr<Lambertian>>();
+            return true;
+        } else if (type == "metal") {
+            rhs = node.as<std::shared_ptr<Metal>>();
+            return true;
+        } else if (type == "dielectric") {
+            rhs = node.as<std::shared_ptr<Dielectric>>();
+            return true;
+        } else if (type == "diffuse_light") {
+            rhs = node.as<std::shared_ptr<DiffuseLight>>();
+            return true;
         }
 
         return false;
@@ -674,7 +740,7 @@ struct convert<Scene> {
         std::unordered_map<std::string, std::shared_ptr<Material>> mat_map;
 
         Node textures_node = node["textures"];
-        if (textures_node.IsSequence()) {
+        if (textures_node.IsDefined() && textures_node.IsSequence()) {
             for (const auto &tex_node : textures_node) {
                 std::string name = tex_node["name"].as<std::string>();
                 std::shared_ptr<Texture> tex;
@@ -688,7 +754,7 @@ struct convert<Scene> {
         }
 
         Node materials_node = node["materials"];
-        if (materials_node.IsSequence()) {
+        if (materials_node.IsDefined() && materials_node.IsSequence()) {
             for (const auto &mat_node : materials_node) {
                 std::string name = mat_node["name"].as<std::string>();
                 std::shared_ptr<Material> mat;
@@ -702,7 +768,7 @@ struct convert<Scene> {
         }
 
         Node objects_node = node["objects"];
-        if (objects_node.IsSequence()) {
+        if (objects_node.IsDefined() && objects_node.IsSequence()) {
             for (const auto &obj_node : objects_node) {
                 std::shared_ptr<Hittable> obj;
                 if (convert<std::shared_ptr<Hittable>>::decode(obj_node, mat_map, tex_map, obj)) {
@@ -711,6 +777,11 @@ struct convert<Scene> {
                     return false;
                 }
             }
+        }
+
+        Node camera_node = node["camera"];
+        if (camera_node.IsDefined()) {
+            rhs.cb_ = camera_node.as<CameraBuilder>();
         }
 
         return true;
@@ -728,6 +799,7 @@ struct convert<CameraBuilder> {
         node["vfov"] = rhs.vfov_;
         node["focus_dist"] = rhs.focus_dist_;
         node["defocus_angle"] = rhs.defocus_angle_;
+        node["background"] = rhs.background_;
 
         return node;
     }
@@ -758,6 +830,10 @@ struct convert<CameraBuilder> {
 
         if (node["defocus_angle"].IsDefined()) {
             rhs.defocus_angle_ = node["defocus_angle"].as<double>();
+        }
+
+        if (node["background"].IsDefined()) {
+            rhs.background_ = node["background"].as<Color>();
         }
 
         return true;

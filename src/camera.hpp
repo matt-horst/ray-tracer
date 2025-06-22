@@ -15,7 +15,9 @@ public:
             Vec3<double> pixel_delta_v,
             Vec3<double> pixel00_loc,
             Vec3<double> defocus_disk_u,
-            Vec3<double> defocus_disk_v) : 
+            Vec3<double> defocus_disk_v,
+            Color background) : 
+        background_(background),
         center_(center),
         defocus_angle_(defocus_angle),
         pixel_delta_u_(pixel_delta_u),
@@ -34,6 +36,8 @@ public:
 
         return Ray<double>(ray_origin, ray_direction, ray_time);
     }
+
+    Color background_;
 
 private:
     Point3<double> center_;
@@ -75,7 +79,7 @@ public:
         const auto defocus_disk_u = u * defocus_radius;
         const auto defocus_disk_v = v * defocus_radius;
 
-        return Camera(lookfrom_, defocus_angle_, pixel_delta_u, pixel_delta_v, pixel00_loc, defocus_disk_u, defocus_disk_v);
+        return Camera(lookfrom_, defocus_angle_, pixel_delta_u, pixel_delta_v, pixel00_loc, defocus_disk_u, defocus_disk_v, background_);
     }
 
     Point3<double> lookfrom_ = Point3<double>();
@@ -84,4 +88,5 @@ public:
     Vec3<double> vup_ = Vec3<double>(0.0, 1.0, 0.0);
     double defocus_angle_ = 0.0;
     double focus_dist_ = 10.0;
+    Color background_ = Color();
 };

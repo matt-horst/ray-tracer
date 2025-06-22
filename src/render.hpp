@@ -43,7 +43,7 @@ public:
 
     bool has_next() const override { return current_chunk_ < num_chunks_; }
 
-    double progress() const override { return static_cast<double>(current_chunk_) / num_chunks_; }
+    double progress(size_t count) const override { return static_cast<double>(count) / num_chunks_; }
 
 private:
     Image& img_;

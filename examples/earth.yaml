@@ -19,3 +19,10 @@ objects:
         - 0
     radius: 2
     material: Material-0
+camera:
+  vfov: 20
+  look_from: [0, 0, 12]
+  look_at: [0, 0, 0]
+  vup: [0, 1, 0]
+  defocus_angle: 0
+  background: [0.7, 0.8, 1.0]

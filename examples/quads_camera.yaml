@@ -1,5 +1,0 @@
-vfov: 80
-look_from: [0, 0, 9]
-look_at: [0, 0, 0]
-vup: [0, 1, 0]
-defocus_angle: 0

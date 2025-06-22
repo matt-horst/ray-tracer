@@ -61,7 +61,7 @@ public:
     }
 
     virtual bool is_interior(double a, double b) const {
-        Interval interval(0, 1);
+        Interval interval(0.0, 1.0);
 
         if (!interval.contains(a) || !interval.contains(b)) return false;
 

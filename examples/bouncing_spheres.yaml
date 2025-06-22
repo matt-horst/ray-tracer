@@ -9059,3 +9059,10 @@ objects:
         - 0.6
         - 0.5
       fuzz: 0
+camera:
+  look_from: [13, 2, 3]
+  look_at: [0, 1, 0]
+  vfov: 20.0
+  defocus_angle: 0.6
+  focus_dist: 10.0
+  background: [0.7, 0.8, 1.0]

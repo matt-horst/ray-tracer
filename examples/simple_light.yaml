@@ -6,6 +6,11 @@ materials:
   - type: lambertian
     name: Material-0
     texture: Texture-0
+  - type: diffuse_light
+    name: Material-1
+    texture:
+      type: solid_color
+      color: [4.0, 4.0, 4.0]
 objects: 
   - type: sphere
     origin: 
@@ -15,14 +20,25 @@ objects:
     material: Material-0
   - type: sphere
     origin:
-        origin: [0, 2, 0]
+        origin: [-4, 2, 0]
         direction: [0, 0, 0]
     radius: 2
     material: Material-0
+  - type: quad
+    origin: [3, 1, -2]
+    u: [2, 0, 0]
+    v: [0, 2, 0]
+    material: Material-1
+  - type: sphere
+    origin:
+      origin: [0, 7, 0]
+      direction: [0, 0, 0]
+    radius: 2
+    material: Material-1
 camera:
   vfov: 20
-  look_from: [13, 2, 3]
-  look_at: [0, 0, 0]
+  look_from: [26, 3, 6]
+  look_at: [0, 2, 0]
   vup: [0, 1, 0]
   defocus_angle: 0
-  background: [0.7, 0.8, 1.0]
+  background: [0.0, 0.0, 0.0]

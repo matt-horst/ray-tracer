@@ -27,8 +27,7 @@ int main(int argc, char *argv[]) {
         .help("loads YAML file specifiying rendering settings.");
 
     program.add_argument("-c", "--camera-settings")
-        .help("loads YAML file specifiying camera settings.")
-        .required();
+        .help("loads YAML file specifiying camera settings.");
 
     program.add_argument("-n", "--num-threads")
         .help("number of threads of execution.")
@@ -116,7 +115,7 @@ int main(int argc, char *argv[]) {
     
     int divisor = 2;
     int max_divisor = std::sqrt(std::min(rs.chunk_width_, rs.chunk_height_));
-    while (int32_t(rs.num_threads) > img.width_ * img.height_ / (rs.chunk_width_ * rs.chunk_height_) && divisor < max_divisor) {
+    while (int32_t(rs.num_threads * 16) > img.width_ * img.height_ / (rs.chunk_width_ * rs.chunk_height_) && divisor < max_divisor) {
         if (rs.chunk_width_ % divisor == 0 && rs.chunk_height_ % divisor == 0) {
             rs.chunk_width_ /= divisor;
             rs.chunk_height_ /= divisor;
@@ -125,17 +124,13 @@ int main(int argc, char *argv[]) {
         }
     }
 
-
-    CameraBuilder cb;
-    if (auto file_name = program.present("camera-settings")) {
-        cb = LoadCamera(*file_name);
-    }
-
-    Camera cam = cb.build(img);
-
     Scene scene = LoadScene(program.get("scene"));
 
-    render(img, cam, HittableList(scene.bvh()), rs);
+    if (auto file_name = program.present("camera-settings")) {
+        scene.cb_ = LoadCamera(*file_name);
+    }
+
+    render(img, scene.camera(img), HittableList(scene.bvh()), rs);
 
     if (auto file_name = program.present("output")) {
         std::ofstream file(*file_name);

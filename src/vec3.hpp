@@ -137,7 +137,7 @@ auto normalize(Vec3<T> v) { return v / v.length(); }
 
 inline auto random_unit_vector() {
     while (true) {
-        auto p = Vec3<double>::random();
+        auto p = Vec3<double>::random(-1, 1);
         auto length_sqr = p.length_sqr();
         if (1.0e-160 < length_sqr && length_sqr <= 1.0) {
             return p / std::sqrt(length_sqr);

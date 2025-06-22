@@ -9,7 +9,7 @@ class TaskGenerator {
 public:
     virtual std::optional<std::function<void()>> next() = 0;
     virtual bool has_next() const = 0;
-    virtual double progress() const = 0;
+    virtual double progress(size_t count) const = 0;
     virtual ~TaskGenerator() = default;
 };
 
@@ -67,7 +67,10 @@ public:
         workers.clear();
     }
 
-    double progress() { return generator.progress(); }
+    double progress() { 
+        std::unique_lock lock(counter_mutex);
+        return generator.progress(count_); 
+    }
 
     size_t num_threads;
 

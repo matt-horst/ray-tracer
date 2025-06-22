@@ -14,6 +14,10 @@ public:
     virtual bool scatter(const Ray<double>& ray_in, const HitRecord& rec, Color &attenuation, Ray<double>& ray_out) const {
         return false;
     }
+
+    virtual Color emitted(double u, double v, const Point3<double> &p) const {
+        return Color();
+    }
 };
 
 class Lambertian : public Material {
@@ -93,4 +97,18 @@ private:
     }
 
     friend struct YAML::convert<std::shared_ptr<Dielectric>>;
+};
+
+class DiffuseLight : public Material {
+public:
+    DiffuseLight(std::shared_ptr<Texture> tex) : tex_(tex) {}
+    DiffuseLight(const Color &color) : tex_(std::make_shared<SolidColorTexture>(color)) {}
+
+    Color emitted(double u, double v, const Point3<double> &p) const override {
+        return tex_->value(u, v, p);
+    }
+private:
+    std::shared_ptr<Texture> tex_;
+
+    friend struct YAML::convert<std::shared_ptr<DiffuseLight>>;
 };
