@@ -8,6 +8,7 @@
 #include "vec3.hpp"
 #include "scene.hpp"
 #include "sphere.hpp"
+#include "quad.hpp"
 #include "yaml-cpp/emitter.h"
 #include "yaml-cpp/emittermanip.h"
 #include "yaml-cpp/node/node.h"
@@ -361,7 +362,7 @@ struct convert<std::shared_ptr<Material>> {
         return node;
     }
 
-    static Node encode(const std::unordered_map<std::shared_ptr<Texture>, std::string> textures, const std::shared_ptr<Material> &rhs) {
+    static Node encode(const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures, const std::shared_ptr<Material> &rhs) {
         Node node;
 
         if (std::shared_ptr<Lambertian> p = std::dynamic_pointer_cast<Lambertian>(rhs)) {
@@ -451,7 +452,18 @@ struct convert<Ray<T>> {
 
 template<>
 struct convert<std::shared_ptr<Sphere>> {
-    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::shared_ptr<Sphere> &rhs) {
+    static Node encode(const std::shared_ptr<Sphere> &rhs) {
+        Node node;
+
+        node["type"] = "sphere";
+        node["origin"] = rhs->origin_;
+        node["radius"] = rhs->radius_;
+        node["material"] = rhs->mat_;
+        
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures, const std::shared_ptr<Sphere> &rhs) {
         Node node;
 
         node["type"] = "sphere";
@@ -460,7 +472,7 @@ struct convert<std::shared_ptr<Sphere>> {
         try {
             node["material"] = materials.at(rhs->mat_);
         } catch (std::out_of_range &_) {
-            node["material"] = rhs->mat_;
+            node["material"] = convert<std::shared_ptr<Material>>::encode(textures, rhs->mat_);
         }
         
         return node;
@@ -497,16 +509,87 @@ struct convert<std::shared_ptr<Sphere>> {
 };
 
 template<>
-struct convert<std::shared_ptr<Hittable>> {
-    static Node encode(const std::shared_ptr<Hittable> &rhs) {
+struct convert<std::shared_ptr<Quad>> {
+    static Node encode(const std::shared_ptr<Quad> &rhs) {
         Node node;
+
+        node["type"] = "quad";
+        node["origin"] = rhs->origin_;
+        node["u"] = rhs->u_;
+        node["v"] = rhs->v_;
+        node["material"] = rhs->mat_;
+
         return node;
     }
 
-    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::shared_ptr<Hittable> &rhs) {
+    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures, std::shared_ptr<Quad> &rhs) {
+        Node node;
+
+        node["type"] = "quad";
+        node["origin"] = rhs->origin_;
+        node["u"] = rhs->u_;
+        node["v"] = rhs->v_;
+        try {
+            node["material"] = materials.at(rhs->mat_);
+        } catch (const std::out_of_range &e) {
+            node["material"] = convert<std::shared_ptr<Material>>::encode(textures, rhs->mat_);
+        }
+
+        return node;
+    }
+
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Quad> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "quad") return false;
+
+        const auto origin = node["origin"].as<Point3<double>>();
+        const auto u = node["u"].as<Vec3<double>>();
+        const auto v = node["v"].as<Vec3<double>>();
+        std::shared_ptr<Material> mat;
+        if (node["material"].IsScalar()) {
+            mat = materials.at(node["material"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Material>>::decode(node["material"], textures, mat)) {
+                return false;
+            }
+        }
+
+        rhs = std::make_shared<Quad>(origin, u, v, mat);
+
+        return true;
+    }
+
+    static bool decode(const Node &node, std::shared_ptr<Quad> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "quad") return false;
+
+        const auto origin = node["origin"].as<Point3<double>>();
+        const auto u = node["u"].as<Vec3<double>>();
+        const auto v = node["v"].as<Vec3<double>>();
+        const auto mat = node["material"].as<std::shared_ptr<Material>>();
+
+        rhs = std::make_shared<Quad>(origin, u, v, mat);
+
+        return true;
+    }
+};
+
+template<>
+struct convert<std::shared_ptr<Hittable>> {
+    static Node encode(const std::shared_ptr<Hittable> &rhs) {
         Node node;
         if (std::shared_ptr<Sphere> p = std::dynamic_pointer_cast<Sphere>(rhs)) {
-            return convert<std::shared_ptr<Sphere>>::encode(materials, p);
+            return convert<std::shared_ptr<Sphere>>::encode(p);
+        } else if (std::shared_ptr<Quad> p = std::dynamic_pointer_cast<Quad>(rhs)) {
+            return convert<std::shared_ptr<Quad>>::encode(p);
+        }
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<Hittable> &rhs) {
+        Node node;
+        if (std::shared_ptr<Sphere> p = std::dynamic_pointer_cast<Sphere>(rhs)) {
+            return convert<std::shared_ptr<Sphere>>::encode(materials, textures, p);
+        } else if (std::shared_ptr<Quad> p = std::dynamic_pointer_cast<Quad>(rhs)) {
+            return convert<std::shared_ptr<Quad>>::encode(materials, textures, p);
         }
         return node;
     }
@@ -518,6 +601,12 @@ struct convert<std::shared_ptr<Hittable>> {
         if (type == "sphere") {
             std::shared_ptr<Sphere> p;
             if (convert<std::shared_ptr<Sphere>>::decode(node, materials, textures, p)) {
+                rhs = p;
+                return true;
+            }
+        } else if (type == "quad") {
+            std::shared_ptr<Quad> p;
+            if (convert<std::shared_ptr<Quad>>::decode(node, materials, textures, p)) {
                 rhs = p;
                 return true;
             }
@@ -570,7 +659,7 @@ struct convert<Scene> {
             // Encode Objects
             node["objects"] = Node();
             for (const auto &obj : rhs.objs_.objs) {
-                node["objects"].push_back(convert<std::shared_ptr<Hittable>>::encode(mat_name_map, obj));
+                node["objects"].push_back(convert<std::shared_ptr<Hittable>>::encode(mat_name_map, tex_name_map, obj));
             }
         }
 

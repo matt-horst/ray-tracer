@@ -105,12 +105,24 @@ int main(int argc, char *argv[]) {
         rs.chunk_width_ = *chunk_width;
     } else if (rs.chunk_width_ == 0) {
         rs.chunk_width_ = img.width_ / img.ar_.w_;
+
     }
 
     if (auto chunk_height = program.present<int32_t>("chunk-height")) {
         rs.chunk_height_ = *chunk_height;
     } else if (rs.chunk_height_ == 0) {
         rs.chunk_height_ = img.height_ / img.ar_.h_;
+    }
+    
+    int divisor = 2;
+    int max_divisor = std::sqrt(std::min(rs.chunk_width_, rs.chunk_height_));
+    while (int32_t(rs.num_threads) > img.width_ * img.height_ / (rs.chunk_width_ * rs.chunk_height_) && divisor < max_divisor) {
+        if (rs.chunk_width_ % divisor == 0 && rs.chunk_height_ % divisor == 0) {
+            rs.chunk_width_ /= divisor;
+            rs.chunk_height_ /= divisor;
+        } else {
+            divisor++;
+        }
     }
 
 

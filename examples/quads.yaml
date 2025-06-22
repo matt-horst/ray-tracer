@@ -1,0 +1,53 @@
+textures: []
+materials:
+  - name: Red
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [1.0, 0.2, 0.2]
+  - name: Green
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [0.2, 1.0, 0.2]
+  - name: Blue
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [0.2, 0.2, 1.0]
+  - name: Orange
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [1.0, 0.5, 0.0]
+  - name: Teal
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [0.2, 0.8, 0.8]
+objects:
+  - type: quad
+    origin: [-3, -2, 5]
+    u: [0, 0, -4]
+    v: [0, 4, 0]
+    material: Red
+  - type: quad
+    origin: [-2, -2, 0]
+    u: [4, 0, 0]
+    v: [0, 4, 0]
+    material: Green
+  - type: quad
+    origin: [3, -2, 1]
+    u: [0, 0, 4]
+    v: [0, 4, 0]
+    material: Blue
+  - type: quad
+    origin: [-2, 3, 1]
+    u: [4, 0, 0]
+    v: [0, 0, 4]
+    material: Orange
+  - type: quad
+    origin: [-2, -3, 5]
+    u: [4, 0, 0]
+    v: [0, 0, -4]
+    material: Teal
