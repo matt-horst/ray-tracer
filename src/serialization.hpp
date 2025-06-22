@@ -168,6 +168,27 @@ struct convert<std::shared_ptr<ImageTexture>> {
 };
 
 template<>
+struct convert<std::shared_ptr<NoiseTexture>> {
+    static Node encode(const std::shared_ptr<NoiseTexture> &rhs) {
+        Node node;
+
+        node["type"] = "noise";
+        node["scale"] = rhs->scale_;
+
+        return node;
+    }
+
+    static bool decode(const Node &node, std::shared_ptr<NoiseTexture> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "noise") return false;
+
+        const auto scale = node["scale"].as<double>();
+        rhs = std::make_shared<NoiseTexture>(scale);
+
+        return true;
+    }
+};
+
+template<>
 struct convert<std::shared_ptr<Texture>> {
     static Node encode(const std::shared_ptr<Texture> &rhs) {
         Node node;
@@ -177,6 +198,8 @@ struct convert<std::shared_ptr<Texture>> {
             return convert<std::shared_ptr<CheckerTexture>>::encode(p);
         } else if (std::shared_ptr<ImageTexture> p = std::dynamic_pointer_cast<ImageTexture>(rhs)) {
             return convert<std::shared_ptr<ImageTexture>>::encode(p);
+        } else if (std::shared_ptr<NoiseTexture> p = std::dynamic_pointer_cast<NoiseTexture>(rhs)) {
+            return convert<std::shared_ptr<NoiseTexture>>::encode(p);
         }
         return node;
     }
@@ -189,6 +212,8 @@ struct convert<std::shared_ptr<Texture>> {
             return convert<std::shared_ptr<CheckerTexture>>::encode(refs, p);
         } else if (std::shared_ptr<ImageTexture> p = std::dynamic_pointer_cast<ImageTexture>(rhs)) {
             return convert<std::shared_ptr<ImageTexture>>::encode(p);
+        } else if (std::shared_ptr<NoiseTexture> p = std::dynamic_pointer_cast<NoiseTexture>(rhs)) {
+            return convert<std::shared_ptr<NoiseTexture>>::encode(p);
         }
         return node;
     }
@@ -196,14 +221,18 @@ struct convert<std::shared_ptr<Texture>> {
     static bool decode(const Node &node, std::shared_ptr<Texture> &rhs) {
         if (!node.IsMap()) return false;
 
-        if (node["type"].as<std::string>() == "solid_color") {
+        const std::string type = node["type"].as<std::string>();
+        if (type == "solid_color") {
             rhs = node.as<std::shared_ptr<SolidColorTexture>>();
             return true;
-        } else if(node["type"].as<std::string>() == "checker") {
+        } else if (type == "checker") {
             rhs = node.as<std::shared_ptr<CheckerTexture>>();
             return true;
-        } else if(node["type"].as<std::string>() == "image") {
+        } else if (type == "image") {
             rhs = node.as<std::shared_ptr<ImageTexture>>();
+            return true;
+        } else if (type == "noise") {
+            rhs = node.as<std::shared_ptr<NoiseTexture>>();
             return true;
         }
 
@@ -224,6 +253,9 @@ struct convert<std::shared_ptr<Texture>> {
             }
         } else if(node["type"].as<std::string>() == "image") {
             rhs = node.as<std::shared_ptr<ImageTexture>>();
+            return true;
+        } else if (node["type"].as<std::string>() == "noise") {
+            rhs = node.as<std::shared_ptr<NoiseTexture>>();
             return true;
         }
 

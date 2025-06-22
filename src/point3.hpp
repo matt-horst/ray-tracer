@@ -16,6 +16,13 @@ struct Point3 {
 
     T operator[](size_t i) const { return elem[i]; }
     T& operator[](size_t i) { return elem[i]; }
+
+    inline Point3<T>& operator*=(T t) {
+        elem[0] *= t;
+        elem[1] *= t;
+        elem[2] *= t;
+        return *this;
+    }
 };
 
 template<typename T>
@@ -29,6 +36,12 @@ Point3<T> operator-(const Point3<T> &p, const Vec3<T> &v) { return Vec3<T>(p) - 
 
 template<typename T>
 Point3<T> operator-(const Vec3<T> &v, const Point3<T> &p) { return v - Vec3<T>(p); }
+
+template<typename T>
+Point3<T> operator*(const Point3<T> &p, double t) { return Vec3<T>(p) * t;}
+
+template<typename T>
+Point3<T> operator*(double t, const Point3<T> &p) { return p * t; }
 
 template<typename U, typename V>
 Vec3<decltype(U() - V())> operator-(const Point3<U> &u, const Point3<V> &v) { return Vec3<U>(u) - Vec3<V>(v); }

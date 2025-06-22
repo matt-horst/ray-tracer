@@ -4,6 +4,7 @@
 #include "point3.hpp"
 #include "rtw_stb_image.hpp"
 #include "yaml-cpp/yaml.h"
+#include "perlin.hpp"
 #include <memory>
 
 class Texture {
@@ -72,4 +73,20 @@ private:
     std::string file_name_;
     RTWImage image_;
     friend struct YAML::convert<std::shared_ptr<ImageTexture>>;
+};
+
+class NoiseTexture : public Texture {
+public:
+    NoiseTexture(double scale) : scale_(scale) {}
+
+    Color value(double u, double v, const Point3<double> &p) const override {
+        // return Color(1.0, 1.0, 1.0) * 0.5 * (1.0 + noise_.noise(scale_ * p));
+        return Color(1.0, 1.0, 1.0) * noise_.turb(p, 7);
+    }
+
+private:
+    Perlin noise_;
+    double scale_;
+
+    friend struct YAML::convert<std::shared_ptr<NoiseTexture>>;
 };
