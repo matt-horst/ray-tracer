@@ -37,6 +37,8 @@ public:
         return true;
     }
 
+    inline static const std::string NAME = "lambertian";
+
 private:
     std::shared_ptr<Texture> tex_;
     friend struct YAML::convert<std::shared_ptr<Lambertian>>;
@@ -53,6 +55,8 @@ public:
 
         return (dot(ray_out.direction(), rec.normal) > 0);
     }
+
+    inline static const std::string NAME = "metal";
 
 private:
     Color color_;
@@ -84,6 +88,8 @@ public:
         ray_out = Ray(rec.p, direction, ray_in.time());
         return true;
     }
+    
+    inline static const std::string NAME = "dielectic";
 
 private:
     double refraction_index_;
@@ -107,8 +113,29 @@ public:
     Color emitted(double u, double v, const Point3<double> &p) const override {
         return tex_->value(u, v, p);
     }
+
+    inline static const std::string NAME = "diffuse-light";
 private:
     std::shared_ptr<Texture> tex_;
 
     friend struct YAML::convert<std::shared_ptr<DiffuseLight>>;
+};
+
+class Isotropic : public Material {
+public:
+    Isotropic(std::shared_ptr<Texture> tex) : tex_(tex) {}
+    Isotropic(const Color &color) : tex_(std::make_shared<SolidColorTexture>(color)) {}
+
+    bool scatter(const Ray<double> &ray_in, const HitRecord &rec, Color &attenuation, Ray<double> &ray_out) const override {
+        ray_out = Ray<double>(rec.p, random_unit_vector(), ray_in.time());
+        attenuation = tex_->value(rec.u, rec.v, rec.p);
+        return true;
+    }
+
+    inline static const std::string NAME = "isotropic";
+
+private:
+    std::shared_ptr<Texture> tex_;
+
+    friend struct YAML::convert<std::shared_ptr<Isotropic>>;
 };

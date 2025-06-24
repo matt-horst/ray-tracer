@@ -97,7 +97,7 @@ public:
         sides_.add(std::make_shared<Quad>(Point3<double>(max.x(), min.y(), min.z()), -dx, dy, mat));
         sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), min.y(), min.z()), dz, dy, mat));
         sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), max.y(), max.z()), dx, -dz, mat));
-        sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), max.y(), min.z()), dx, dz, mat));
+        sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), min.y(), min.z()), dx, dz, mat));
     }
 
     bool hit(const Ray<double> &ray, Interval ray_t, HitRecord &rec) const override {

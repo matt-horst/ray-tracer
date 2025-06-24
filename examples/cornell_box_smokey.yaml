@@ -1,0 +1,97 @@
+materials:
+  - name: red
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [0.65, 0.05, 0.05]
+  - name: white
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [0.73, 0.73, 0.73]
+  - name: green
+    type: lambertian
+    texture:
+      type: solid_color
+      color: [0.12, 0.45, 0.15]
+  - name: light
+    type: diffuse-light
+    texture:
+      type: solid_color
+      color: [7, 7, 7]
+objects:
+  - type: quad
+    origin: [555, 0, 0]
+    u: [0, 555, 0]
+    v: [0, 0, 555]
+    material: green
+  - type: quad
+    origin: [0, 0, 0]
+    u: [0, 555, 0]
+    v: [0, 0, 555]
+    material: red
+  - type: quad
+    origin: [113, 554, 127]
+    u: [330, 0, 0]
+    v: [0, 0, 305]
+    material: light
+  - type: quad
+    origin: [0, 0, 0]
+    u: [555, 0, 0]
+    v: [0, 0, 555]
+    material: white
+  - type: quad
+    origin: [555, 555, 555]
+    u: [-555, 0, 0]
+    v: [0, 0, -555]
+    material: white
+  - type: quad
+    origin: [0, 0, 555]
+    u: [555, 0, 0]
+    v: [0, 555, 0]
+    material: white
+  - type: constant-medium
+    boundary:
+      type: translate
+      object:
+        type: rotate-y
+        object:
+          type: box
+          a: [0, 0, 0]
+          b: [165, 330, 165]
+          material: white
+        angle: 15
+      offset: [265, 0, 295]
+    density: 0.01
+    phase_function:
+      type: isotropic
+      texture:
+        type: solid_color
+        color: [0, 0, 0]
+  - type: constant-medium
+    boundary:
+      type: translate
+      object:
+        type: rotate-y
+        object:
+          type: box
+          a: [0, 0, 0]
+          b: [165, 165, 165]
+          material: white
+        angle: -18
+      offset: [130, 0, 65]
+    density: 0.01
+    phase_function:
+      type: isotropic
+      texture:
+        type: solid_color
+        color: [1, 1, 1]
+camera:
+  vfov: 40
+  look_from: [278, 278, -800]
+  look_at: [278, 278, 0]
+  vup: [0, 1, 0]
+  defocus_angle: 0
+  background: [0, 0, 0]
+
+

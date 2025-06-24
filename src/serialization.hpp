@@ -10,6 +10,7 @@
 #include "scene.hpp"
 #include "sphere.hpp"
 #include "quad.hpp"
+#include "constant_medium.hpp"
 #include "yaml-cpp/emitter.h"
 #include "yaml-cpp/emittermanip.h"
 #include "yaml-cpp/node/node.h"
@@ -269,14 +270,14 @@ template<>
 struct convert<std::shared_ptr<Lambertian>> {
     static Node encode(const std::shared_ptr<Lambertian> &rhs) {
         Node node;
-        node["type"] = "lambertian";
+        node["type"] = Lambertian::NAME;
         node["texture"] = rhs->tex_;
         return node;
     }
 
     static Node encode(const std::unordered_map<std::shared_ptr<Texture>, std::string> textures, std::shared_ptr<Lambertian> &rhs) {
         Node node;
-        node["type"] = "lambertian";
+        node["type"] = Lambertian::NAME;
         try {
             node["texture"] = textures.at(rhs->tex_);
         } catch (std::out_of_range &_) {
@@ -286,7 +287,7 @@ struct convert<std::shared_ptr<Lambertian>> {
     }
 
     static bool decode(const Node &node, std::shared_ptr<Lambertian> &rhs) {
-        if (!node.IsMap() || node["type"].as<std::string>() != "lambertian") return false;
+        if (!node.IsMap() || node["type"].as<std::string>() != Lambertian::NAME) return false;
 
         std::shared_ptr<Texture> tex = node["texture"].as<std::shared_ptr<Texture>>();
         rhs = std::make_shared<Lambertian>(tex);
@@ -295,7 +296,7 @@ struct convert<std::shared_ptr<Lambertian>> {
     }
 
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Material> &rhs) {
-        if (!node.IsMap() || node["type"].as<std::string>() != "lambertian") { return false; }
+        if (!node.IsMap() || node["type"].as<std::string>() != Lambertian::NAME) { return false; }
 
         if (node["texture"].IsScalar()) {
             rhs = std::make_shared<Lambertian>(textures.at(node["texture"].as<std::string>()));
@@ -311,7 +312,7 @@ template<>
 struct convert<std::shared_ptr<Metal>> {
     static Node encode(const std::shared_ptr<Metal> &rhs) {
         Node node;
-        node["type"] = "metal";
+        node["type"] = Metal::NAME;
         node["color"] = rhs -> color_;
         node["fuzz"] = rhs ->fuzz_;
 
@@ -319,7 +320,7 @@ struct convert<std::shared_ptr<Metal>> {
     }
 
     static bool decode(const Node &node, std::shared_ptr<Metal> &rhs) {
-        if (!node.IsMap() || node["type"].as<std::string>() != "metal") return false;
+        if (!node.IsMap() || node["type"].as<std::string>() != Metal::NAME) return false;
 
         rhs = std::make_shared<Metal>(node["color"].as<Color>(), node["fuzz"].as<double>());
 
@@ -331,14 +332,14 @@ template<>
 struct convert<std::shared_ptr<Dielectric>> {
     static Node encode(const std::shared_ptr<Dielectric> &rhs) {
         Node node;
-        node["type"] = "dielectric";
+        node["type"] = Dielectric::NAME;
         node["refraction_index"] = rhs->refraction_index_;
 
         return node;
     }
 
     static bool decode(const Node &node, std::shared_ptr<Dielectric> &rhs) {
-        if (!node.IsMap() || node["type"].as<std::string>() != "dielectric") return false;
+        if (!node.IsMap() || node["type"].as<std::string>() != Dielectric::NAME) return false;
 
         rhs = std::make_shared<Dielectric>(node["refraction_index"].as<double>());
 
@@ -351,7 +352,7 @@ struct convert<std::shared_ptr<DiffuseLight>> {
     static Node encode(const std::shared_ptr<DiffuseLight> &rhs) {
         Node node;
 
-        node["type"] = "diffuse_light";
+        node["type"] = DiffuseLight::NAME;
         node["texture"] = rhs->tex_;
 
         return node;
@@ -360,7 +361,7 @@ struct convert<std::shared_ptr<DiffuseLight>> {
     static Node encode(const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures, const std::shared_ptr<DiffuseLight> &rhs) {
         Node node;
 
-        node["type"] = "diffuse_light";
+        node["type"] = DiffuseLight::NAME;
         try  {
             node["texture"] = textures.at(rhs->tex_);
         } catch (const std::out_of_range &e) {
@@ -371,7 +372,7 @@ struct convert<std::shared_ptr<DiffuseLight>> {
     }
 
     static bool decode(const Node &node, std::shared_ptr<DiffuseLight> &rhs) {
-        if (!node.IsMap() || node["type"].as<std::string>() != "diffuse_light") return false;
+        if (!node.IsMap() || node["type"].as<std::string>() != DiffuseLight::NAME) return false;
 
         const auto tex = node["texture"].as<std::shared_ptr<Texture>>();
         rhs = std::make_shared<DiffuseLight>(tex);
@@ -380,7 +381,7 @@ struct convert<std::shared_ptr<DiffuseLight>> {
     }
 
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<DiffuseLight> &rhs) {
-        if (!node.IsMap() || node["type"].as<std::string>() != "diffuse_light") return false;
+        if (!node.IsMap() || node["type"].as<std::string>() != DiffuseLight::NAME) return false;
 
         std::shared_ptr<Texture> tex;
         if (node["texture"].IsScalar()) {
@@ -390,6 +391,56 @@ struct convert<std::shared_ptr<DiffuseLight>> {
         }
 
         rhs = std::make_shared<DiffuseLight>(tex);
+
+        return true;
+    }
+};
+
+template<>
+struct convert<std::shared_ptr<Isotropic>> {
+    static Node encode(const std::shared_ptr<Isotropic> &rhs) {
+        Node node;
+
+        node["type"] = Isotropic::NAME;
+        node["texture"] = rhs->tex_;
+
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures, const std::shared_ptr<Isotropic> &rhs) {
+        Node node;
+
+        node["type"] = Isotropic::NAME;
+        try {
+            node["texture"] = textures.at(rhs->tex_);
+        } catch (const std::out_of_range &e) {
+            node["texture"] = rhs->tex_;
+        }
+
+        return node;
+    }
+
+    static bool decode(const Node &node, std::shared_ptr<Isotropic> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != Isotropic::NAME) return false;
+
+        const auto tex = node["texture"].as<std::shared_ptr<Texture>>();
+
+        rhs = std::make_shared<Isotropic>(tex);
+
+        return true;
+    }
+
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Isotropic> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != Isotropic::NAME) return false;
+
+        std::shared_ptr<Texture> tex;
+        if (node["texture"].IsScalar()) {
+            tex = textures.at(node["texture"].as<std::string>());
+        } else {
+            tex = node["texture"].as<std::shared_ptr<Texture>>();
+        }
+
+        rhs = std::make_shared<Isotropic>(tex);
 
         return true;
     }
@@ -409,6 +460,8 @@ struct convert<std::shared_ptr<Material>> {
             return convert<std::shared_ptr<Dielectric>>::encode(p);
         } else if (std::shared_ptr<DiffuseLight> p = std::dynamic_pointer_cast<DiffuseLight>(rhs)){
             return convert<std::shared_ptr<DiffuseLight>>::encode(p);
+        } else if (std::shared_ptr<Isotropic> p = std::dynamic_pointer_cast<Isotropic>(rhs)){
+            return convert<std::shared_ptr<Isotropic>>::encode(p);
         }
 
         return node;
@@ -425,6 +478,8 @@ struct convert<std::shared_ptr<Material>> {
             return convert<std::shared_ptr<Dielectric>>::encode(p);
         } else if (std::shared_ptr<DiffuseLight> p = std::dynamic_pointer_cast<DiffuseLight>(rhs)){
             return convert<std::shared_ptr<DiffuseLight>>::encode(textures, p);
+        } else if (std::shared_ptr<Isotropic> p = std::dynamic_pointer_cast<Isotropic>(rhs)){
+            return convert<std::shared_ptr<Isotropic>>::encode(textures, p);
         }
 
         return node;
@@ -435,17 +490,23 @@ struct convert<std::shared_ptr<Material>> {
 
         const std::string type = node["type"].as<std::string>();
 
-        if (type == "lambertian") {
+        if (type == Lambertian::NAME) {
             return convert<std::shared_ptr<Lambertian>>::decode(node, textures, rhs);
-        } else if (type == "metal") {
+        } else if (type == Metal::NAME) {
             rhs = node.as<std::shared_ptr<Metal>>();
             return true;
-        } else if (type == "dielectric") {
+        } else if (type == Dielectric::NAME) {
             rhs = node.as<std::shared_ptr<Dielectric>>();
             return true;
-        } else if (type == "diffuse_light") {
+        } else if (type == DiffuseLight::NAME) {
             std::shared_ptr<DiffuseLight> p;
             if (convert<std::shared_ptr<DiffuseLight>>::decode(node, textures, p)) {
+                rhs = p;
+                return true;
+            }
+        } else if (type == Isotropic::NAME) {
+            std::shared_ptr<Isotropic> p;
+            if (convert<std::shared_ptr<Isotropic>>::decode(node, textures, p)) {
                 rhs = p;
                 return true;
             }
@@ -456,19 +517,22 @@ struct convert<std::shared_ptr<Material>> {
 
     static bool decode(const Node &node, std::shared_ptr<Material> &rhs) {
         const std::string type = node["type"].as<std::string>();
-        if (type == "lambertian") {
+        if (type == Lambertian::NAME) {
             rhs = node.as<std::shared_ptr<Lambertian>>();
             return true;
-        } else if (type == "metal") {
+        } else if (type == Metal::NAME) {
             rhs = node.as<std::shared_ptr<Metal>>();
             return true;
-        } else if (type == "dielectric") {
+        } else if (type == Dielectric::NAME) {
             rhs = node.as<std::shared_ptr<Dielectric>>();
             return true;
-        } else if (type == "diffuse_light") {
+        } else if (type == DiffuseLight::NAME) {
             rhs = node.as<std::shared_ptr<DiffuseLight>>();
             return true;
-        }
+        } else if (type == Isotropic::NAME) {
+            rhs = node.as<std::shared_ptr<Isotropic>>();
+            return true;
+        } 
 
         return false;
     }
@@ -782,6 +846,59 @@ struct convert<std::shared_ptr<RotateY>> {
 
         rhs = std::make_shared<RotateY>(object, angle);
 
+        return true;
+    }
+};
+
+template<>
+struct convert<std::shared_ptr<ConstantMedium>> {
+    static Node encode(const std::shared_ptr<ConstantMedium> &rhs) {
+        Node node;
+
+        node["type"] = ConstantMedium::NAME;
+        node["boundary"] = rhs->boundary_;
+        node["density"] = -1 / rhs->neg_inv_density_;
+        node["phase_function"] = rhs->phase_function_;
+
+        return node;
+    }
+    static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<ConstantMedium> &rhs) {
+        Node node;
+
+        node["type"] = ConstantMedium::NAME;
+        try {
+            node["boundary"] = refs.at(rhs->boundary_);
+        } catch (const std::out_of_range &e) {
+            node["boundary"] = rhs->boundary_;
+        }
+        node["density"] = -1 / rhs->neg_inv_density_;
+        node["phase_function"] = rhs->phase_function_;
+
+        return node;
+    }
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<ConstantMedium> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != ConstantMedium::NAME) return false;
+
+        std::shared_ptr<Hittable> boundary;
+        if (node["boundary"].IsScalar()) {
+            boundary = refs.at(node["boundary"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Hittable>>::decode(node["boundary"], refs, materials, textures, boundary)) {
+                return false;
+            }
+        }
+        const auto density = node["density"].as<double>();
+        std::shared_ptr<Material> phase_function;
+        if (node["phase_function"].IsScalar()) {
+            phase_function = materials.at(node["phase_function"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Material>>::decode(node["phase_function"], textures, phase_function)) {
+                return false;
+            }
+        }
+
+        rhs = std::make_shared<ConstantMedium>(boundary, density, phase_function);
+ 
         return true;
     }
 };

@@ -1,4 +1,5 @@
 #include "serialization.hpp"
+#include "constant_medium.hpp"
 #include <memory>
 #include <unordered_map>
 
@@ -25,6 +26,8 @@ Node convert<std::shared_ptr<Hittable>>::encode(const std::unordered_map<std::sh
         return convert<std::shared_ptr<Translate>>::encode(refs, materials, textures, p);
     } else if (std::shared_ptr<RotateY> p = std::dynamic_pointer_cast<RotateY>(rhs)) {
         return convert<std::shared_ptr<RotateY>>::encode(refs, materials, textures, p);
+    } else if (std::shared_ptr<ConstantMedium> p = std::dynamic_pointer_cast<ConstantMedium>(rhs)) {
+        return convert<std::shared_ptr<ConstantMedium>>::encode(refs, materials, textures, p);
     } 
     return node;
 }
@@ -60,6 +63,12 @@ bool convert<std::shared_ptr<Hittable>>::decode(const Node &node, const std::uno
     } else if (type == "box") {
         std::shared_ptr<Box> p;
         if (convert<std::shared_ptr<Box>>::decode(node, refs, materials, textures, p)) {
+            rhs = p;
+            return true;
+        }
+    } else if (type == ConstantMedium::NAME) {
+        std::shared_ptr<ConstantMedium> p;
+        if (convert<std::shared_ptr<ConstantMedium>>::decode(node, refs, materials, textures, p)) {
             rhs = p;
             return true;
         }
