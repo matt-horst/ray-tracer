@@ -21,6 +21,15 @@ struct Point3 {
         elem[0] *= t;
         elem[1] *= t;
         elem[2] *= t;
+
+        return *this;
+    }
+
+    inline Point3<T>& operator+=(const Vec3<T> v) {
+        elem[0] += v.elem[0];
+        elem[1] += v.elem[1];
+        elem[2] += v.elem[2];
+
         return *this;
     }
 };

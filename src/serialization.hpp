@@ -3,6 +3,7 @@
 #include "camera.hpp"
 #include "hittable.hpp"
 #include "material.hpp"
+#include "point3.hpp"
 #include "render.hpp"
 #include "texture.hpp"
 #include "vec3.hpp"
@@ -640,47 +641,151 @@ struct convert<std::shared_ptr<Quad>> {
 
 template<>
 struct convert<std::shared_ptr<Hittable>> {
-    static Node encode(const std::shared_ptr<Hittable> &rhs) {
+    static Node encode(const std::shared_ptr<Hittable> &rhs);
+    static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<Hittable> &rhs);
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Hittable> &rhs);
+};
+
+template<>
+struct convert<std::shared_ptr<Box>> {
+    static Node encode(const std::shared_ptr<Box> &rhs) {
         Node node;
-        if (std::shared_ptr<Sphere> p = std::dynamic_pointer_cast<Sphere>(rhs)) {
-            return convert<std::shared_ptr<Sphere>>::encode(p);
-        } else if (std::shared_ptr<Quad> p = std::dynamic_pointer_cast<Quad>(rhs)) {
-            return convert<std::shared_ptr<Quad>>::encode(p);
-        }
+
+        node["type"] = "box";
+        node["a"] = rhs->a_;
+        node["b"] = rhs->b_;
+        node["material"] = rhs->mat_;
+
         return node;
     }
 
-    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<Hittable> &rhs) {
+    static Node encode(const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<Box> &rhs) {
         Node node;
-        if (std::shared_ptr<Sphere> p = std::dynamic_pointer_cast<Sphere>(rhs)) {
-            return convert<std::shared_ptr<Sphere>>::encode(materials, textures, p);
-        } else if (std::shared_ptr<Quad> p = std::dynamic_pointer_cast<Quad>(rhs)) {
-            return convert<std::shared_ptr<Quad>>::encode(materials, textures, p);
+        node["type"] = "box";
+        node["a"] = rhs->a_;
+        node["b"] = rhs->b_;
+
+        try {
+            node["material"] = materials.at(rhs->mat_);
+        } catch (const std::out_of_range &e) {
+            node["material"] = convert<std::shared_ptr<Material>>::encode(textures, rhs->mat_);
         }
+
         return node;
     }
 
-    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Hittable> &rhs) {
-        if (!node.IsMap()) return false;
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Box> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "box") return false;
 
-        const auto type = node["type"].as<std::string>();
-        if (type == "sphere") {
-            std::shared_ptr<Sphere> p;
-            if (convert<std::shared_ptr<Sphere>>::decode(node, materials, textures, p)) {
-                rhs = p;
-                return true;
-            }
-        } else if (type == "quad") {
-            std::shared_ptr<Quad> p;
-            if (convert<std::shared_ptr<Quad>>::decode(node, materials, textures, p)) {
-                rhs = p;
-                return true;
-            }
+        std::shared_ptr<Material> mat;
+        if (node["material"].IsScalar()) {
+            mat = materials.at(node["material"].as<std::string>());
+        } else if (!convert<std::shared_ptr<Material>>::decode(node["material"], textures, mat)) {
+            return false;
         }
 
-        return false;
+        const auto a = node["a"].as<Point3<double>>();
+        const auto b = node["b"].as<Point3<double>>();
+
+        rhs = std::make_shared<Box>(a, b, mat);
+
+        return true;
     }
 };
+
+template<>
+struct convert<std::shared_ptr<Translate>> {
+    static Node encode(const std::shared_ptr<Translate> &rhs) {
+        Node node;
+
+        node["type"] = "translate";
+        node["object"] = rhs->object_;
+        node["offset"] = rhs->offset_;
+
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<Translate> &rhs) {
+        Node node;
+
+        node["type"] = "translate";
+        try {
+            node["object"] = refs.at(rhs->object_);
+        } catch (const std::out_of_range &e) {
+            node["object"] = convert<std::shared_ptr<Hittable>>::encode(refs, materials, textures, rhs->object_);
+        }
+        node["offset"] = rhs->offset_;
+
+        return node;
+    }
+
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Translate> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "translate") return false;
+
+        std::shared_ptr<Hittable> object;
+        if (node["object"].IsScalar()) {
+            object = refs.at(node["object"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Hittable>>::decode(node["object"], refs, materials, textures, object)) {
+                return false;
+            }
+        }
+
+        const auto offset = node["offset"].as<Vec3<double>>();
+
+        rhs = std::make_shared<Translate>(object, offset);
+
+        return true;
+    }
+};
+
+template<>
+struct convert<std::shared_ptr<RotateY>> {
+    static Node encode(const std::shared_ptr<RotateY> &rhs) {
+        Node node;
+
+        node["type"] = "rotate-y";
+        node["object"] = rhs->object_;
+        node["angle"] = radians_to_degrees(rhs->theta_);
+
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<RotateY> &rhs) {
+        Node node;
+
+        node["type"] = "rotate-y";
+        try {
+            node["object"] = refs.at(rhs->object_);
+        } catch (const std::out_of_range &e) {
+            node["object"] = convert<std::shared_ptr<Hittable>>::encode(refs, materials, textures, rhs->object_);
+        }
+
+        node["angle"] = radians_to_degrees(rhs->theta_);
+
+        return node;
+    }
+
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<RotateY> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "rotate-y") return false;
+
+        std::shared_ptr<Hittable> object;
+        if (node["object"].IsScalar()) {
+            object = refs.at(node["object"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Hittable>>::decode(node["object"], refs, materials, textures, object)) {
+                return false;
+            }
+        }
+
+        const auto angle = node["angle"].as<double>();
+
+        rhs = std::make_shared<RotateY>(object, angle);
+
+        return true;
+    }
+};
+
 
 template<>
 struct convert<Scene> {
@@ -696,6 +801,14 @@ struct convert<Scene> {
         std::unordered_map<std::shared_ptr<Material>, std::string> mat_name_map;
         for (size_t i = 0; i < rhs.materials_.size(); i++) {
             mat_name_map[rhs.materials_[i]] = std::format("Material-{}", i);
+        }
+
+        std::unordered_map<std::shared_ptr<Hittable>, std::string> ref_name_map;
+        for (size_t i = 0; i < rhs.refs_.size(); i++) {
+            ref_name_map[rhs.refs_[i]] = std::format("Ref-{}", i);
+        }
+        for (size_t i = 0; i < rhs.objs_.objs.size(); i++) {
+            ref_name_map[rhs.objs_.objs[i]] = std::format("Obj-{}", i);
         }
 
         {
@@ -722,10 +835,18 @@ struct convert<Scene> {
         }
 
         {
+            // Encode Refs
+            node["refs"] = Node();
+            for (const auto &ref : rhs.refs_) {
+                node["refs"].push_back(convert<std::shared_ptr<Hittable>>::encode(ref_name_map, mat_name_map, tex_name_map, ref));
+            }
+        }
+
+        {
             // Encode Objects
             node["objects"] = Node();
             for (const auto &obj : rhs.objs_.objs) {
-                node["objects"].push_back(convert<std::shared_ptr<Hittable>>::encode(mat_name_map, tex_name_map, obj));
+                node["objects"].push_back(convert<std::shared_ptr<Hittable>>::encode(ref_name_map, mat_name_map, tex_name_map, obj));
             }
         }
 
@@ -738,6 +859,7 @@ struct convert<Scene> {
         // Create Name-Maps
         std::unordered_map<std::string, std::shared_ptr<Texture>> tex_map;
         std::unordered_map<std::string, std::shared_ptr<Material>> mat_map;
+        std::unordered_map<std::string, std::shared_ptr<Hittable>> ref_map;
 
         Node textures_node = node["textures"];
         if (textures_node.IsDefined() && textures_node.IsSequence()) {
@@ -767,11 +889,25 @@ struct convert<Scene> {
             }
         }
 
+        Node refs_node = node["refs"];
+        if (refs_node.IsDefined() && refs_node.IsSequence()) {
+            for (const auto &ref_node: refs_node) {
+                std::string name = ref_node["name"].as<std::string>();
+                std::shared_ptr<Hittable> ref;
+                if (convert<std::shared_ptr<Hittable>>::decode(ref_node, ref_map, mat_map, tex_map, ref)) {
+                    rhs.add_ref(ref);
+                    ref_map[name] = ref;
+                } else {
+                    return false;
+                }
+            }
+        }
+
         Node objects_node = node["objects"];
         if (objects_node.IsDefined() && objects_node.IsSequence()) {
             for (const auto &obj_node : objects_node) {
                 std::shared_ptr<Hittable> obj;
-                if (convert<std::shared_ptr<Hittable>>::decode(obj_node, mat_map, tex_map, obj)) {
+                if (convert<std::shared_ptr<Hittable>>::decode(obj_node, ref_map, mat_map, tex_map, obj)) {
                     rhs.add_object(obj);
                 } else {
                     return false;

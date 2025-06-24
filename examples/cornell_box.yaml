@@ -50,6 +50,26 @@ objects:
     u: [555, 0, 0]
     v: [0, 555, 0]
     material: white
+  - type: translate
+    object:
+      type: rotate-y
+      object:
+        type: box
+        a: [0, 0, 0]
+        b: [165, 330, 165]
+        material: white
+      angle: 15
+    offset: [265, 0, 295]
+  - type: translate
+    object:
+      type: rotate-y
+      object:
+        type: box
+        a: [0, 0, 0]
+        b: [165, 165, 165]
+        material: white
+      angle: -18
+    offset: [130, 0, 65]
 camera:
   vfov: 40
   look_from: [278, 278, -800]

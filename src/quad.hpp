@@ -2,6 +2,7 @@
 
 #include "bbox.hpp"
 #include "hittable.hpp"
+#include "hittable_list.hpp"
 #include "interval.hpp"
 #include "material.hpp"
 #include <memory>
@@ -79,4 +80,36 @@ private:
     Vec3<double> w_;
 
     friend struct YAML::convert<std::shared_ptr<Quad>>;
+};
+
+class Box : public Hittable {
+public:
+    Box(const Point3<double> &a, const Point3<double> &b, std::shared_ptr<Material> mat) : a_(a), b_(b), mat_(mat), sides_() {
+        const auto min = Point3<double>(std::fmin(a.x(), b.x()), std::fmin(a.y(), b.y()), std::fmin(a.z(), b.z()));
+        const auto max = Point3<double>(std::fmax(a.x(), b.x()), std::fmax(a.y(), b.y()), std::fmax(a.z(), b.z()));
+
+        const auto dx = Vec3<double>(max.x() - min.x(), 0, 0);
+        const auto dy = Vec3<double>(0, max.y() - min.y(), 0);
+        const auto dz = Vec3<double>(0, 0, max.z() - min.z());
+
+        sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), min.y(), max.z()), dx, dy, mat));
+        sides_.add(std::make_shared<Quad>(Point3<double>(max.x(), min.y(), max.z()), -dz, dy, mat));
+        sides_.add(std::make_shared<Quad>(Point3<double>(max.x(), min.y(), min.z()), -dx, dy, mat));
+        sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), min.y(), min.z()), dz, dy, mat));
+        sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), max.y(), max.z()), dx, -dz, mat));
+        sides_.add(std::make_shared<Quad>(Point3<double>(min.x(), max.y(), min.z()), dx, dz, mat));
+    }
+
+    bool hit(const Ray<double> &ray, Interval ray_t, HitRecord &rec) const override {
+        return sides_.hit(ray, ray_t, rec);
+    }
+    
+    BBox3 bounding_box() const override { return sides_.bounding_box(); }
+
+private:
+    Point3<double> a_, b_;
+    std::shared_ptr<Material> mat_;
+    HittableList sides_;
+
+    friend struct YAML::convert<std::shared_ptr<Box>>;
 };

@@ -74,3 +74,10 @@ private:
     }
 };
 
+inline BBox3 operator+(const BBox3 &bbox, const Vec3<double> &offset) {
+    return BBox3(bbox.x + offset.x(), bbox.y + offset.y(), bbox.z + offset.z());
+}
+
+inline BBox3 operator+(const Vec3<double> &offset, const BBox3 &bbox) {
+    return bbox + offset;
+}

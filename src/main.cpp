@@ -6,12 +6,14 @@
 #include <cassert>
 #include <fstream>
 #include "camera.hpp"
+#include "hittable.hpp"
 #include "hittable_list.hpp"
 #include "render.hpp"
 #include "image.hpp"
 #include "scene.hpp"
 #include "serialization.hpp"
 #include "argparse/argparse.hpp"
+#include "vec3.hpp"
 
 
 int main(int argc, char *argv[]) {
@@ -129,6 +131,17 @@ int main(int argc, char *argv[]) {
     if (auto file_name = program.present("camera-settings")) {
         scene.cb_ = LoadCamera(*file_name);
     }
+
+
+    // std::shared_ptr<Hittable> box_1 = std::make_shared<Box>(Point3<double>(), Point3<double>(165, 330, 165), scene.materials_[1]);
+    // box_1 = std::make_shared<RotateY>(box_1, 15);
+    // box_1 = std::make_shared<Translate>(box_1, Vec3<double>(265, 0, 295));
+    // scene.add_object(box_1);
+    //
+    // std::shared_ptr<Hittable> box_2 = std::make_shared<Box>(Point3<double>(), Point3<double>(165, 165, 165), scene.materials_[1]);
+    // box_2 = std::make_shared<RotateY>(box_2, -18);
+    // box_2 = std::make_shared<Translate>(box_2, Vec3<double>(130, 0, 65));
+    // scene.add_object(box_2);
 
     render(img, scene.camera(img), HittableList(scene.bvh()), rs);
 

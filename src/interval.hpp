@@ -33,3 +33,10 @@ public:
     static const Interval empty, universe;
 };
 
+inline Interval operator+(const Interval &interval, const double delta) {
+    return Interval(interval.min + delta, interval.max + delta);
+}
+
+inline Interval operator+(const double delta, const Interval &interval) {
+    return interval + delta;
+}
