@@ -7,7 +7,7 @@ CC=g++
 CFLAGS=-Wall -Wpedantic -Werror -std=c++23 -g -I $(INC_DIR) -fPIC
 LDFLAGS=-L lib -static -lyaml-cpp -fPIE
 
-MAINS=$(SRC_DIR)/bouncing_spheres.cpp $(SRC_DIR)/checker_spheres.cpp $(SRC_DIR)/earth.cpp
+MAINS=$(SRC_DIR)/bouncing_spheres.cpp $(SRC_DIR)/checker_spheres.cpp $(SRC_DIR)/earth.cpp $(SRC_DIR)/showcase.cpp
 
 HEADERS=$(shell find $(SRC_DIR) -name '*.hpp')
 ALL_SRCS=$(shell find $(SRC_DIR) -name '*.cpp')
@@ -29,6 +29,9 @@ $(BIN_DIR)/checker_spheres: $(OBJ_DIR)/checker_spheres.o $(OBJ_DIR)/rtw_stb_imag
 	$(CC) $^ $(LDFLAGS) -o $@
 
 $(BIN_DIR)/earth: $(OBJ_DIR)/earth.o $(OBJ_DIR)/rtw_stb_image.o
+	$(CC) $^ $(LDFLAGS) -o $@
+
+$(BIN_DIR)/showcase: $(OBJ_DIR)/showcase.o $(filter-out $(OBJ_DIR)/main.o,$(OBJS))
 	$(CC) $^ $(LDFLAGS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp

@@ -13,11 +13,10 @@ Color ray_color(const Ray<double> &ray, const Hittable &world, const Color &back
         return background;
     }
 
-    Ray<double> scattered;
-    Color attenuation;
-
     const Color color_emitted = rec.mat->emitted(rec.u, rec.v, rec.p);
 
+    Ray<double> scattered;
+    Color attenuation;
     if (!rec.mat->scatter(ray, rec, attenuation, scattered)) {
         return color_emitted;
     }

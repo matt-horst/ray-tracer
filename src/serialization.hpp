@@ -1,7 +1,9 @@
 #pragma once
 
+#include "bvh.hpp"
 #include "camera.hpp"
 #include "hittable.hpp"
+#include "hittable_list.hpp"
 #include "material.hpp"
 #include "point3.hpp"
 #include "render.hpp"
@@ -703,11 +705,149 @@ struct convert<std::shared_ptr<Quad>> {
     }
 };
 
+
 template<>
 struct convert<std::shared_ptr<Hittable>> {
     static Node encode(const std::shared_ptr<Hittable> &rhs);
     static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<Hittable> &rhs);
+    static bool decode(const Node &node, std::shared_ptr<Hittable> &rhs);
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Hittable> &rhs);
+};
+
+template<>
+struct convert<std::shared_ptr<BVHNode>> {
+    static Node encode(const std::shared_ptr<BVHNode> &rhs) {
+        Node node;
+
+        node["type"] = BVHNode::NAME;
+        node["left"] = rhs->left_;
+        node["right"] = rhs->left_;
+
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<BVHNode> &rhs) {
+        Node node;
+
+        node["type"] = BVHNode::NAME;
+
+        try {
+            node["left"] = refs.at(rhs->left_);
+        } catch (const std::out_of_range &e) {
+            node["left"] = convert<std::shared_ptr<Hittable>>::encode(refs, materials, textures, rhs->left_);
+        }
+
+        try {
+            node["right"] = refs.at(rhs->right_);
+        } catch (const std::out_of_range &e) {
+            node["right"] = convert<std::shared_ptr<Hittable>>::encode(refs, materials, textures, rhs->right_);
+        }
+
+        return node;
+    }
+    static bool decode(const Node &node, std::shared_ptr<BVHNode> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != BVHNode::NAME) return false;
+
+        const auto left = node["left"].as<std::shared_ptr<Hittable>>();
+        const auto right = node["right"].as<std::shared_ptr<Hittable>>();
+
+        rhs = std::make_shared<BVHNode>(left, right);
+
+        return true;
+    }
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<BVHNode> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != BVHNode::NAME) return false;
+
+        std::shared_ptr<Hittable> left;
+        if (node["left"].IsScalar()) {
+            left = refs.at(node["left"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Hittable>>::decode(node["left"], refs, materials, textures, left)) {
+                return false;
+            }
+        }
+
+        std::shared_ptr<Hittable> right;
+        if (node["right"].IsScalar()) {
+            right = refs.at(node["right"].as<std::string>());
+        } else {
+            if (!convert<std::shared_ptr<Hittable>>::decode(node["right"], refs, materials, textures, right)) {
+                return false;
+            }
+        }
+
+        rhs = std::make_shared<BVHNode>(left, right);
+
+        return true;
+    }
+};
+
+template<>
+struct convert<std::shared_ptr<HittableList>> {
+    static Node encode(const std::shared_ptr<HittableList> &rhs) {
+        Node node;
+
+        node["type"] = HittableList::NAME;
+        Node objs_node = Node();
+        for (const auto &obj: rhs->objs) {
+            objs_node.push_back(obj);
+        }
+        node["objects"] = objs_node;
+
+        return node;
+    }
+
+    static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<HittableList> &rhs) {
+        Node node;
+
+        node["type"] = HittableList::NAME;
+        Node objs_node = Node();
+        for (const auto &obj : rhs->objs) {
+            try {
+                objs_node.push_back(refs.at(obj));
+            } catch (const std::out_of_range &e) {
+                objs_node.push_back(obj);
+            }
+        }
+        node["objects"] = objs_node;
+
+        return node;
+    }
+
+    static bool decode(const Node &node, std::shared_ptr<HittableList> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != HittableList::NAME) return false;
+
+        rhs = std::make_shared<HittableList>();
+        if (node["objects"].IsDefined() && node["objects"].IsSequence()) {
+            for (const auto obj_node : node["objects"]) {
+                rhs->add(obj_node.as<std::shared_ptr<Hittable>>());
+            }
+        }
+
+        return true;
+    }
+
+    static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<HittableList> &rhs){
+        if (!node.IsMap() || node["type"].as<std::string>() != HittableList::NAME) return false;
+
+        rhs = std::make_shared<HittableList>();
+        if (node["objects"].IsDefined() && node["objects"].IsSequence()) {
+            for (const auto obj_node : node["objects"]) {
+                if (obj_node.IsScalar()) {
+                    rhs->add(refs.at(obj_node.as<std::string>()));
+                } else {
+                    std::shared_ptr<Hittable> p;
+                    if (convert<std::shared_ptr<Hittable>>::decode(obj_node, refs, materials, textures, p)) {
+                        rhs->add(p);
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
 };
 
 template<>
@@ -737,6 +877,23 @@ struct convert<std::shared_ptr<Box>> {
 
         return node;
     }
+
+    static bool decode(const Node &node, std::shared_ptr<Box> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "box") return false;
+
+        std::shared_ptr<Material> mat;
+        if (!convert<std::shared_ptr<Material>>::decode(node["material"], mat)) {
+            return false;
+        }
+
+        const auto a = node["a"].as<Point3<double>>();
+        const auto b = node["b"].as<Point3<double>>();
+
+        rhs = std::make_shared<Box>(a, b, mat);
+
+        return true;
+    }
+
 
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Box> &rhs) {
         if (!node.IsMap() || node["type"].as<std::string>() != "box") return false;
@@ -781,6 +938,21 @@ struct convert<std::shared_ptr<Translate>> {
         node["offset"] = rhs->offset_;
 
         return node;
+    }
+
+    static bool decode(const Node &node, std::shared_ptr<Translate> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "translate") return false;
+
+        std::shared_ptr<Hittable> object;
+        if (!convert<std::shared_ptr<Hittable>>::decode(node["object"], object)) {
+            return false;
+        }
+
+        const auto offset = node["offset"].as<Vec3<double>>();
+
+        rhs = std::make_shared<Translate>(object, offset);
+
+        return true;
     }
 
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<Translate> &rhs) {
@@ -830,6 +1002,21 @@ struct convert<std::shared_ptr<RotateY>> {
         return node;
     }
 
+    static bool decode(const Node &node, std::shared_ptr<RotateY> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != "rotate-y") return false;
+
+        std::shared_ptr<Hittable> object;
+        if (!convert<std::shared_ptr<Hittable>>::decode(node["object"], object)) {
+            return false;
+        }
+
+        const auto angle = node["angle"].as<double>();
+
+        rhs = std::make_shared<RotateY>(object, angle);
+
+        return true;
+    }
+
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<RotateY> &rhs) {
         if (!node.IsMap() || node["type"].as<std::string>() != "rotate-y") return false;
 
@@ -862,6 +1049,7 @@ struct convert<std::shared_ptr<ConstantMedium>> {
 
         return node;
     }
+
     static Node encode(const std::unordered_map<std::shared_ptr<Hittable>, std::string> &refs, const std::unordered_map<std::shared_ptr<Material>, std::string> &materials, const std::unordered_map<std::shared_ptr<Texture>, std::string> &textures,  const std::shared_ptr<ConstantMedium> &rhs) {
         Node node;
 
@@ -876,6 +1064,27 @@ struct convert<std::shared_ptr<ConstantMedium>> {
 
         return node;
     }
+
+    static bool decode(const Node &node, std::shared_ptr<ConstantMedium> &rhs) {
+        if (!node.IsMap() || node["type"].as<std::string>() != ConstantMedium::NAME) return false;
+
+        std::shared_ptr<Hittable> boundary;
+        if (!convert<std::shared_ptr<Hittable>>::decode(node["boundary"], boundary)) {
+            return false;
+        }
+
+        const auto density = node["density"].as<double>();
+
+        std::shared_ptr<Material> phase_function;
+        if (!convert<std::shared_ptr<Material>>::decode(node["phase_function"], phase_function)) {
+            return false;
+        }
+
+        rhs = std::make_shared<ConstantMedium>(boundary, density, phase_function);
+ 
+        return true;
+    }
+
     static bool decode(const Node &node, const std::unordered_map<std::string, std::shared_ptr<Hittable>> &refs, const std::unordered_map<std::string, std::shared_ptr<Material>> &materials, const std::unordered_map<std::string, std::shared_ptr<Texture>> &textures, std::shared_ptr<ConstantMedium> &rhs) {
         if (!node.IsMap() || node["type"].as<std::string>() != ConstantMedium::NAME) return false;
 
@@ -955,7 +1164,10 @@ struct convert<Scene> {
             // Encode Refs
             node["refs"] = Node();
             for (const auto &ref : rhs.refs_) {
-                node["refs"].push_back(convert<std::shared_ptr<Hittable>>::encode(ref_name_map, mat_name_map, tex_name_map, ref));
+                const auto &name = ref_name_map[ref];
+                Node ref_node = convert<std::shared_ptr<Hittable>>::encode(ref_name_map, mat_name_map, tex_name_map, ref);
+                ref_node["name"] = name;
+                node["refs"].push_back(ref_node);
             }
         }
 
@@ -963,9 +1175,14 @@ struct convert<Scene> {
             // Encode Objects
             node["objects"] = Node();
             for (const auto &obj : rhs.objs_.objs) {
-                node["objects"].push_back(convert<std::shared_ptr<Hittable>>::encode(ref_name_map, mat_name_map, tex_name_map, obj));
+                const auto &name = ref_name_map[obj];
+                Node obj_node = convert<std::shared_ptr<Hittable>>::encode(ref_name_map, mat_name_map, tex_name_map, obj);
+                obj_node["name"] = name;
+                node["objects"].push_back(obj_node);
             }
         }
+
+        node["camera"] = rhs.cb_;
 
         return node;
     }
@@ -1026,6 +1243,9 @@ struct convert<Scene> {
                 std::shared_ptr<Hittable> obj;
                 if (convert<std::shared_ptr<Hittable>>::decode(obj_node, ref_map, mat_map, tex_map, obj)) {
                     rhs.add_object(obj);
+                    if (obj_node["name"].IsDefined()) {
+                        ref_map[obj_node["name"].as<std::string>()] = obj;
+                    }
                 } else {
                     return false;
                 }

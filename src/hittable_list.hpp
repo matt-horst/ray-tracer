@@ -38,6 +38,7 @@ public:
 
     BBox3 bounding_box() const override { return bbox; }
 
+    inline static const std::string NAME = "hittable-list";
 private:
     BBox3 bbox;
 };
