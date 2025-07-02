@@ -21,7 +21,9 @@ Color ray_color(const Ray<double> &ray, const Hittable &world, const Color &back
         return color_emitted;
     }
 
-    const Color color_scattered = attenuation * ray_color(scattered, world, background, depth + 1, max_depth);
+    const double scattering_pdf = rec.mat->scattering_pdf(ray, rec, scattered);
+    const double pdf_value = scattering_pdf;
+    const Color color_scattered = attenuation * scattering_pdf * ray_color(scattered, world, background, depth + 1, max_depth) / pdf_value;
 
     return color_emitted + color_scattered;
 }

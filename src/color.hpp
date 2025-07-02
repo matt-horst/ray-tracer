@@ -89,3 +89,5 @@ inline Color operator*(Color a, Color b) {
 inline Color operator+(Color a, Color b) { return Color(Vec3<double>(a) + Vec3<double>(b)); }
 
 inline bool operator==(Color a, Color b) { return a.elem[0] == b.elem[0] && a.elem[1] == b.elem[1] && a.elem[2] == b.elem[2]; }
+
+inline Color operator/(const Color &c, double t) { return Color(c.elem[0] / t, c.elem[1] / t, c.elem[2] / t); }

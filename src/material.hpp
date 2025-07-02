@@ -18,6 +18,10 @@ public:
     virtual Color emitted(double u, double v, const Point3<double> &p) const {
         return Color();
     }
+
+    virtual double scattering_pdf(const Ray<double> &ray_in, const HitRecord &rec, const Ray<double> &ray_out) const {
+        return 0;
+    }
 };
 
 class Lambertian : public Material {
@@ -26,7 +30,8 @@ public:
     Lambertian(std::shared_ptr<Texture> tex) : tex_(tex) {}
 
     bool scatter(const Ray<double>& ray_in, const HitRecord& rec, Color &attenuation, Ray<double>& ray_out) const override {
-        auto scatter_direction = rec.normal + random_unit_vector();
+        // auto scatter_direction = rec.normal + random_unit_vector();
+        auto scatter_direction = random_on_hemisphere(rec.normal);
         // Catch degenerate scatter_direction
         if (scatter_direction.near_zero()) {
             scatter_direction = rec.normal;
@@ -35,6 +40,13 @@ public:
         attenuation = tex_->value(rec.u, rec.v, rec.p);
 
         return true;
+    }
+
+    double scattering_pdf(const Ray<double> &ray_in, const HitRecord &rec, const Ray<double> &ray_out) const override {
+        // const auto cos_theta = dot(rec.normal, normalize(ray_out.direction()));
+        // return cos_theta < 0 ? 0 : cos_theta / pi;
+        //
+        return 1 / (2 * pi);
     }
 
     inline static const std::string NAME = "lambertian";
